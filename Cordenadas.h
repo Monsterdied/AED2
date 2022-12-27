@@ -14,7 +14,7 @@ public:
     Cordenadas(double latitude , double longitude);
 
     Cordenadas();
-
+    double getDistance(Cordenadas cordenadas);
     double getlatitude();
     double getlongitude();
 
