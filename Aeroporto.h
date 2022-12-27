@@ -18,7 +18,7 @@ private:
     string country;
 public:
     Aeroporto(double latitude , double longitude , string name , string code , string city , string country );
-
+    void ReadAirportsFile();
 
 };
 
