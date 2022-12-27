@@ -3,4 +3,6 @@ project(Proj)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Proj main.cpp Cordenadas.cpp Cordenadas.h Aeroporto.cpp Aeroporto.h Airline.cpp Airline.h)
+
+add_executable(Proj main.cpp Cordenadas.cpp Cordenadas.h Aeroport.cpp Aeroport.h Airline.cpp Airline.h Manager.cpp Manager.h )
+
