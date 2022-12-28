@@ -41,4 +41,11 @@ double Cordenadas::getDistance(Cordenadas cordenadas ){
     double rad = 6371;
     double c = 2 * asin(sqrt(a));
     return rad * c;
+
+
+}
+bool Cordenadas::operator==(const Cordenadas& cordenada) const
+{
+    if (this->latitude == cordenada.latitude && this->longitude == cordenada.longitude) return true;
+    else return false;
 }

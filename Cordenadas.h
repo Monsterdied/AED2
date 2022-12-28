@@ -17,7 +17,7 @@ public:
     double getDistance(Cordenadas cordenadas);
     double getlatitude();
     double getlongitude();
-
+    bool operator==(const Cordenadas& cordenada) const;
 };
 
 

@@ -9,17 +9,22 @@
 #include <vector>
 #include <fstream>
 #include <unordered_set>
+#include <unordered_map>
 #include "Airline.h"
+#include "Airport.h"
 
 class Manager {
 private:
-    unordered_set <string> airports ;
+    /*unordered_set <Airport,HashFunction> airports ;*/
+    unordered_map <string,Airport> airports;
     vector<Airline> airlines;
 
 public:
     Manager();
-    void ReadAirLinesFile() ;
+    void ReadAirLinesFile();
+    void ReadAirports();
     vector<Airline> getAirlines();
+    unordered_map <string,Airport> getAirports();
 };
 
 
