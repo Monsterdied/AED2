@@ -6,6 +6,7 @@
 #include "Manager.h"
 #include "Cordenadas.h"
 #include "Airport.h"
+#include "Flight.h"
 
 Manager::Manager(){
 }
@@ -15,7 +16,7 @@ vector<Airline> Manager::getAirlines(){
 unordered_map <string,Airport> Manager::getAirports(){
     return airports;
 }
-void Manager::ReadAirLinesFile() {
+void Manager::ReadAirLines() {
     vector<Airline> airlines;
     ifstream file;
     file.open("../Data/airlines.csv");
@@ -60,6 +61,25 @@ void Manager::ReadAirports() {
         airports.insert({code, Airport(latitude,longitude,name,code,city,country)});
     }
     this->airports= airports;
+}
+void Manager::ReadFlights() {
+    ifstream file;
+    file.open("../Data/flights.csv");
+    if (!file.is_open()) {
+        cerr << "Error opening file" << endl;
+    }
+    string full_str;
+    string source = "", target = "", airline = "";
+    getline(file, full_str, '\n');
+    while (file.good()) {
+        getline(file, full_str, '\n');
+        stringstream ss(full_str);
+        getline(ss, source, ',');
+        getline(ss, target, ',');
+        getline(ss, airline, ',');
+        flights.push_back(Flight(source, target, airline));
+    }
+
 }
 
 
