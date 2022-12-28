@@ -28,6 +28,8 @@ public:
     void ReadFlights();
     vector<Airline> getAirlines();
     unordered_map <string,Airport> getAirports();
+    vector<Flight> getFlights();
+    vector<Flight> FindBestRoute(string source, string target);
 
 };
 

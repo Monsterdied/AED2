@@ -7,6 +7,7 @@
 #include "Cordenadas.h"
 #include "Airport.h"
 #include "Flight.h"
+#include "queue"
 
 Manager::Manager(){
 }
@@ -15,6 +16,9 @@ vector<Airline> Manager::getAirlines(){
 }
 unordered_map <string,Airport> Manager::getAirports(){
     return airports;
+}
+vector<Flight> Manager::getFlights() {
+    return flights;
 }
 void Manager::ReadAirLines() {
     vector<Airline> airlines;
@@ -81,6 +85,28 @@ void Manager::ReadFlights() {
     }
 
 }
-
+vector<Flight> Manager::FindBestRoute(std::string source, std::string target) {
+    queue<vector<Flight>> q;
+    unordered_map<string, bool> visited;
+    q.push({});
+    visited[source] = true;
+    while (!q.empty()) {
+        vector<Flight> route = q.front();
+        q.pop();
+        string current = route.empty() ? source : route.back().getTarget();
+        if (current == target) {
+            return route;
+        }
+        for ( Flight flight : flights) {
+            if (flight.getSource() == current && !visited[flight.getTarget()]) {
+                vector<Flight> newRoute = route;
+                newRoute.push_back(flight);
+                q.push(newRoute);
+                visited[flight.getTarget()] = true;
+            }
+        }
+    }
+    return {};
+}
 
 
