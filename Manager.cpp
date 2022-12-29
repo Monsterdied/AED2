@@ -17,9 +17,7 @@ vector<Airline> Manager::getAirlines(){
 unordered_map <string,Airport> Manager::getAirports(){
     return airports;
 }
-vector<Flight> Manager::getFlights() {
-    return flights;
-}
+
 void Manager::ReadAirLines() {
     vector<Airline> airlines;
     ifstream file;
@@ -81,32 +79,40 @@ void Manager::ReadFlights() {
         getline(ss, source, ',');
         getline(ss, target, ',');
         getline(ss, airline, ',');
-        flights.push_back(Flight(source, target, airline));
+        graph.addEdge(source,target,airline);
+        //flights.push_back(Flight(source, target, airline));
     }
 
 }
-vector<Flight> Manager::FindBestRoute(std::string source, std::string target) {
-    queue<vector<Flight>> q;
-    unordered_map<string, bool> visited;
+vector<Graph::Flight> Manager::FindBestRoute(std::string source, std::string target) {
+    for (auto airport : airports)graph.findFlight(airport.first).visited = false;
+    queue<vector<Graph::Flight>> q;
     q.push({});
-    visited[source] = true;
+    /*unordered_map<string, bool> visited;
+    visited[source] = true;*/
+    graph.findFlight(source).visited=true;
     while (!q.empty()) {
-        vector<Flight> route = q.front();
+        vector<Graph::Flight> route = q.front();
         q.pop();
-        string current = route.empty() ? source : route.back().getTarget();
+        string current = route.empty() ? source : route.back().destinationCode;
         if (current == target) {
             return route;
         }
-        for ( Flight flight : flights) {
-            if (flight.getSource() == current && !visited[flight.getTarget()]) {
-                vector<Flight> newRoute = route;
+
+        for ( auto flight : graph.findFlight(current).adj) {
+            if (!graph.findFlight(flight.destinationCode).visited) {
+                vector<Graph::Flight> newRoute = route;
                 newRoute.push_back(flight);
                 q.push(newRoute);
-                visited[flight.getTarget()] = true;
+                graph.findFlight(flight.destinationCode).visited=true;
+
             }
         }
     }
     return {};
+}
+Graph Manager::getGraph(){
+    return graph;
 }
 
 

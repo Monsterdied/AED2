@@ -12,14 +12,14 @@
 #include <unordered_map>
 #include "Airline.h"
 #include "Airport.h"
-#include "Flight.h"
+#include "Graph.h"
 
-class Manager {
+ class Manager {
 private:
     /*unordered_set <Airport,HashFunction> airports ;*/
     unordered_map <string,Airport> airports;
     vector<Airline> airlines;
-    vector<Flight> flights;
+    Graph graph;
 
 public:
     Manager();
@@ -27,9 +27,9 @@ public:
     void ReadAirports();
     void ReadFlights();
     vector<Airline> getAirlines();
+    Graph getGraph();
     unordered_map <string,Airport> getAirports();
-    vector<Flight> getFlights();
-    vector<Flight> FindBestRoute(string source, string target);
+    vector<Graph::Flight> FindBestRoute(string source, string target);
 
 };
 

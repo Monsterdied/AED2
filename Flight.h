@@ -1,10 +1,11 @@
 //
 // Created by Utilizador on 12/28/2022.
 //
-
+/*
 #ifndef PROJ_FLIGHT_H
 #define PROJ_FLIGHT_H
 #include "string"
+
 using namespace std;
 class Flight {
 private:
@@ -16,3 +17,4 @@ public:
     string getAirline();
 };
 #endif //PROJ_FLIGHT_H
+*/

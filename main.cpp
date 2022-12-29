@@ -11,10 +11,19 @@ int main() {
     maneger.ReadAirLines();
     maneger.ReadAirports();
     maneger.ReadFlights();
-    vector<Flight> route = maneger.FindBestRoute("JFK", "KUN");
+/*
+    auto ok = maneger.getGraph();
+    for(auto tmp : maneger.getAirports()){
+        cout<<tmp.first<<"\n\n";
+        for(auto tmp1 : ok.getEdges(tmp.first)){
+            cout<<tmp1.sourceCode<<" "<<tmp1.airlineCode<<tmp1.destinationCode<<"\n";
+        }
+        cout<<"\n\n\n\n\n";
+    }*/
+    vector<Graph::Flight> route = maneger.FindBestRoute("JFK", "KUN");
     cout << "CDG\n";
-    for(Flight a:route){
-        cout<<a.getTarget()<<'\n';
+    for(Graph::Flight a:route){
+        cout<<a.destinationCode<<'\n';
     }
 
 }

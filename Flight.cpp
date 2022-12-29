@@ -1,8 +1,9 @@
 //
 // Created by Utilizador on 12/28/2022.
 //
-
+/*
 #include "Flight.h"
+
 Flight::Flight(string source, string target, string airline) {
     this->source=source;
     this->target=target;
@@ -17,4 +18,4 @@ string Flight::getTarget() {
 }
 string Flight::getAirline() {
     return this->airline;
-}
+}*/
