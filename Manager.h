@@ -28,8 +28,11 @@ public:
     void ReadFlights();
     vector<Airline> getAirlines();
     Graph getGraph();
+    void getNumFlightTo(string aiportCode);
     unordered_map <string,Airport> getAirports();
-    vector<Graph::Flight> FindBestRoute(string source, string target);
+     vector<Flight> FindBestRoute(string source, string target,Graph graph1);
+     vector<vector<Flight>> FindBestRoutes1(string source, string target);
+     vector<vector<Flight>> FindBestRoutes(string source, string target,vector<Flight> route,Graph graph1);
 
 };
 

@@ -1,7 +1,7 @@
 //
 // Created by Utilizador on 12/28/2022.
 //
-/*
+
 #ifndef PROJ_FLIGHT_H
 #define PROJ_FLIGHT_H
 #include "string"
@@ -15,6 +15,6 @@ public:
     string getSource();
     string getTarget();
     string getAirline();
+    bool operator==(const Flight& flight1) const;
 };
 #endif //PROJ_FLIGHT_H
-*/

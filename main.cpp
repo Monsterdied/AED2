@@ -20,10 +20,25 @@ int main() {
         }
         cout<<"\n\n\n\n\n";
     }*/
-    vector<Graph::Flight> route = maneger.FindBestRoute("JFK", "KUN");
-    cout << "CDG\n";
-    for(Graph::Flight a:route){
-        cout<<a.destinationCode<<'\n';
-    }
+    /*
+    auto route = maneger.FindBestRoute("OPO", "PEK",maneger.getGraph());
+    cout<<route.size();
+    for( auto a:route){
+        cout<<'\n';
+        Graph graph = maneger.getGraph();
+        cout<<a.getSource()<<" "<<a.getTarget()<<' '<<a.getAirline()<<" ";
 
+        cout<<"\n";
+    }*/
+    auto route = maneger.FindBestRoutes1("OPO", "PEK");
+    cout << route.size();
+    for (auto route1: route) {
+        for (auto a: route1) {
+            cout << '\n';
+            Graph graph = maneger.getGraph();
+            cout << a.getSource() << " " << a.getTarget() << ' ' << a.getAirline() << " ";
+
+            cout << "\n";
+        }
+    }
 }

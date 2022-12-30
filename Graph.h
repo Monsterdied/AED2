@@ -11,16 +11,12 @@
 #include <iostream>
 #include <unordered_map>
 #include "Airline.h"
-
+#include "Flight.h"
 using namespace std;
 
 class Graph {
+private:
 public:
-    struct Flight {
-        string destinationCode;   // Destination node
-        string airlineCode; // An integer weight
-        string sourceCode;
-    };
     struct Node {
         list<Flight> adj; // The list of outgoing edges (to adjacent nodes)
         bool visited;   // As the node been visited on a search?
@@ -34,8 +30,9 @@ public:
 
     // Add edge from source to destination with a certain weight
     void addEdge(string src, string dest, string airline);
+    void delFlight(Flight flight);
     unordered_map <string,Node> getNodes();
-    list<Graph::Flight> getEdges(string code);
+    list<Flight> getEdges(string code);
     Node& findFlight(string code);
     // ----- Functions to implement in this class -----
     int distance(int a, int b);
