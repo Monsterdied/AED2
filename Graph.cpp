@@ -15,7 +15,6 @@ void Graph::addEdge(string src, string dest, string airlineCode) {
 
 void Graph::delFlight(Flight flight){
     list<Flight>& tmp = nodes[flight.getSource()].adj;
-    string o = "ok";
     auto it = find(tmp.begin(),tmp.end(),flight);//possibel bug aqui
     tmp.erase(it);
 }

@@ -116,6 +116,7 @@ vector<vector<Flight>> Manager::FindBestRoutes(string source, string target,vect
                 cout << a.getSource() << " " << a.getTarget() << ' ' << a.getAirline() << "    ";
             }
             cout << "\n";
+
             auto newRoutes = FindBestRoutes(source,target,newRoute,tmp);
             result.insert(result.end(),newRoutes.begin(),newRoutes.end());
         }

@@ -36,8 +36,7 @@ int main() {
         for (auto a: route1) {
             cout << '\n';
             Graph graph = maneger.getGraph();
-            cout << a.getSource() << " " << a.getTarget() << ' ' << a.getAirline() << " ";
-
+            cout << a.getSource() << "," << a.getTarget() << ',' << a.getAirline() << " ";
             cout << "\n";
         }
     }
