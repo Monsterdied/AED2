@@ -96,18 +96,22 @@ void Manager::ReadFlights() {
     }
 
 }
-vector<vector<Flight>> Manager::FindBestRoutes1(string source, string target){
+vector<vector<Flight>> Manager::FindBestRoutes1(string source, string target) {
+    Graph graph1 = graph;
+    vector<vector<Flight>> result1;
+    vector<Flight> route = FindBestRoute(source, target, graph1);
 
-    return  FindBestRoutes(source,target,graph);
+    auto result =  FindBestRoutes(source,target,graph1);
+    result.push_back(route);
+    return result;
+
 }
 vector<vector<Flight>> Manager::FindBestRoutes(string source, string target, Graph& graph1) {
     vector<vector<Flight>> result;
     // Find the shortest route
     vector<Flight> route = FindBestRoute(source, target, graph1);
     // If a route was found, add it to the result
-    if (!route.empty()) {
-        result.push_back(route);
-    }
+
 
     // Find all routes with the same length as the shortest route
     int min = route.size();
@@ -123,7 +127,6 @@ vector<vector<Flight>> Manager::FindBestRoutes(string source, string target, Gra
     }
     return result;
 }
-
 
 vector<Flight> Manager::FindBestRoute(string source, string target,Graph graph1) {
     for (auto airport : airports)graph1.findFlight(airport.first).visited = false;
