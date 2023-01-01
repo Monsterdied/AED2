@@ -33,11 +33,12 @@ int main() {
     auto route = maneger.FindBestRoutes1("OPO", "PEK");
     cout << route.size();
     for (auto route1: route) {
+        cout << '\n';
         for (auto a: route1) {
-            cout << '\n';
+
             Graph graph = maneger.getGraph();
-            cout << a.getSource() << "," << a.getTarget() << ',' << a.getAirline() << " ";
-            cout << "\n";
+            cout << a.getSource() << " " << a.getTarget() << ' ' << a.getAirline() << "    ";
+
         }
     }
 }

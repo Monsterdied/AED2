@@ -32,7 +32,7 @@ public:
     unordered_map <string,Airport> getAirports();
      vector<Flight> FindBestRoute(string source, string target,Graph graph1);
      vector<vector<Flight>> FindBestRoutes1(string source, string target);
-     vector<vector<Flight>> FindBestRoutes(string source, string target,vector<Flight> route,Graph graph1);
+     vector<vector<Flight>> FindBestRoutes(string source, string target, Graph& graph1);
 
 };
 

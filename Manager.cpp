@@ -9,7 +9,7 @@
 #include "Airport.h"
 #include "Flight.h"
 #include "queue"
-
+#include<bits/stdc++.h>
 Manager::Manager(){
 }
 vector<Airline> Manager::getAirlines(){
@@ -97,28 +97,28 @@ void Manager::ReadFlights() {
 
 }
 vector<vector<Flight>> Manager::FindBestRoutes1(string source, string target){
-    vector<vector<Flight>> op ;
-    auto route = FindBestRoute(source,target,graph);
-    auto result = FindBestRoutes(source,target,route,graph);
-    result.push_back(route);
-    return  FindBestRoutes(source,target,route,graph);
-}
-vector<vector<Flight>> Manager::FindBestRoutes(string source, string target,vector<Flight> route,Graph graph1){
-    vector<vector<Flight>> result ;
-    int min = route.size();
-    for(Flight dele : route){
-        Graph tmp = graph1;
-        tmp.delFlight(dele);
-        auto newRoute = FindBestRoute(source,target,tmp);
-        if(min==newRoute.size()){
-            result.push_back(newRoute);
-            for (auto a: newRoute) {
-                cout << a.getSource() << " " << a.getTarget() << ' ' << a.getAirline() << "    ";
-            }
-            cout << "\n";
 
-            auto newRoutes = FindBestRoutes(source,target,newRoute,tmp);
-            result.insert(result.end(),newRoutes.begin(),newRoutes.end());
+    return  FindBestRoutes(source,target,graph);
+}
+vector<vector<Flight>> Manager::FindBestRoutes(string source, string target, Graph& graph1) {
+    vector<vector<Flight>> result;
+    // Find the shortest route
+    vector<Flight> route = FindBestRoute(source, target, graph1);
+    // If a route was found, add it to the result
+    if (!route.empty()) {
+        result.push_back(route);
+    }
+
+    // Find all routes with the same length as the shortest route
+    int min = route.size();
+    for (Flight dele : route) {
+        Graph& tmp = graph1;
+        tmp.delFlight(dele);
+        auto newRoute = FindBestRoute(source, target, tmp);
+        if (newRoute.size() == min && find(result.begin(), result.end(), newRoute) == result.end()) {
+            result.push_back(newRoute);
+            auto newRoutes = FindBestRoutes(source, target, tmp);
+            result.insert(result.end(), newRoutes.begin(), newRoutes.end());
         }
     }
     return result;

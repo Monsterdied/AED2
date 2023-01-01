@@ -15,8 +15,10 @@ void Graph::addEdge(string src, string dest, string airlineCode) {
 
 void Graph::delFlight(Flight flight){
     list<Flight>& tmp = nodes[flight.getSource()].adj;
-    auto it = find(tmp.begin(),tmp.end(),flight);//possibel bug aqui
-    tmp.erase(it);
+    auto it = find(tmp.begin(), tmp.end(), flight);
+    if (it != tmp.end()) {
+        tmp.erase(it);
+    }
 }
 
 unordered_map <string,Graph::Node> Graph::getNodes(){
