@@ -33,7 +33,8 @@ public:
     void delFlight(Flight flight);
     unordered_map <string,Node> getNodes();
     list<Flight> getEdges(string code);
-    Node& findFlight(string code);
+    Node& findFlightFrom(string codeAirport);
+    vector<Flight> findFlights(string codeSrc , string codeDest);
     // ----- Functions to implement in this class -----
     int distance(int a, int b);
     int diameter();

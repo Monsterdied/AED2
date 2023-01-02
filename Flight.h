@@ -12,9 +12,9 @@ private:
     string source,target,airline;
 public:
     Flight(string source,string target,string airline);
-    string getSource();
-    string getTarget();
-    string getAirline();
+    string getSource() const;
+    string getTarget() const;
+    string getAirline() const;
     bool operator==(const Flight& flight1) const;
 };
 #endif //PROJ_FLIGHT_H

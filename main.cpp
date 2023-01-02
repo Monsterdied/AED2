@@ -41,4 +41,9 @@ int main() {
 
         }
     }
+    cout<<maneger.getNumFlightFrom("OPO")<<" "<<maneger.getNumFlightTo("OPO")<<"\n";
+    cout<<"TO DIFERENT :"<<maneger.getNumFlightToDiferentCountrysFrom("YEG")<<"\n";
+    cout<<" From diferent :"<<maneger.getNumFlightFromDiferentCountrysTo("YEG")<<"\n";
+    cout<<"Test "<<maneger.CountCountriesReachableInYFlights("OPO",2)<<"\n";
+    cout<<"Test "<<maneger.CountriesReachableInYFlights("OPO",2).size();
 }

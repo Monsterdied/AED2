@@ -10,13 +10,13 @@ Flight::Flight(string source, string target, string airline) {
     this->airline=airline;
 }
 
-string Flight::getSource() {
+string Flight::getSource() const{
     return this->source;
 }
-string Flight::getTarget() {
+string Flight::getTarget() const{
     return this->target;
 }
-string Flight::getAirline() {
+string Flight::getAirline() const{
     return this->airline;
 }
 bool Flight::operator==(const Flight& flight1) const{

@@ -27,6 +27,16 @@ unordered_map <string,Graph::Node> Graph::getNodes(){
 list<Flight> Graph::getEdges(string code){
     return nodes[code].adj;
 }
-Graph::Node& Graph::findFlight(string codeAirport){
+Graph::Node& Graph::findFlightFrom(string codeAirport){
     return nodes.find(codeAirport)->second;
+}
+vector<Flight> Graph::findFlights(string codeSrc , string codeDest) {
+    auto flights = nodes[codeSrc].adj;
+    vector<Flight> result;
+    for(Flight flight :flights){
+        if(flight.getTarget()==codeDest){
+            result.push_back(flight);
+        }
+    }
+    return result;
 }

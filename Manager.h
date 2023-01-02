@@ -28,11 +28,18 @@ public:
     void ReadFlights();
     vector<Airline> getAirlines();
     Graph getGraph();
-    void getNumFlightTo(string aiportCode);
+    int getNumFlightTo(string aiportCode);
+    int getNumFlightFrom(string aiportCode);
+    int getNumFlightFromDiferentAirlinesTo(string aiportCode);
+    int getNumFlightFromDiferentAirlinesFrom(string aiportCode);
+     int getNumFlightFromDiferentCountrysTo(string aiportCode);
+     int getNumFlightToDiferentCountrysFrom(string aiportCode);
     unordered_map <string,Airport> getAirports();
      vector<Flight> FindBestRoute(string source, string target,Graph graph1);
      vector<vector<Flight>> FindBestRoutes1(string source, string target);
      vector<vector<Flight>> FindBestRoutes(string source, string target,Graph& graph1);
+     int CountCountriesReachableInYFlights(const string& src, int y);
+     unordered_set<string> CountriesReachableInYFlights(const string& src, int y);
 
 };
 
