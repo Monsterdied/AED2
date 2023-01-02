@@ -156,47 +156,16 @@ vector<vector<Flight>> Manager::FindBestRoutes(string source, string target,vect
     vector<Flight> route = FindBestRoute(source, target, graph1);
     // If a route was found, add it to the result
     result.push_back(route);
-    cout<<"---------------Called---------------------\n";
     // Find all routes with the same length as the shortest route
     int min = route.size();
     Graph tmp = graph1;
-    int i = 0;
     for (Flight dele : route) {
-        i++;
-        cout<<i<<"---------------delete---------------------\n";
+        //to isolate the flight
+        tmp.delFlight(dele);
+
         vector<Flight> newRoute = FindBestRoute(source, target, tmp);
-        for (auto a: newRoute) {
-            cout << a.getSource() << " " << a.getTarget() << ' ' << a.getAirline() << "    ";
-        }
-        cout<<"\n";
-        tmp.delFlight(dele);/*
-        cout << dele.getSource() << " " << dele.getTarget() << ' ' << dele.getAirline() << "   \n ";*/
-        /*cout<<i<<"---------------add--------------------\n";
-        cout << dele.getSource() << " " << dele.getTarget() << ' ' << dele.getAirline() << "    \n";*/
-        /*auto teste = tmp.findFlightFrom(dele.getSource()).adj;
-        if(find(teste.begin(),teste.end(),dele)!=teste.end()){
-           auto a = find(teste.begin(),teste.end(),dele);
-           cout << a->getSource() << " " << a->getTarget() << ' ' << a->getAirline() << "    ";
-           cout<<"Fuck";
-
-       }*/
-        newRoute = FindBestRoute(source, target, tmp);
-        for (auto a: newRoute) {
-            cout << a.getSource() << " " << a.getTarget() << ' ' << a.getAirline() << "    ";
-        }
-        cout<<"\n";
-
-        /*for(auto a :tmp.getEdges(dele.getSource())){
-            if(a==dele){
-                cout<<i<<"---------------found---------------------\n";
-                cout << a.getSource() << " " << a.getTarget() << ' ' << a.getAirline() << "   \n ";}
-        }*/
-
         if (newRoute.size() <= min && find(result.begin(), result.end(), newRoute) == result.end()) {
-            /*for (auto a: route) {
-                cout << a.getSource() << " " << a.getTarget() << ' ' << a.getAirline() << "    ";
-            }
-            cout<<"\n";*/
+
             auto newRoutes = FindBestRoutes(source, target, result,tmp);
         }
         tmp.addFlight(dele);
