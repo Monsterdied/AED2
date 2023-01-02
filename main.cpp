@@ -5,7 +5,7 @@
 #include "Airport.h"
 #include "Airline.h"
 #include "Manager.h"
-
+#include<bits/stdc++.h>
 int main() {
     Manager maneger;
     maneger.ReadAirLines();
@@ -41,6 +41,16 @@ int main() {
 
         }
     }
+    vector<vector<Flight>> routes;
+    vector<Flight> route1;
+    vector<Flight> route2;
+    route1.push_back(Flight("OPO", "YYZ", "TAP"));
+    route1.push_back(Flight("YYZ", "PEK", "CCA"));
+    route2.push_back(Flight("OPO", "YYZ", "RZO"));
+    route2.push_back(Flight("YYZ", "PEK", "CCA"));
+    routes.push_back(route1);
+    auto it = find(routes.begin(),routes.end(),route2);
+    if(it!=routes.end())cout<<"FUCK\n\n\n";
     cout<<maneger.getNumFlightFrom("OPO")<<" "<<maneger.getNumFlightTo("OPO")<<"\n";
     cout<<"TO DIFERENT :"<<maneger.getNumFlightToDiferentCountrysFrom("YEG")<<"\n";
     cout<<" From diferent :"<<maneger.getNumFlightFromDiferentCountrysTo("YEG")<<"\n";

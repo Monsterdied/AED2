@@ -12,12 +12,16 @@ void Graph::addEdge(string src, string dest, string airlineCode) {
     nodes[src].adj.push_back({src,dest,airlineCode});
     nodes[dest];
 }
+void Graph::addFlight(Flight flight) {
+    nodes[flight.getSource()].adj.push_back(flight);
+}
 
 void Graph::delFlight(Flight flight){
     list<Flight>& tmp = nodes[flight.getSource()].adj;
     auto it = find(tmp.begin(), tmp.end(), flight);
     if (it != tmp.end()) {
         tmp.erase(it);
+
     }
 }
 

@@ -37,9 +37,10 @@ public:
     unordered_map <string,Airport> getAirports();
      vector<Flight> FindBestRoute(string source, string target,Graph graph1);
      vector<vector<Flight>> FindBestRoutes1(string source, string target);
-     vector<vector<Flight>> FindBestRoutes(string source, string target,Graph& graph1);
+     vector<vector<Flight>> FindBestRoutes(string source, string target,vector<vector<Flight>>& result,Graph graph1);
      int CountCountriesReachableInYFlights(const string& src, int y);
      unordered_set<string> CountriesReachableInYFlights(const string& src, int y);
+
 
 };
 
