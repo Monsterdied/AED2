@@ -35,6 +35,7 @@ public:
     list<Flight> getEdges(string code);
     Node& findFlightFrom(string codeAirport);
     vector<Flight> findFlights(string codeSrc , string codeDest);
+    void addFlight(Flight flight);
     // ----- Functions to implement in this class -----
     int distance(int a, int b);
     int diameter();
