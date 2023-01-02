@@ -8,8 +8,14 @@ Flight::Flight(string source, string target, string airline) {
     this->source=source;
     this->target=target;
     this->airline=airline;
+    this->used = false;
 }
-
+bool Flight::getUsed() const{
+    return used;
+}
+void Flight::setUsed(bool us){
+    used = us;
+}
 string Flight::getSource() const{
     return this->source;
 }

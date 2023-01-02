@@ -46,14 +46,14 @@ int main() {
     vector<Flight> route2;
     route1.push_back(Flight("OPO", "YYZ", "TAP"));
     route1.push_back(Flight("YYZ", "PEK", "CCA"));
-    route2.push_back(Flight("OPO", "YYZ", "RZO"));
-    route2.push_back(Flight("YYZ", "PEK", "CCA"));
+    route2.push_back(Flight("OPO", "YYZ", "TAP"));
+    route2.push_back(Flight("YYZ", "PEK", "RIP"));
     routes.push_back(route1);
     auto it = find(routes.begin(),routes.end(),route2);
     if(it!=routes.end())cout<<"FUCK\n\n\n";
     cout<<maneger.getNumFlightFrom("OPO")<<" "<<maneger.getNumFlightTo("OPO")<<"\n";
     cout<<"TO DIFERENT :"<<maneger.getNumFlightToDiferentCountrysFrom("YEG")<<"\n";
     cout<<" From diferent :"<<maneger.getNumFlightFromDiferentCountrysTo("YEG")<<"\n";
-    cout<<"Test "<<maneger.CountCountriesReachableInYFlights("OPO",2)<<"\n";
+    cout<<"Test "<<maneger.CountCountriesReachableInNFlights("OPO",2)<<"\n";
     cout<<"Test "<<maneger.CountriesReachableInYFlights("OPO",2).size();
 }

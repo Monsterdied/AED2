@@ -13,14 +13,20 @@ void Graph::addEdge(string src, string dest, string airlineCode) {
     nodes[dest];
 }
 void Graph::addFlight(Flight flight) {
-    nodes[flight.getSource()].adj.push_back(flight);
+    list<Flight>& tmp = nodes[flight.getSource()].adj;
+    auto it = find(tmp.begin(), tmp.end(), flight);
+    if (it != tmp.end()) {
+        it->setUsed(false);
+
+    }
+
 }
 
 void Graph::delFlight(Flight flight){
     list<Flight>& tmp = nodes[flight.getSource()].adj;
     auto it = find(tmp.begin(), tmp.end(), flight);
     if (it != tmp.end()) {
-        tmp.erase(it);
+        it->setUsed(true);
 
     }
 }
@@ -32,7 +38,7 @@ list<Flight> Graph::getEdges(string code){
     return nodes[code].adj;
 }
 Graph::Node& Graph::findFlightFrom(string codeAirport){
-    return nodes.find(codeAirport)->second;
+    return nodes[codeAirport];
 }
 vector<Flight> Graph::findFlights(string codeSrc , string codeDest) {
     auto flights = nodes[codeSrc].adj;

@@ -141,7 +141,6 @@ vector<vector<Flight>> Manager::FindBestRoutes1(string source, string target) {
     Graph graph1 = graph;
     vector<vector<Flight>> result1;
     vector<Flight> route = FindBestRoute(source, target, graph1);
-    result1.push_back(route);
     auto result =  FindBestRoutes(source,target,result1,graph1);
 
 
@@ -156,7 +155,7 @@ vector<vector<Flight>> Manager::FindBestRoutes(string source, string target,vect
     // Find the shortest route
     vector<Flight> route = FindBestRoute(source, target, graph1);
     // If a route was found, add it to the result
-
+    result.push_back(route);
     cout<<"---------------Called---------------------\n";
     // Find all routes with the same length as the shortest route
     int min = route.size();
@@ -165,22 +164,42 @@ vector<vector<Flight>> Manager::FindBestRoutes(string source, string target,vect
     for (Flight dele : route) {
         i++;
         cout<<i<<"---------------delete---------------------\n";
-        tmp.delFlight(dele);
-        cout << dele.getSource() << " " << dele.getTarget() << ' ' << dele.getAirline() << "   \n ";
-        cout<<i<<"---------------add--------------------\n";
-        cout << dele.getSource() << " " << dele.getTarget() << ' ' << dele.getAirline() << "    \n";
-        tmp.addEdge(dele.getSource(),dele.getTarget(),dele.getAirline());
         vector<Flight> newRoute = FindBestRoute(source, target, tmp);
+        for (auto a: newRoute) {
+            cout << a.getSource() << " " << a.getTarget() << ' ' << a.getAirline() << "    ";
+        }
+        cout<<"\n";
+        tmp.delFlight(dele);/*
+        cout << dele.getSource() << " " << dele.getTarget() << ' ' << dele.getAirline() << "   \n ";*/
+        /*cout<<i<<"---------------add--------------------\n";
+        cout << dele.getSource() << " " << dele.getTarget() << ' ' << dele.getAirline() << "    \n";*/
+        /*auto teste = tmp.findFlightFrom(dele.getSource()).adj;
+        if(find(teste.begin(),teste.end(),dele)!=teste.end()){
+           auto a = find(teste.begin(),teste.end(),dele);
+           cout << a->getSource() << " " << a->getTarget() << ' ' << a->getAirline() << "    ";
+           cout<<"Fuck";
+
+       }*/
+        newRoute = FindBestRoute(source, target, tmp);
+        for (auto a: newRoute) {
+            cout << a.getSource() << " " << a.getTarget() << ' ' << a.getAirline() << "    ";
+        }
+        cout<<"\n";
+
+        /*for(auto a :tmp.getEdges(dele.getSource())){
+            if(a==dele){
+                cout<<i<<"---------------found---------------------\n";
+                cout << a.getSource() << " " << a.getTarget() << ' ' << a.getAirline() << "   \n ";}
+        }*/
 
         if (newRoute.size() <= min && find(result.begin(), result.end(), newRoute) == result.end()) {
-            for (auto a: route) {
+            /*for (auto a: route) {
                 cout << a.getSource() << " " << a.getTarget() << ' ' << a.getAirline() << "    ";
             }
-            cout<<"\n";
-            result.push_back(newRoute);
+            cout<<"\n";*/
             auto newRoutes = FindBestRoutes(source, target, result,tmp);
         }
-
+        tmp.addFlight(dele);
 
     }
     return result;
@@ -202,7 +221,7 @@ vector<Flight> Manager::FindBestRoute(string source, string target,Graph graph1)
         }
 
         for ( auto flight : graph1.findFlightFrom(current).adj) {
-            if (!graph1.findFlightFrom(flight.getTarget()).visited) {
+            if (!graph1.findFlightFrom(flight.getTarget()).visited && !flight.getUsed()) {
 
                 vector<Flight> newRoute = route;
                 newRoute.push_back(flight);
@@ -216,9 +235,9 @@ vector<Flight> Manager::FindBestRoute(string source, string target,Graph graph1)
 
     return {};
 }
-int Manager::CountCountriesReachableInYFlights(const string& src, int y){
+int Manager::CountCountriesReachableInNFlights(const string& src, int n){
     unordered_set<string> countries;
-    for(int i = 1 ; i<=y;i++){
+    for(int i = 1 ; i<=n;i++){
         auto tmp = CountriesReachableInYFlights(src,i);
         for(string s : tmp){
             countries.insert(s);
