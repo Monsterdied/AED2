@@ -71,6 +71,7 @@ int Manager::getNumFlightToDiferentCountrysFrom(string aiportCode){
 
     return result.size();
 }
+
 void Manager::ReadAirLines() {
     ifstream file;
     file.open("../Data/airlines.csv");
@@ -89,17 +90,20 @@ void Manager::ReadAirLines() {
         getline(ss, country, ',');
         airlines.insert({code,Airline(code,name,callsign,country)});
     }
-    }
+}
+
 void Manager::ReadAirports() {
-    unordered_map <string,Airport> airports ;
+    unordered_map <string,Airport> airports;
+    unordered_map <string, list<string>> cities;
+
     ifstream file;
     file.open("../Data/airports.csv");
     if (!file.is_open()) {
         cerr << "Error opening file" << endl;
     }
-    string full_str;
-    string latitudeStr ="",longitudeStr="" , name="" , code="" , city="" , country="";
-    getline(file,full_str,'\n');
+
+    string full_str, latitudeStr, longitudeStr, name, code, city, country;
+    getline(file, full_str);
     while(file.good()) {
         getline(file, full_str, '\n');
         stringstream ss(full_str);
@@ -112,9 +116,17 @@ void Manager::ReadAirports() {
         double latitude = stod(latitudeStr);
         double longitude = stod(longitudeStr);
         airports.insert({code, Airport(latitude,longitude,name,code,city,country)});
+
+        if (cities.count(city) == 0) {
+            list<string> tmpList;
+            cities[city] = tmpList;
+        }
+        cities[city].push_back(code);
     }
+    this->cities = cities;
     this->airports= airports;
 }
+
 void Manager::ReadFlights() {
     ifstream file;
     file.open("../Data/flights.csv");

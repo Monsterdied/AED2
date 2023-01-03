@@ -18,7 +18,8 @@
 private:
     /*unordered_set <Airport,HashFunction> airports ;*/
     unordered_map <string,Airport> airports;
-     unordered_map <string,Airline> airlines;
+    unordered_map <string,Airline> airlines;
+    unordered_map <string, list<string>> cities;
     Graph graph;
 
 public:
@@ -31,8 +32,8 @@ public:
     int getNumFlightFrom(string aiportCode);
     int getNumFlightFromDiferentAirlinesTo(string aiportCode);
     int getNumFlightFromDiferentAirlinesFrom(string aiportCode);
-     int getNumFlightFromDiferentCountrysTo(string aiportCode);
-     int getNumFlightToDiferentCountrysFrom(string aiportCode);
+    int getNumFlightFromDiferentCountrysTo(string aiportCode);
+    int getNumFlightToDiferentCountrysFrom(string aiportCode);
      unordered_map <string,Airline>  getAirlines();
      unordered_map <string,Airport> getAirports();
      vector<Flight> FindBestRoute(string source, string target);
