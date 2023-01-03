@@ -269,7 +269,7 @@ vector<vector<Flight>> Manager::FindBestRoutesFromCordenadasToCordenadas(Cordena
         if(cordenadas.getDistance(airport.getCordenadas())<=distanceSource){
             starts.push_back(airport.getCode());
         }
-        if(cordenadas1.getDistance(airport.getCordenadas())<=distanceSource){
+        if(cordenadas1.getDistance(airport.getCordenadas())<=distanceTarget){
             targets.push_back(airport.getCode());
         }
     }
@@ -277,6 +277,11 @@ vector<vector<Flight>> Manager::FindBestRoutesFromCordenadasToCordenadas(Cordena
     for(string source : starts){
         for(string target : targets){
             vector<Flight> route = FindBestRoute(source,target,graph);
+            for (auto a: route) {
+                cout << a.getSource() << " " << a.getTarget() << ' ' << a.getAirline() << "    ";
+
+            }
+            cout<<"\n";
             if(route.size() < min){
                 result.clear();
                 min = route.size();

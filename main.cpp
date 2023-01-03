@@ -30,7 +30,7 @@ int main() {
 
         cout<<"\n";
     }*//*
-    auto route = maneger.FindBestRoutes1("OPO", "PEK");
+    auto route = maneger.FindBestRoutes1("OPO", "CIH");
     cout << route.size();
     for (auto route1: route) {
         cout << '\n';
@@ -40,7 +40,7 @@ int main() {
             cout << a.getSource() << " " << a.getTarget() << ' ' << a.getAirline() << "    ";
 
         }
-    }
+    }*//*
     vector<vector<Flight>> routes;
     vector<Flight> route1;
     vector<Flight> route2;
@@ -66,16 +66,15 @@ int main() {
             cout << a.getSource() << " " << a.getTarget() << ' ' << a.getAirline() << "    ";
 
         }
-    }*/
-    auto routes = maneger.FindBestRoutesFromCordenadasToCordenadas(Cordenadas(41.1571867,-8.6362544),Cordenadas(38.7559345,-9.182125),70,70);
+    }*//*
+    auto routes = maneger.FindBestRoutesFromCordenadasToCordenadas(Cordenadas(41.1571867,-8.6362544),Cordenadas(40.0733964,116.5827059),150,100);
 
     for (auto route1: routes) {
         cout << '\n';
         for (auto a: route1) {
 
-            Graph graph = maneger.getGraph();
             cout << a.getSource() << " " << a.getTarget() << ' ' << a.getAirline() << "    ";
 
         }
-    }
+    }*/
 }
