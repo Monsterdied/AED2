@@ -10,15 +10,47 @@ void menuAirlines(Manager manager);
 void menuPrincipal();
 void menu1(Manager manager);
 void menuAirlinesEspecifica(Manager manager);
-
 void listagemTotalAirlines(Manager manager);
-void listagemAirlineNome(Manager manager, string nome);
+void listagemAirlineNome(vector<Airline> vetor, string nome);
+void listagemAirlineCode(vector<Airline> vetor ,string nome);
 
-void listagemAirlineNome(Manager manager ,string nome){
-    for(auto it=manager.getAirlines().begin()++;it!=manager.getAirlines().end();it++){
+void listagemAirlineNome(vector<Airline> vetor ,string nome){
+    for(auto it=vetor.begin();it!=vetor.end();it++){
         if(it->getName()==nome){
-            cout<<"\n\nName:" + it->getName();
-            cout<<"\nCountry:" + it->getCountry() + "\n\n";
+            cout << "_____________________Name________________________________Callsign__________________________Country______________\n";
+            cout<<"|";
+            cout<<setw(41);
+            cout<<it->getName();
+            cout<<"|";
+            cout<<setw(30);
+            cout<<it->getCallSign();
+            cout<<"|";
+            cout<<setw(38);
+            cout<< it->getCountry();
+            cout <<"|";
+            cout<<"\n";
+            cout << "_________________________________________________________________________________________________________________\n";
+            return;
+        }
+    }
+    cout<<"Airport not found!\n ";
+}  //Feito
+void listagemAirlineCode(vector<Airline> vetor ,string code){
+    for(auto it=vetor.begin();it!=vetor.end();it++){
+        if(it->getCode()==code){
+            cout << "_____________________Name________________________________Callsign__________________________Country______________\n";
+                cout<<"|";
+                cout<<setw(41);
+                cout<<it->getName();
+                cout<<"|";
+                cout<<setw(30);
+                cout<<it->getCallSign();
+                cout<<"|";
+                cout<<setw(38);
+                cout<< it->getCountry();
+                cout <<"|";
+                cout<<"\n";
+            cout << "_________________________________________________________________________________________________________________\n";
             return;
         }
     }
@@ -27,7 +59,7 @@ void listagemAirlineNome(Manager manager ,string nome){
 void menuAirlinesEspecifica(Manager manager){
     cout << "_________________________________________________________________________________\n";
     cout << "|Escolha uma das opcoes seguintes:                                              |"
-    << "\n"" |                                                                               |\n";
+    <<    "\n|                                                                               |\n";
     cout <<
             "|1.Procurar pelo Nome                                                           |\n"
             "|2.Procurar pelo Code                                                           |\n"
@@ -35,6 +67,7 @@ void menuAirlinesEspecifica(Manager manager){
     cout << "|_______________________________________________________________________________|\n";
     string input;
     cin>>input;
+    vector<Airline> testing = manager.getAirlines();
     if(input=="1"){
         cout<<"Introduza o nome da Airline:\n";
         string nome;
@@ -42,13 +75,13 @@ void menuAirlinesEspecifica(Manager manager){
         cin>>nome;
         getline(cin,nome1);
         string nomefinal= nome + nome1;
-        listagemAirlineNome(manager,nomefinal);
+        listagemAirlineNome(testing,nomefinal);
     }  //Feito
     if(input=="2"){
         cout<<"Introduza o codigo do Aeroporto:\n";
-        string nome;
-        cin>>nome;
-
+        string code;
+        cin>>code;
+        listagemAirlineCode(testing,code);
     }
 }
 void menuAirlines(Manager manager){
@@ -66,19 +99,6 @@ void menuAirlines(Manager manager){
         menuAirlinesEspecifica(manager);
     }
 }
-
-
-void menuPrincipal(){
-    cout << "_________________________________________________\n";
-    cout << "|Welcome to Flight Network System L.EIC GUI     |"
-     << "\n""|                                               |\n";
-    cout << "|Selecione a opcao desejada:                    |\n"
-            "|1.Ver Funcoes disponiveis.                     |\n"
-            "|2.Sair do Programa.                            |\n";
-    cout << "|_______________________________________________|\n";
-
-}  //Feito
-
 
 void listagemTotalAirlines(Manager manager){
     cout << "_____________________Name________________________________Callsign__________________________Country______________\n";
@@ -98,7 +118,7 @@ void listagemTotalAirlines(Manager manager){
     }
     cout << "_________________________________________________________________________________________________________________\n";
     cout <<"Print com sucesso 100%. Retornando ao menu principal...\n";
-}
+} //Feito
 void menu1(Manager manager){
     cout << "____________________________________________________________________\n";
     cout << "|Neste menu, poderas escolher uma das funcoes disponiveis em baixo:|"
@@ -124,11 +144,24 @@ void menu1(Manager manager){
         menuPrincipal();
     }
 } //Feito (vai-se adicionando coisas novas com mais funcoes novas)
+
+void menuPrincipal(){
+    cout << "_________________________________________________\n";
+    cout << "|Welcome to Flight Network System L.EIC GUI     |"
+         << "\n""|                                               |\n";
+    cout << "|Selecione a opcao desejada:                    |\n"
+            "|1.Ver Funcoes disponiveis.                     |\n"
+            "|2.Sair do Programa.                            |\n";
+    cout << "|_______________________________________________|\n";
+
+}  //Feito
+
 int main() {
     Manager maneger;
     maneger.ReadAirLines();
     maneger.ReadAirports();
     maneger.ReadFlights();
+
     string ctrl;
     menuPrincipal();
     do {
@@ -141,9 +174,10 @@ int main() {
             cout << "Obrigado por usar o programa!";
             break;
         } else {
-            cout << "Obrigado por usar o programa!";
+            cout << "Input errado, Obrigado por usar o programa!";
             break;
         }
     }while(true);
+
 
 }
