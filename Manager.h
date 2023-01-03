@@ -18,7 +18,7 @@
 private:
     /*unordered_set <Airport,HashFunction> airports ;*/
     unordered_map <string,Airport> airports;
-    vector<Airline> airlines;
+     unordered_map <string,Airline> airlines;
     Graph graph;
 
 public:
@@ -26,7 +26,6 @@ public:
     void ReadAirLines();
     void ReadAirports();
     void ReadFlights();
-    vector<Airline> getAirlines();
     Graph getGraph();
     int getNumFlightTo(string aiportCode);
     int getNumFlightFrom(string aiportCode);
@@ -34,10 +33,11 @@ public:
     int getNumFlightFromDiferentAirlinesFrom(string aiportCode);
      int getNumFlightFromDiferentCountrysTo(string aiportCode);
      int getNumFlightToDiferentCountrysFrom(string aiportCode);
-    unordered_map <string,Airport> getAirports();
-     vector<Flight> FindBestRoute(string source, string target,Graph graph1);
+     unordered_map <string,Airline>  getAirlines();
+     unordered_map <string,Airport> getAirports();
+     vector<Flight> FindBestRoute(string source, string target);
      vector<vector<Flight>> FindBestRoutes1(string source, string target);
-     vector<vector<Flight>> FindBestRoutes(string source, string target,vector<vector<Flight>>& result,Graph graph1);
+     vector<vector<Flight>> FindBestRoutes(string source, string target,vector<vector<Flight>>& result);
      vector<vector<Flight>> FindBestRoutesFromCordenadasToTarget(Cordenadas cordenadas, string target,int distanceSource);
      vector<vector<Flight>> FindBestRoutesFromCordenadasToCordenadas(Cordenadas cordenadas, Cordenadas cordenadas1,int distanceSource,int distanceTarget);
      int CountCountriesReachableInNFlights(const string& src, int n);

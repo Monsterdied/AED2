@@ -12,7 +12,7 @@
 #include<bits/stdc++.h>
 Manager::Manager(){
 }
-vector<Airline> Manager::getAirlines(){
+unordered_map <string,Airline>  Manager::getAirlines(){
     return airlines;
 }
 unordered_map <string,Airport> Manager::getAirports() {
@@ -72,7 +72,6 @@ int Manager::getNumFlightToDiferentCountrysFrom(string aiportCode){
     return result.size();
 }
 void Manager::ReadAirLines() {
-    vector<Airline> airlines;
     ifstream file;
     file.open("../Data/airlines.csv");
     if (!file.is_open()) {
@@ -88,9 +87,8 @@ void Manager::ReadAirLines() {
         getline(ss, name, ',');
         getline(ss, callsign, ',');
         getline(ss, country, ',');
-        airlines.push_back(Airline(code,name,callsign,country));
+        airlines.insert({code,Airline(code,name,callsign,country)});
     }
-    this->airlines= airlines;
     }
 void Manager::ReadAirports() {
     unordered_map <string,Airport> airports ;
@@ -138,10 +136,10 @@ void Manager::ReadFlights() {
 
 }
 vector<vector<Flight>> Manager::FindBestRoutes1(string source, string target) {
-    Graph graph1 = graph;
     vector<vector<Flight>> result1;
-    vector<Flight> route = FindBestRoute(source, target, graph1);
-    auto result =  FindBestRoutes(source,target,result1,graph1);
+    vector<Flight> route = FindBestRoute(source, target);
+    result1.push_back(route);
+    auto result =  FindBestRoutes(source,target,result1);
 
 
     return result;
@@ -150,37 +148,35 @@ vector<vector<Flight>> Manager::FindBestRoutes1(string source, string target) {
 
 
 
-vector<vector<Flight>> Manager::FindBestRoutes(string source, string target,vector<vector<Flight>>& result, Graph graph1) {
+vector<vector<Flight>> Manager::FindBestRoutes(string source, string target,vector<vector<Flight>>& result) {
 
     // Find the shortest route
-    vector<Flight> route = FindBestRoute(source, target, graph1);
     // If a route was found, add it to the result
-    result.push_back(route);
+
     // Find all routes with the same length as the shortest route
-    int min = route.size();
-    Graph tmp = graph1;
-    for (Flight dele : route) {
+    int min = result[0].size();
+    for (Flight dele : result.back()) {
         //to isolate the flight
-        tmp.delFlight(dele);
+        graph.delFlight(dele);
 
-        vector<Flight> newRoute = FindBestRoute(source, target, tmp);
+        vector<Flight> newRoute = FindBestRoute(source, target);
         if (newRoute.size() <= min && find(result.begin(), result.end(), newRoute) == result.end()) {
-
-            auto newRoutes = FindBestRoutes(source, target, result,tmp);
+            result.push_back(newRoute);
+            auto newRoutes = FindBestRoutes(source, target, result);
         }
-        tmp.addFlight(dele);
+        graph.addFlight(dele);
 
     }
     return result;
 }
 
-vector<Flight> Manager::FindBestRoute(string source, string target,Graph graph1) {
-    for (auto airport : airports)graph1.findFlightFrom(airport.first).visited = false;
+vector<Flight> Manager::FindBestRoute(string source, string target) {
+    for (auto airport : airports)graph.findFlightFrom(airport.first).visited = false;
     queue<vector<Flight>> q;
     q.push({});
     /*unordered_map<string, bool> visited;
     visited[source] = true;*/
-    graph1.findFlightFrom(source).visited=true;
+    graph.findFlightFrom(source).visited=true;
     while (!q.empty()) {
         vector<Flight> route = q.front();
         q.pop();
@@ -189,13 +185,13 @@ vector<Flight> Manager::FindBestRoute(string source, string target,Graph graph1)
             return route;
         }
 
-        for ( auto flight : graph1.findFlightFrom(current).adj) {
-            if (!graph1.findFlightFrom(flight.getTarget()).visited && !flight.getUsed()) {
+        for ( auto flight : graph.findFlightFrom(current).adj) {
+            if (!graph.findFlightFrom(flight.getTarget()).visited && !flight.getUsed()) {
 
                 vector<Flight> newRoute = route;
                 newRoute.push_back(flight);
                 q.push(newRoute);
-                graph1.findFlightFrom(flight.getTarget()).visited=true;
+                graph.findFlightFrom(flight.getTarget()).visited=true;
 
             }
 
@@ -248,7 +244,7 @@ vector<vector<Flight>> Manager::FindBestRoutesFromCordenadasToTarget(Cordenadas 
     }
 
     for(string source : start){
-        vector<Flight> route = FindBestRoute(source,target,graph);
+        vector<Flight> route = FindBestRoute(source,target);
         if(route.size() < min){
             result.clear();
             min = route.size();
@@ -276,12 +272,7 @@ vector<vector<Flight>> Manager::FindBestRoutesFromCordenadasToCordenadas(Cordena
 
     for(string source : starts){
         for(string target : targets){
-            vector<Flight> route = FindBestRoute(source,target,graph);
-            for (auto a: route) {
-                cout << a.getSource() << " " << a.getTarget() << ' ' << a.getAirline() << "    ";
-
-            }
-            cout<<"\n";
+            vector<Flight> route = FindBestRoute(source,target);
             if(route.size() < min){
                 result.clear();
                 min = route.size();
