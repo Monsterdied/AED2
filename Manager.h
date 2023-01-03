@@ -38,6 +38,8 @@ public:
      vector<Flight> FindBestRoute(string source, string target,Graph graph1);
      vector<vector<Flight>> FindBestRoutes1(string source, string target);
      vector<vector<Flight>> FindBestRoutes(string source, string target,vector<vector<Flight>>& result,Graph graph1);
+     vector<vector<Flight>> FindBestRoutesFromCordenadasToTarget(Cordenadas cordenadas, string target,int distanceSource);
+     vector<vector<Flight>> FindBestRoutesFromCordenadasToCordenadas(Cordenadas cordenadas, Cordenadas cordenadas1,int distanceSource,int distanceTarget);
      int CountCountriesReachableInNFlights(const string& src, int n);
      unordered_set<string> CountriesReachableInYFlights(const string& src, int y);
 

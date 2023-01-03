@@ -29,7 +29,7 @@ int main() {
         cout<<a.getSource()<<" "<<a.getTarget()<<' '<<a.getAirline()<<" ";
 
         cout<<"\n";
-    }*/
+    }*//*
     auto route = maneger.FindBestRoutes1("OPO", "PEK");
     cout << route.size();
     for (auto route1: route) {
@@ -55,5 +55,27 @@ int main() {
     cout<<"TO DIFERENT :"<<maneger.getNumFlightToDiferentCountrysFrom("YEG")<<"\n";
     cout<<" From diferent :"<<maneger.getNumFlightFromDiferentCountrysTo("YEG")<<"\n";
     cout<<"Test "<<maneger.CountCountriesReachableInNFlights("OPO",2)<<"\n";
-    cout<<"Test "<<maneger.CountriesReachableInYFlights("OPO",2).size();
+    cout<<"Test "<<maneger.CountriesReachableInYFlights("OPO",2).size();*/
+    /*auto routes = maneger.FindBestRoutesFromCordenadasToTarget(Cordenadas(41.1571867,-8.6362544),"PEK",300);
+
+    for (auto route1: routes) {
+        cout << '\n';
+        for (auto a: route1) {
+
+            Graph graph = maneger.getGraph();
+            cout << a.getSource() << " " << a.getTarget() << ' ' << a.getAirline() << "    ";
+
+        }
+    }*/
+    auto routes = maneger.FindBestRoutesFromCordenadasToCordenadas(Cordenadas(41.1571867,-8.6362544),Cordenadas(38.7559345,-9.182125),70,70);
+
+    for (auto route1: routes) {
+        cout << '\n';
+        for (auto a: route1) {
+
+            Graph graph = maneger.getGraph();
+            cout << a.getSource() << " " << a.getTarget() << ' ' << a.getAirline() << "    ";
+
+        }
+    }
 }

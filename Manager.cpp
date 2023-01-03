@@ -236,6 +236,59 @@ unordered_set<string> Manager::CountriesReachableInYFlights(const string& src, i
     }
     return countries;
 }
+vector<vector<Flight>> Manager::FindBestRoutesFromCordenadasToTarget(Cordenadas cordenadas, string target,int distanceSource) {
+    vector<string> start;
+    vector<vector<Flight>> result;
+    int min = INT_MAX;
+    for(auto paired : airports){
+        Airport airport = paired.second;
+        if(cordenadas.getDistance(airport.getCordenadas())<=distanceSource){
+            start.push_back(airport.getCode());
+        }
+    }
+
+    for(string source : start){
+        vector<Flight> route = FindBestRoute(source,target,graph);
+        if(route.size() < min){
+            result.clear();
+            min = route.size();
+        }
+        if(route.size() <= min){
+            result.push_back(route);
+        }
+    }
+    return result;
+}
+vector<vector<Flight>> Manager::FindBestRoutesFromCordenadasToCordenadas(Cordenadas cordenadas, Cordenadas cordenadas1,int distanceSource,int distanceTarget) {
+    vector<string> starts;
+    vector<string> targets;
+    vector<vector<Flight>> result;
+    int min = INT_MAX;
+    for(auto paired : airports){
+        Airport airport = paired.second;
+        if(cordenadas.getDistance(airport.getCordenadas())<=distanceSource){
+            starts.push_back(airport.getCode());
+        }
+        if(cordenadas1.getDistance(airport.getCordenadas())<=distanceSource){
+            targets.push_back(airport.getCode());
+        }
+    }
+
+    for(string source : starts){
+        for(string target : targets){
+            vector<Flight> route = FindBestRoute(source,target,graph);
+            if(route.size() < min){
+                result.clear();
+                min = route.size();
+            }
+            if(route.size() <= min){
+                result.push_back(route);
+            }
+        }
+    }
+    return result;
+
+}
 Graph Manager::getGraph(){
     return graph;
 }
