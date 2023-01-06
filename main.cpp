@@ -13,6 +13,7 @@ void menuAirlinesEspecifica(Manager manager);
 void listagemTotalAirlines(Manager manager);
 void listagemAirlineNome(vector<Airline> vetor, string nome);
 void listagemAirlineCode(vector<Airline> vetor ,string nome);
+void listagemAirlineCallSign(vector<Airline> vetor ,string callsign);
 
 void listagemAirlineNome(vector<Airline> vetor ,string nome){
     for(auto it=vetor.begin();it!=vetor.end();it++){
@@ -30,6 +31,8 @@ void listagemAirlineNome(vector<Airline> vetor ,string nome){
             cout <<"|";
             cout<<"\n";
             cout << "_________________________________________________________________________________________________________________\n";
+            cout <<"Print com sucesso 100%. Retornando ao menu anterior...\n";
+
             return;
         }
     }
@@ -51,11 +54,35 @@ void listagemAirlineCode(vector<Airline> vetor ,string code){
                 cout <<"|";
                 cout<<"\n";
             cout << "_________________________________________________________________________________________________________________\n";
+            cout <<"Print com sucesso 100%. Retornando ao menu anterior...\n";
             return;
         }
     }
     cout<<"Airport not found!\n ";
 }  //Feito
+void listagemAirlineCallSign(vector<Airline> vetor ,string callsign){
+    for(auto it=vetor.begin();it!=vetor.end();it++){
+        if(it->getCallSign()==callsign){
+            cout << "_____________________Name________________________________Callsign__________________________Country______________\n";
+            cout<<"|";
+            cout<<setw(41);
+            cout<<it->getName();
+            cout<<"|";
+            cout<<setw(30);
+            cout<<it->getCallSign();
+            cout<<"|";
+            cout<<setw(38);
+            cout<< it->getCountry();
+            cout <<"|";
+            cout<<"\n";
+            cout << "_________________________________________________________________________________________________________________\n";
+            cout <<"Print com sucesso 100%. Retornando ao menu anterior...\n";
+            return;
+        }
+    }
+    cout<<"Airport not found!\n ";
+} //Feito
+
 void menuAirlinesEspecifica(Manager manager){
     cout << "_________________________________________________________________________________\n";
     cout << "|Escolha uma das opcoes seguintes:                                              |"
@@ -63,7 +90,8 @@ void menuAirlinesEspecifica(Manager manager){
     cout <<
             "|1.Procurar pelo Nome                                                           |\n"
             "|2.Procurar pelo Code                                                           |\n"
-            "|3.Procurar pelo CallSign                                                       |\n";
+            "|3.Procurar pelo CallSign                                                       |\n"
+            "|4.Voltar atras                                                                 |\n";
     cout << "|_______________________________________________________________________________|\n";
     string input;
     cin>>input;
@@ -76,14 +104,34 @@ void menuAirlinesEspecifica(Manager manager){
         getline(cin,nome1);
         string nomefinal= nome + nome1;
         listagemAirlineNome(testing,nomefinal);
+        menuAirlinesEspecifica(manager);
     }  //Feito
     if(input=="2"){
-        cout<<"Introduza o codigo do Aeroporto:\n";
+        cout<<"Introduza o codigo da Airline:\n";
         string code;
         cin>>code;
         listagemAirlineCode(testing,code);
-    }
-}
+        menuAirlinesEspecifica(manager);
+    }  //Feito
+    if(input=="3"){
+        cout<<"Introduza a callsign da Airline:\n";
+        string callsign;
+        string callsign2;
+        cin>>callsign;
+        getline(cin,callsign2);
+        string callsignfinal= callsign + callsign2;
+        listagemAirlineCallSign(testing,callsignfinal);
+        menuAirlinesEspecifica(manager);
+    }  //Feito
+    if(input=="4"){
+        cout<<"Voltando Atras...\n";
+        menuAirlines(manager);
+    }  //Feito
+    else{
+        cout<<"Input errado!\n";
+        menuAirlinesEspecifica(manager);
+    }  //Feito
+} //Feito
 void menuAirlines(Manager manager){
     cout << "_________________________________________________________________________________\n";
     cout << "|Neste menu das airlines, poderas escolher uma das funcoes disponiveis em baixo:|"
