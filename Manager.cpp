@@ -12,6 +12,12 @@
 #include<bits/stdc++.h>
 Manager::Manager(){
 }
+list<string> Manager::getAirportsInCity(string city){
+    return cities[city];
+}
+set<string> Manager::getCitysInContry(string country){
+    return countrysToCitys[country];
+}
 unordered_map <string,Airline>  Manager::getAirlines(){
     return airlines;
 }
@@ -116,12 +122,13 @@ void Manager::ReadAirports() {
         double latitude = stod(latitudeStr);
         double longitude = stod(longitudeStr);
         airports.insert({code, Airport(latitude,longitude,name,code,city,country)});
-
-        if (cities.count(city) == 0) {
+//not sure if we need this if
+        /*if (cities.count(city) == 0) {
             list<string> tmpList;
             cities[city] = tmpList;
-        }
+        }*/
         cities[city].push_back(code);
+        countrysToCitys[country].insert(city);
     }
     this->cities = cities;
     this->airports= airports;
@@ -244,44 +251,40 @@ unordered_set<string> Manager::CountriesReachableInYFlights(const string& src, i
     }
     return countries;
 }
-vector<vector<Flight>> Manager::FindBestRoutesFromCordenadasToTarget(Cordenadas cordenadas, string target,int distanceSource) {
-    vector<string> start;
-    vector<vector<Flight>> result;
-    int min = INT_MAX;
+vector<string> Manager::FindAirportsFromCordenadas(Cordenadas cordenadas,int distanceSource) {
+    vector<string> result;
     for(auto paired : airports){
         Airport airport = paired.second;
         if(cordenadas.getDistance(airport.getCordenadas())<=distanceSource){
-            start.push_back(airport.getCode());
-        }
-    }
-
-    for(string source : start){
-        vector<Flight> route = FindBestRoute(source,target);
-        if(route.size() < min){
-            result.clear();
-            min = route.size();
-        }
-        if(route.size() <= min){
-            result.push_back(route);
+            result.push_back(airport.getCode());
         }
     }
     return result;
+
 }
-vector<vector<Flight>> Manager::FindBestRoutesFromCordenadasToCordenadas(Cordenadas cordenadas, Cordenadas cordenadas1,int distanceSource,int distanceTarget) {
-    vector<string> starts;
-    vector<string> targets;
+vector<string> Manager::FindAirportsFromCountry(string country){
+    set<string> citys = getCitysInContry(country);
+    vector<string> result;
+    for(string city : citys){
+        vector<string> aeroports_from_citie = FindAirportsFromCity(city);
+        for(string aeroport : aeroports_from_citie){
+            //cout<<aeroport<<" \n";
+            result.push_back(aeroport);
+        }
+
+    }
+    return result;
+}
+vector<string> Manager::FindAirportsFromCity(string city){
+    list<string> aeroports = cities[city];
+    vector<string> result;
+    for(string i : aeroports)
+        result.push_back(i);
+    return result;
+}
+vector<vector<Flight>> Manager::FindBestRoutesFromAirportsoAirports(vector<string> starts, vector<string> targets) {
     vector<vector<Flight>> result;
     int min = INT_MAX;
-    for(auto paired : airports){
-        Airport airport = paired.second;
-        if(cordenadas.getDistance(airport.getCordenadas())<=distanceSource){
-            starts.push_back(airport.getCode());
-        }
-        if(cordenadas1.getDistance(airport.getCordenadas())<=distanceTarget){
-            targets.push_back(airport.getCode());
-        }
-    }
-
     for(string source : starts){
         for(string target : targets){
             vector<Flight> route = FindBestRoute(source,target);
@@ -295,8 +298,8 @@ vector<vector<Flight>> Manager::FindBestRoutesFromCordenadasToCordenadas(Cordena
         }
     }
     return result;
-
 }
+
 Graph Manager::getGraph(){
     return graph;
 }

@@ -13,13 +13,15 @@
 #include "Airline.h"
 #include "Airport.h"
 #include "Graph.h"
+#include <set>
 
  class Manager {
 private:
     /*unordered_set <Airport,HashFunction> airports ;*/
     unordered_map <string,Airport> airports;
     unordered_map <string,Airline> airlines;
-    unordered_map <string, list<string>> cities;
+    unordered_map <string, list<string>> cities;//key =cityCode list<string> aeroportCodes
+     unordered_map <string, set<string>> countrysToCitys;//key =ContryCode set<string> citys
     Graph graph;
 
 public:
@@ -28,6 +30,8 @@ public:
     void ReadAirports();
     void ReadFlights();
     Graph getGraph();
+    list<string> getAirportsInCity(string city);
+    set<string> getCitysInContry(string country);
     int getNumFlightTo(string aiportCode);
     int getNumFlightFrom(string aiportCode);
     int getNumFlightFromDiferentAirlinesTo(string aiportCode);
@@ -39,8 +43,10 @@ public:
      vector<Flight> FindBestRoute(string source, string target);
      vector<vector<Flight>> FindBestRoutes1(string source, string target);
      vector<vector<Flight>> FindBestRoutes(string source, string target,vector<vector<Flight>>& result);
-     vector<vector<Flight>> FindBestRoutesFromCordenadasToTarget(Cordenadas cordenadas, string target,int distanceSource);
-     vector<vector<Flight>> FindBestRoutesFromCordenadasToCordenadas(Cordenadas cordenadas, Cordenadas cordenadas1,int distanceSource,int distanceTarget);
+     vector<string> FindAirportsFromCordenadas(Cordenadas cordenadas,int distanceSource);
+     vector<string> FindAirportsFromCountry(string country);
+     vector<string> FindAirportsFromCity(string city);
+     vector<vector<Flight>> FindBestRoutesFromAirportsoAirports(vector<string> starts, vector<string> targets);
      int CountCountriesReachableInNFlights(const string& src, int n);
      unordered_set<string> CountriesReachableInYFlights(const string& src, int y);
 
