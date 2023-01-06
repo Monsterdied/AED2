@@ -70,7 +70,7 @@ int main() {
     cout<<"Test "<<maneger.CountriesReachableInYFlights("OPO",2).size();*//*
     vector<string> target;
     target.push_back("PEK");
-    auto routes = maneger.FindBestRoutesFromAirportsoAirports(maneger.FindAirportsFromCordenadas(Cordenadas(41.1571867,-8.6362544),300),target);
+    routes = maneger.FindBestRoutesFromAirportsToAirports(maneger.FindAirportsFromCordenadas(Cordenadas(41.1571867,-8.6362544),300),target);
 
     for (auto route1: routes) {
         cout << '\n';
@@ -81,7 +81,7 @@ int main() {
 
         }
     }*//*
-    auto routes = maneger.FindBestRoutesFromAirportsoAirports(maneger.FindAirportsFromCordenadas(Cordenadas(41.1571867,-8.6362544),150),maneger.FindAirportsFromCordenadas(Cordenadas(40.0733964,116.5827059),100));
+    auto routes = maneger.FindBestRoutesFromAirportsToAirports(maneger.FindAirportsFromCordenadas(Cordenadas(41.1571867,-8.6362544),150),maneger.FindAirportsFromCordenadas(Cordenadas(40.0733964,116.5827059),100));
 
     for (auto route1: routes) {
         cout << '\n';
@@ -95,7 +95,7 @@ int main() {
     for(auto i : tmp)cout<<i<<"\n";*//*
     vector<string> start;
     start.push_back("OPO");
-    auto routes = maneger.FindBestRoutesFromAirportsoAirports(start,maneger.FindAirportsFromCordenadas(Cordenadas(40.0733964,116.5827059),1000));
+    auto routes = maneger.FindBestRoutesFromAirportsToAirports(start,maneger.FindAirportsFromCordenadas(Cordenadas(40.0733964,116.5827059),1000));
 
     for (auto route1: routes) {
         cout << '\n';
@@ -109,8 +109,8 @@ int main() {
     for(auto i : tmp)cout<<i<<"\n";*//*
     auto tmp = maneger.FindAirportsFromCountry("France");
     cout<<tmp.size();
-    for(auto i : tmp)cout<<i<<"\n";*/
+    for(auto i : tmp)cout<<i<<"\n";*//*
     auto tmp = maneger.FindAirportsFromCountry("Portugal");
     cout<<tmp.size()<<"\n";
-    for(auto i : tmp)cout<<i<<"\n";
+    for(auto i : tmp)cout<<i<<"\n";*/
 }

@@ -282,7 +282,7 @@ vector<string> Manager::FindAirportsFromCity(string city){
         result.push_back(i);
     return result;
 }
-vector<vector<Flight>> Manager::FindBestRoutesFromAirportsoAirports(vector<string> starts, vector<string> targets) {
+vector<vector<Flight>> Manager::FindBestRoutesFromAirportsToAirports(vector<string> starts, vector<string> targets) {
     vector<vector<Flight>> result;
     int min = INT_MAX;
     for(string source : starts){
