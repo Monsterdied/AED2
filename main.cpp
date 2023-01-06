@@ -113,4 +113,7 @@ int main() {
     auto tmp = maneger.FindAirportsFromCountry("Portugal");
     cout<<tmp.size()<<"\n";
     for(auto i : tmp)cout<<i<<"\n";*/
+    auto tmp = maneger.findArticulationPoints();
+    cout<<tmp.size()<<"\n";
+    for(auto i : tmp)cout<<i<<"\n";
 }

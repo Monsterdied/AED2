@@ -10,6 +10,7 @@
 #include <queue>
 #include <iostream>
 #include <unordered_map>
+#include <set>
 #include "Airline.h"
 #include "Flight.h"
 using namespace std;
@@ -39,6 +40,7 @@ public:
     // ----- Functions to implement in this class -----
     int distance(int a, int b);
     int diameter();
+    void dfs(string node, int& index, unordered_map<string, int>& num, unordered_map<string, int>& low, set<string>& S, set<string>& ap);
 
 
 };

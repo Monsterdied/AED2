@@ -50,3 +50,32 @@ vector<Flight> Graph::findFlights(string codeSrc , string codeDest) {
     }
     return result;
 }
+void Graph::dfs(string node, int& index, unordered_map<string, int>& num, unordered_map<string, int>& low, set<string>& S, set<string>& ap) {
+    // Set num and low values and push node onto the stack
+    num[node] = low[node] = index++;
+    S.insert(node);
+
+    // Go through all the neighbors of node
+    for (Flight f : getEdges(node)) {
+        string w = f.getTarget();
+
+        // If w has not been visited before, it is a tree edge
+        if (num.find(w) == num.end()) {
+            dfs(w, index, num, low, S, ap);
+            low[node] = min(low[node], low[w]);
+
+            // If the subtree rooted at w has a connection to one of the ancestors of node, node is an articulation point
+            if (low[w] >= num[node]) {
+                ap.insert(node);
+            }
+        }
+
+            // If w is in the stack, it is a back edge
+        else if (S.find(w) != S.end()) {
+            low[node] = min(low[node], num[w]);
+        }
+    }
+
+    // Pop node from the stack
+    S.erase(node);
+}

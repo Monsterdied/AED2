@@ -300,6 +300,25 @@ vector<vector<Flight>> Manager::FindBestRoutesFromAirportsToAirports(vector<stri
     return result;
 }
 
+
+// Function to find the articulation points in the graph represented by the Manager object
+set<string> Manager::findArticulationPoints() {
+    unordered_map<string, int> num;
+    unordered_map<string, int> low;
+    set<string> S;
+    set<string> ap;
+    int index = 0;
+
+    // Call the helper function for each node
+    for (auto& p : airports) {
+        if (num.find(p.first) == num.end()) {
+            graph.dfs(p.first, index, num, low, S, ap);
+        }
+    }
+
+    return ap;
+}
+
 Graph Manager::getGraph(){
     return graph;
 }

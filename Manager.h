@@ -49,6 +49,7 @@ public:
      vector<vector<Flight>> FindBestRoutesFromAirportsToAirports(vector<string> starts, vector<string> targets);
      int CountCountriesReachableInNFlights(const string& src, int n);
      unordered_set<string> CountriesReachableInYFlights(const string& src, int y);
+     set<string> findArticulationPoints();//find articulation Airports
 
 
 };
