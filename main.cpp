@@ -16,14 +16,22 @@
 #include<bits/stdc++.h>
 
 void menuAirlines(Manager manager);
+void menuAirports(Manager manager);
 void menuPrincipal();
 void menu1(Manager manager);
-void menuFlights(Manager manager);
 void menuAirlinesEspecifica(Manager manager);
+void menuAirportsEspecifica(Manager manager);
+void menuAirlinesConjunto(Manager manager);
+void menuFlights(Manager manager);
+
 void listagemBestFligths(Manager manager);
 void listagemTotalAirlines(Manager manager);
+void listagemTotalAirports(Manager manager);
 void listagemAirlineNome(vector<Airline> vetor, string nome);
 void listagemAirlineCode(vector<Airline> vetor ,string nome);
+void listagemAirlineCallsign(vector<Airline> vetor ,string callsign);
+void listagemAirlineCountry(vector<Airline> vetor, string country);
+
 
 void listagemAirlineNome(vector<Airline> vetor ,string nome){
     for(auto it=vetor.begin();it!=vetor.end();it++){
@@ -41,14 +49,15 @@ void listagemAirlineNome(vector<Airline> vetor ,string nome){
             cout <<"|";
             cout<<"\n";
             cout << "_________________________________________________________________________________________________________________\n";
+            cout <<"Print com sucesso 100%. Retornando ao menu principal...\n";
             return;
         }
     }
     cout<<"Airport not found!\n ";
 }  //Feito
-void listagemAirlineCallsine(vector<Airline> vetor ,string code){
+void listagemAirlineCallsign(vector<Airline> vetor ,string callsign){
     for(auto it=vetor.begin();it!=vetor.end();it++){
-        if(it->getCallSign()==code){
+        if(it->getCallSign()==callsign){
             cout << "_____________________Name________________________________Callsign__________________________Country______________\n";
             cout<<"|";
             cout<<setw(41);
@@ -62,11 +71,12 @@ void listagemAirlineCallsine(vector<Airline> vetor ,string code){
             cout <<"|";
             cout<<"\n";
             cout << "_________________________________________________________________________________________________________________\n";
+            cout <<"Print com sucesso 100%. Retornando ao menu principal...\n";
             return;
         }
     }
     cout<<"Airport not found!\n ";
-}
+} //Feito
 void listagemAirlineCode(vector<Airline> vetor ,string code){
     for(auto it=vetor.begin();it!=vetor.end();it++){
         if(it->getCode()==code){
@@ -83,6 +93,7 @@ void listagemAirlineCode(vector<Airline> vetor ,string code){
             cout <<"|";
             cout<<"\n";
             cout << "_________________________________________________________________________________________________________________\n";
+            cout <<"Print com sucesso 100%. Retornando ao menu principal...\n";
             return;
         }
     }
@@ -95,7 +106,8 @@ void menuAirlinesEspecifica(Manager manager){
     cout <<
          "|1.Procurar pelo Nome                                                           |\n"
          "|2.Procurar pelo Code                                                           |\n"
-         "|3.Procurar pelo CallSign                                                       |\n";
+         "|3.Procurar pelo CallSign                                                       |\n"
+         "|4.Voltar atras                                                                 |\n";
     cout << "|_______________________________________________________________________________|\n";
     string input;
     cin>>input;
@@ -112,25 +124,84 @@ void menuAirlinesEspecifica(Manager manager){
         getline(cin,nome1);
         string nomefinal= nome + nome1;
         listagemAirlineNome(testing,nomefinal);
+        menuAirlinesEspecifica(manager);
     }  //Feito
     if(input=="2"){
-        cout<<"Introduza o codigo do Aeroporto:\n";
+        cout<<"Introduza o codigo do Airline:\n";
         string code;
         cin>>code;
         listagemAirlineCode(testing,code);
+        menuAirlinesEspecifica(manager);
     }
     if(input=="3"){
-        cout<<"Introduza o Call Sign do Aeroporto:\n";
-        string code;
-        cin>>code;
-        listagemAirlineCallsine(testing,code);
+        cout<<"Introduza a Call Sign do Airline:\n";
+        string callsign;
+        string callsign1;
+        cin>>callsign;
+        getline(cin,callsign1);
+        string callsignfinal= callsign + callsign1;
+        listagemAirlineCallsign(testing,callsignfinal);
+        menuAirlinesEspecifica(manager);
     }
+    if(input=="4"){
+        cout<<"Voltando Atras...\n";
+        menuAirlines(manager);
+    }  //Feito
+}
 
+void listagemAirlineCountry(vector<Airline> vetor, string country){
+    cout << "_____________________Name________________________________Callsign__________________________Country______________\n";
+    for(auto it=vetor.begin();it!=vetor.end();it++){
+        if(it->getCountry()==country){
+            cout<<"|";
+            cout<<setw(41);
+            cout<<it->getName();
+            cout<<"|";
+            cout<<setw(30);
+            cout<<it->getCallSign();
+            cout<<"|";
+            cout<<setw(38);
+            cout<< it->getCountry();
+            cout <<"|";
+            cout<<"\n";
+        }
+    }
+    cout << "_________________________________________________________________________________________________________________\n";
+    cout <<"Print com sucesso 100%. Retornando ao menu principal...\n";
+    return;
+}
+void menuAirlinesConjunto(Manager manager){
+    cout << "_________________________________________________________________________________\n";
+    cout << "|Neste menu das airlines, poderas escolher uma das funcoes disponiveis em baixo:|"
+     << "\n""|                                                                               |\n";
+    cout << "|                                                                               |\n"
+            "|1.Ver todas as airlines de um pais.                                            |\n"
+            "|2.Voltar atras.                                                                |\n";
+    cout << "|_______________________________________________________________________________|\n";
+    string input;
+    cin>>input;
+    vector<Airline> testing;
+    for(auto paired : manager.getAirlines()) {
+        testing.push_back(paired.second);
+    }
+    if(input=="1"){
+        cout<<"Introduza o nome do Pais:\n";
+        string pais;
+        string pais1;
+        cin>>pais;
+        getline(cin,pais1);
+        string paisf= pais + pais1;
+        listagemAirlineCountry(testing,paisf);
+    }
+    if(input=="2"){
+        cout<<"Voltando Atras...\n";
+        menu1(manager);
+    }
 }
 void menuAirlines(Manager manager){
     cout << "_________________________________________________________________________________\n";
     cout << "|Neste menu das airlines, poderas escolher uma das funcoes disponiveis em baixo:|"
-         << "\n""|                                                                               |\n";
+     << "\n""|                                                                               |\n";
     cout << "|Selecione a opcao desejada:                                                    |\n"
             "|1.Ver uma airline em especifica.                                               |\n"
             "|2.Ver um conjunto de airlines.                                                 |\n"
@@ -142,7 +213,63 @@ void menuAirlines(Manager manager){
         menuAirlinesEspecifica(manager);
     }
     if(input=="2"){
-        menuAirlinesEspecifica(manager);
+        menuAirlinesConjunto(manager);
+    }
+    if(input=="3"){
+        cout<<"Voltando Atras...\n";
+        menu1(manager);
+    }
+}
+
+void listagemAirportNome(vector<Airport>,string nome){
+
+}
+void menuAirportsEspecifica(Manager manager){
+    cout << "_________________________________________________________________________________\n";
+    cout << "|Escolha uma das opcoes seguintes:                                              |"
+    <<    "\n|                                                                               |\n";
+    cout <<
+         "|1.Procurar pelo Nome                                                           |\n"
+         "|2.Procurar pelo Code                                                           |\n"
+         "|3.Voltar atras                                                                 |\n";
+    cout << "|_______________________________________________________________________________|\n";
+    string input;
+    cin>>input;
+    vector<Airport> testing;
+    for(auto paired : manager.getAirports()) {
+        testing.push_back(paired.second);
+    }
+    if(input=="1"){
+        cout<<"Introduza o nome do Aeroporto:\n";
+        string airport;
+        string airport1;
+        cin>>airport;
+        getline(cin,airport1);
+        string airportfinal = airport + airport1;
+        listagemAirportNome(testing,airportfinal);
+        menuAirportsEspecifica(manager);
+    }
+}
+void menuAirports(Manager manager){
+    cout << "_________________________________________________________________________________\n";
+    cout << "|Neste menu dos aeroportos, poderas escolher uma funcao em baixo:               |"
+         << "\n""|                                                                               |\n";
+    cout << "|                                                                               |\n"
+            "|1.Ver um aeroporto em especifico.                                              |\n"
+            "|2.Ver um conjunto de aeroportos.                                               |\n"
+            "|3.Voltar atras.                                                                |\n";
+    cout << "|_______________________________________________________________________________|\n";
+    string input;
+    cin>>input;
+    if(input=="1"){
+        menuAirportsEspecifica(manager);
+    }
+    if(input=="2"){
+        menuAirlinesConjunto(manager);
+    }
+    if(input=="3"){
+        cout<<"Voltando Atras...\n";
+        menu1(manager);
     }
 }
 
@@ -166,7 +293,28 @@ void listagemTotalAirlines(Manager manager){
     }
     cout << "_________________________________________________________________________________________________________________\n";
     cout <<"Print com sucesso 100%. Retornando ao menu principal...\n";
+
 } //Feito
+void listagemTotalAirports(Manager manager){
+    auto tmp = manager.getAirports();
+    cout << "_____________________Name________________________________City__________________________Country_________________________\n";
+    for(auto itr : tmp){
+        Airport it= itr.second;
+        cout<<"|";
+        cout<<setw(47);
+        cout<<it.getName();
+        cout<<"|";
+        cout<<setw(30);
+        cout<<it.getCity();
+        cout<<"|";
+        cout<<setw(38);
+        cout<< it.getCountry();
+        cout <<"|";
+        cout<<"\n";
+    }
+    cout << "______________________________________________________________________________________________________________________\n";
+    cout <<"Print com sucesso 100%. Retornando ao menu principal...\n";
+}
 void menu1(Manager manager){
     cout << "____________________________________________________________________\n";
     cout << "|Neste menu, poderas escolher uma das funcoes disponiveis em baixo:|"
@@ -174,7 +322,9 @@ void menu1(Manager manager){
     cout << "|                                                                  |\n"
             "|1.Ver todos as linhas aereas.                                     |\n"
             "|2.Ver parcialmente todos as linhas aereas.                        |\n"
-            "|3.Voltar atras.                                                   |\n";
+            "|3.Ver todos os aeroportos.                                        |\n"
+            "|4.Ver parcialmente todos os aeroportos.                           |\n"
+            "|5.Voltar atras.                                                   |\n";
     cout << "|__________________________________________________________________|\n";
     string input;
     cin>>input;
@@ -184,12 +334,14 @@ void menu1(Manager manager){
     }
     if(input=="2"){
         menuAirlines(manager);
-        cout <<"Print com sucesso 100%. Retornando ao menu principal...\n";
         menuPrincipal();
     }
     if(input=="3"){
-        cout<<"Voltando Atras...\n";
+        listagemTotalAirports(manager);
         menuPrincipal();
+    }
+    if(input=="4"){
+        menuAirports(manager);
     }
 } //Feito (vai-se adicionando coisas novas com mais funcoes novas)
 void menuFlights(Manager manager){
@@ -305,7 +457,8 @@ int main() {
         cout<<a.getSource()<<" "<<a.getTarget()<<' '<<a.getAirline()<<" ";
 
         cout<<"\n";
-    }*//*
+    }*/
+    /*
     auto route = maneger.FindBestRoutes1("OPO", "CIH");
     cout << route.size();
     for (auto route1: route) {
@@ -343,7 +496,8 @@ int main() {
     cout<<"TO DIFERENT :"<<maneger.getNumFlightToDiferentCountrysFrom("YEG")<<"\n";
     cout<<" From diferent :"<<maneger.getNumFlightFromDiferentCountrysTo("YEG")<<"\n";
     cout<<"Test "<<maneger.CountCountriesReachableInNFlights("OPO",2)<<"\n";
-    cout<<"Test "<<maneger.CountriesReachableInYFlights("OPO",2).size();*//*
+    cout<<"Test "<<maneger.CountriesReachableInYFlights("OPO",2).size();*/
+    /*
     vector<string> target;
     target.push_back("PEK");
     routes = maneger.FindBestRoutesFromAirportsToAirports(maneger.FindAirportsFromCordenadas(Cordenadas(41.1571867,-8.6362544),300),target);
@@ -368,7 +522,8 @@ int main() {
         }
     }*//*
     auto tmp = maneger.getCitysInContry("China");
-    for(auto i : tmp)cout<<i<<"\n";*//*
+    for(auto i : tmp)cout<<i<<"\n";*/
+    /*
     vector<string> start;
     start.push_back("OPO");
     auto routes = maneger.FindBestRoutesFromAirportsToAirports(start,maneger.FindAirportsFromCordenadas(Cordenadas(40.0733964,116.5827059),1000));
@@ -382,7 +537,8 @@ int main() {
         }
     }*//*
     auto tmp = maneger.FindAirportsFromCountry("Portugal");
-    for(auto i : tmp)cout<<i<<"\n";*//*
+    for(auto i : tmp)cout<<i<<"\n";*/
+    /*
     auto tmp = maneger.FindAirportsFromCountry("France");
     cout<<tmp.size();
     for(auto i : tmp)cout<<i<<"\n";*//*
