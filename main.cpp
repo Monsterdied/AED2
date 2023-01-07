@@ -221,9 +221,29 @@ void menuAirlines(Manager manager){
     }
 }
 
-void listagemAirportNome(vector<Airport>,string nome){
-
+void listagemAirportNome(vector<Airport> a,string nome){
+    for(auto it=a.begin();it!=a.end();it++){
+        if(it->getName()==nome){
+            cout << "_____________________Name________________________________City__________________________Country_________________________\n";
+            cout<<"|";
+            cout<<setw(47);
+            cout<<it->getName();
+            cout<<"|";
+            cout<<setw(30);
+            cout<<it->getCity();
+            cout<<"|";
+            cout<<setw(38);
+            cout<< it->getCountry();
+            cout <<"|";
+            cout<<"\n";
+            cout << "______________________________________________________________________________________________________________________\n";
+            cout <<"Print com sucesso 100%. Retornando ao menu principal...\n";
+            return;
+        }
+    }
+    cout<<"Airport not found!\n ";
 }
+
 void menuAirportsEspecifica(Manager manager){
     cout << "_________________________________________________________________________________\n";
     cout << "|Escolha uma das opcoes seguintes:                                              |"
@@ -248,6 +268,31 @@ void menuAirportsEspecifica(Manager manager){
         string airportfinal = airport + airport1;
         listagemAirportNome(testing,airportfinal);
         menuAirportsEspecifica(manager);
+    }
+    if(input=="2"){
+        cout<<"Introduza o code do Aeroporto:\n";
+        string code;
+        cin>>code;
+        Airport alvo = manager.getAirportWithCode(code);
+        cout << "_____________________Name________________________________City__________________________Country_________________________\n";
+        cout<<"|";
+        cout<<setw(47);
+        cout<<alvo.getName();
+        cout<<"|";
+        cout<<setw(30);
+        cout<<alvo.getCity();
+        cout<<"|";
+        cout<<setw(38);
+        cout<< alvo.getCountry();
+        cout <<"|";
+        cout<<"\n";
+        cout << "______________________________________________________________________________________________________________________\n";
+        cout <<"Print com sucesso 100%. Retornando ao menu principal...\n";
+        menuAirportsEspecifica(manager);
+
+    }
+    if(input=="3"){
+        menuAirports(manager);
     }
 }
 void menuAirports(Manager manager){

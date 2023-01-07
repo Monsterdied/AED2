@@ -33,7 +33,7 @@ public:
     list<string> getAirportsInCity(string city);
     set<string> getCitysInContry(string country);
     Airport getAirportWithCode(string airportCode);
-     Airline getAirlineWithCode(string airlineCode);
+    Airline getAirlineWithCode(string airlineCode);
     int getNumFlightTo(string aiportCode);
     int getNumFlightFrom(string aiportCode);
     int getNumFlightFromDiferentAirlinesTo(string aiportCode);
