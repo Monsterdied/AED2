@@ -17,7 +17,9 @@
 void menuAirlines(Manager manager);
 void menuPrincipal();
 void menu1(Manager manager);
+void menuFlights(Manager manager);
 void menuAirlinesEspecifica(Manager manager);
+void listagemBestFligths(Manager manager);
 void listagemTotalAirlines(Manager manager);
 void listagemAirlineNome(vector<Airline> vetor, string nome);
 void listagemAirlineCode(vector<Airline> vetor ,string nome);
@@ -188,14 +190,62 @@ void menu1(Manager manager){
         menuPrincipal();
     }
 } //Feito (vai-se adicionando coisas novas com mais funcoes novas)
-
+void menuFlights(Manager manager){
+    cout << "____________________________________________________________________\n";
+    cout << "|Neste menu, poderas escolher uma das funcoes disponiveis em baixo:|"
+         << "\n""|                                                                  |\n";
+    cout << "|                                                                  |\n"
+            "|1.Ver todas as combinacoes de voos entre dois aeroportos          |\n"
+            "|com tamanho minimo.                                               |\n"
+            "|2.Pesquisa de melhores voos.                                      |\n"
+            "|3.Voltar atras.                                                   |\n";
+    cout << "|__________________________________________________________________|\n";
+    string input;
+    cin>>input;
+    if(input=="1"){
+        listagemBestFligths(manager);
+        menuPrincipal();
+    }
+    if(input=="2"){
+        /*
+        menuAirlines(manager);
+        cout <<"Print com sucesso 100%. Retornando ao menu principal...\n";
+        menuPrincipal();*/
+    }
+    if(input=="3"){
+        /*
+        cout<<"Voltando Atras...\n";
+        menuPrincipal();*/
+    }
+}
+void listagemBestFligths(Manager manager){
+    cout<<"Introduza o Code do Aeroporto de Ida:\n";
+    string ida;
+    string chegada;
+    cin>>ida;
+    cout<<"Introduza o Code do Aeroporto de Chegada:\n";
+    cin>>chegada;
+    vector<vector<Flight>> result = manager.FindBestRoutes1(ida,chegada);
+    int i = 1;
+    for(vector<Flight> route : result){
+        cout<< "Route "<<i<<".\n";
+        i++;
+        for(Flight flight : route){
+            cout<<manager.getAirportWithCode( flight.getSource()).getName()<<"  <"<<flight.getSource()<<">  ";
+            cout<<"-----"<<manager.getAirlineWithCode(flight.getAirline()).getName()<<"<"<<flight.getAirline()<<">"<<"----->";
+            cout<<manager.getAirportWithCode( flight.getTarget()).getName()<<"  <"<<flight.getTarget()<<">\n";
+        }
+        cout<<"\n";
+    }
+}
 void menuPrincipal(){
     cout << "_________________________________________________\n";
     cout << "|Welcome to Flight Network System L.EIC GUI     |"
          << "\n""|                                               |\n";
     cout << "|Selecione a opcao desejada:                    |\n"
             "|1.Ver Funcoes disponiveis.                     |\n"
-            "|2.Sair do Programa.                            |\n";
+            "|2.Ver Menu de Voos.                            |\n"
+            "|3.Sair do Programa.                            |\n";
     cout << "|_______________________________________________|\n";
 
 }  //Feito
@@ -215,6 +265,8 @@ int main() {
         if (input_principal == "1") {
             menu1(maneger);
         } else if (input_principal == "2") {
+            menuFlights(maneger);
+        } else if (input_principal == "3") {
             cout << "Obrigado por usar o programa!";
             break;
         } else {

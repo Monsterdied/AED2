@@ -32,6 +32,8 @@ public:
     Graph getGraph();
     list<string> getAirportsInCity(string city);
     set<string> getCitysInContry(string country);
+    Airport getAirportWithCode(string airportCode);
+     Airline getAirlineWithCode(string airlineCode);
     int getNumFlightTo(string aiportCode);
     int getNumFlightFrom(string aiportCode);
     int getNumFlightFromDiferentAirlinesTo(string aiportCode);
@@ -41,6 +43,8 @@ public:
      unordered_map <string,Airline>  getAirlines();
      unordered_map <string,Airport> getAirports();
      vector<Flight> FindBestRoute(string source, string target);
+     vector<Flight> FindBestRouteWithBlackListed(string source, string target,set<string> blackListAirlines);
+     vector<Flight> FindBestRouteWithGreenListed(string source, string target,set<string> greenListAirlines);
      vector<vector<Flight>> FindBestRoutes1(string source, string target);
      vector<vector<Flight>> FindBestRoutes(string source, string target,vector<vector<Flight>>& result);
      vector<string> FindAirportsFromCordenadas(Cordenadas cordenadas,int distanceSource);
