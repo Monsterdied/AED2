@@ -379,7 +379,6 @@ vector<Flight> Manager::FindBestRouteWithGreenListed(string source, string targe
                 graph.findFlightFrom(flight.getTarget()).visited=true;
 
             }
-
         }
     }
 

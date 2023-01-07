@@ -147,8 +147,9 @@ void menuAirlines(Manager manager){
 
 void listagemTotalAirlines(Manager manager){
     cout << "_____________________Name________________________________Callsign__________________________Country______________\n";
-    for(auto itr=manager.getAirlines().begin();itr!=manager.getAirlines().end();itr++){
-        Airline it = itr->second;
+    auto tmp = manager.getAirlines();
+    for(auto itr : tmp){
+        Airline it = itr.second;
         cout<<"|";
         cout<<setw(41);
         cout<<it.getName();
@@ -231,8 +232,8 @@ void listagemBestFligths(Manager manager){
         cout<< "Route "<<i<<".\n";
         i++;
         for(Flight flight : route){
-            cout<<manager.getAirportWithCode( flight.getSource()).getName()<<"  <"<<flight.getSource()<<">  ";
-            cout<<"-----"<<manager.getAirlineWithCode(flight.getAirline()).getName()<<"<"<<flight.getAirline()<<">"<<"----->";
+            cout<< manager.getAirportWithCode( flight.getSource()).getName()<<"  <"<<flight.getSource()<<">  ";
+            cout<<setw(15)<<"-----"<<manager.getAirlineWithCode(flight.getAirline()).getName()<<"<"<<flight.getAirline()<<">"<<"----->";
             cout<<manager.getAirportWithCode( flight.getTarget()).getName()<<"  <"<<flight.getTarget()<<">\n";
         }
         cout<<"\n";
