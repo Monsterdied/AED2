@@ -10,6 +10,7 @@ void menuAirlines(Manager manager);
 void menuPrincipal();
 void menu1(Manager manager);
 void menuAirlinesEspecifica(Manager manager);
+void menuAirlinesConjunto(Manager manager);
 void listagemTotalAirlines(Manager manager);
 void listagemAirlineNome(vector<Airline> vetor, string nome);
 void listagemAirlineCode(vector<Airline> vetor ,string nome);
@@ -132,6 +133,11 @@ void menuAirlinesEspecifica(Manager manager){
         menuAirlinesEspecifica(manager);
     }  //Feito
 } //Feito
+
+
+void menuAirlinesConjunto(Manager manager){
+
+}
 void menuAirlines(Manager manager){
     cout << "_________________________________________________________________________________\n";
     cout << "|Neste menu das airlines, poderas escolher uma das funcoes disponiveis em baixo:|"
@@ -145,6 +151,17 @@ void menuAirlines(Manager manager){
     cin>>input;
     if(input=="1"){
         menuAirlinesEspecifica(manager);
+    }
+    if(input=="2"){
+
+    }
+    if(input=="3"){
+        cout<<"Voltando Atras...\n";
+        menu1(manager);
+    }
+    else{
+        cout<<"Input Errado...\n";
+        menuAirlines(manager);
     }
 }
 
