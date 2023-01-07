@@ -14,6 +14,7 @@
 #include "Airline.h"
 #include "Manager.h"
 #include<bits/stdc++.h>
+
 void menuAirlines(Manager manager);
 void menuPrincipal();
 void menu1(Manager manager);
@@ -213,10 +214,11 @@ void menuFlights(Manager manager){
         cout <<"Print com sucesso 100%. Retornando ao menu principal...\n";
         menuPrincipal();*/
     }
-    if(input=="3"){
-        /*
-        cout<<"Voltando Atras...\n";
-        menuPrincipal();*/
+
+if(input=="3"){
+    /*
+    cout<<"Voltando Atras...\n";
+    menuPrincipal();*/
     }
 }
 void listagemBestFligths(Manager manager){
@@ -386,9 +388,14 @@ int main() {
     for(auto i : tmp)cout<<i<<"\n";*//*
     auto tmp = maneger.FindAirportsFromCountry("Portugal");
     cout<<tmp.size()<<"\n";
-    for(auto i : tmp)cout<<i<<"\n";*/
-    /*auto tmp = maneger.findArticulationPoints();
+    for(auto i : tmp)cout<<i<<"\n";*//*
+    auto tmp = maneger.findArticulationPoints();
     cout<<tmp.size()<<"\n";
     for(auto i : tmp)cout<<i<<"\n";
+/*    set<string> white;
+    white.insert("TAP");
+    white.insert("ACA");
 
+    auto tmp = maneger.FindBestRouteWithBlackListed("OPO","PEK",white);
+    for(auto i : tmp)cout<<i.getSource()<<" "<<i.getAirline()<<" "<<i.getTarget() <<"\n";
 }*/
