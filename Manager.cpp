@@ -385,8 +385,5 @@ vector<Flight> Manager::FindBestRouteWithGreenListed(string source, string targe
     return {};
 }
 
-Graph Manager::getGraph(){
-    return graph;
-}
 
 
