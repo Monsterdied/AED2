@@ -324,8 +324,9 @@ set<string> Manager::findArticulationPoints() {
 
     return ap;
 }
+
 //ainda não checkei
-vector<Flight> Manager::FindBestRouteWithBlackListed(string source, string target,set<string> blackListAirlines) {
+vector<Flight> Manager::FindBestRouteWithLists(string source, string target,set<string> blackListAirlines,set<string> greenListAirlines){
     for (auto airport : airports)graph.findFlightFrom(airport.first).visited = false;
     queue<vector<Flight>> q;
     q.push({});
@@ -341,38 +342,7 @@ vector<Flight> Manager::FindBestRouteWithBlackListed(string source, string targe
         }
 
         for ( auto flight : graph.findFlightFrom(current).adj) {
-            if (!graph.findFlightFrom(flight.getTarget()).visited && !flight.getUsed() && !blackListAirlines.count(flight.getAirline())) {
-                vector<Flight> newRoute = route;
-                newRoute.push_back(flight);
-                q.push(newRoute);
-                graph.findFlightFrom(flight.getTarget()).visited=true;
-
-            }
-
-        }
-    }
-
-    return {};
-}
-
-//ainda não checkei
-vector<Flight> Manager::FindBestRouteWithGreenListed(string source, string target,set<string> greenListAirlines) {
-    for (auto airport : airports)graph.findFlightFrom(airport.first).visited = false;
-    queue<vector<Flight>> q;
-    q.push({});
-    /*unordered_map<string, bool> visited;
-    visited[source] = true;*/
-    graph.findFlightFrom(source).visited=true;
-    while (!q.empty()) {
-        vector<Flight> route = q.front();
-        q.pop();
-        string current = route.empty() ? source : route.back().getTarget();
-        if (current == target) {
-            return route;
-        }
-
-        for ( auto flight : graph.findFlightFrom(current).adj) {
-            if (!graph.findFlightFrom(flight.getTarget()).visited && !flight.getUsed() && greenListAirlines.count(flight.getAirline())) {
+            if (!graph.findFlightFrom(flight.getTarget()).visited && !flight.getUsed() && greenListAirlines.count(flight.getAirline()) && !blackListAirlines.count(flight.getAirline())) {
                 vector<Flight> newRoute = route;
                 newRoute.push_back(flight);
                 q.push(newRoute);
