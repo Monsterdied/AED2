@@ -231,10 +231,13 @@ void listagemBestFligths(Manager manager){
     for(vector<Flight> route : result){
         cout<< "Route "<<i<<".\n";
         i++;
-        for(Flight flight : route){
-            cout<< manager.getAirportWithCode( flight.getSource()).getName()<<"  <"<<flight.getSource()<<">  ";
-            cout<<setw(15)<<"-----"<<manager.getAirlineWithCode(flight.getAirline()).getName()<<"<"<<flight.getAirline()<<">"<<"----->";
-            cout<<manager.getAirportWithCode( flight.getTarget()).getName()<<"  <"<<flight.getTarget()<<">\n";
+        for(Flight flight : route) {
+            string start = manager.getAirportWithCode( flight.getSource()).getName() + "("+flight.getSource() + ")";
+            string end=">"+ manager.getAirportWithCode( flight.getTarget()).getName() + "("+flight.getTarget() + ")";
+            string airline = manager.getAirlineWithCode(flight.getAirline()).getName()+"("+flight.getAirline()+")";
+            cout<< setfill('-')<<setw(35)<<left<< start
+            << setfill('-')<<setw(40)<<airline
+            <<end<<"\n";
         }
         cout<<"\n";
     }
