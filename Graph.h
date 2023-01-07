@@ -30,6 +30,10 @@ public:
          * @brief The list of flights from this airport.
          */
         list<Flight> adj;
+        /**
+        * @brief A boolean that tells you if the Node is Visited.
+        */
+        bool visited;
     };
     /**
     * @brief A map of nodes (airports) in the graph, indexed by their codes.
