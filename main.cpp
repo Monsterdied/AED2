@@ -30,7 +30,9 @@ void printAirportsInCountry(Manager manager, string country);
 void printAirportFromCoordinates(Manager manager, Coordinates coordinates, int maxDistance);
 
 void flightMenu(Manager manager);
-void printBestFlights(Manager manager);
+void printBestRoute(Manager manager, vector<string> sources, vector<string> targets);
+void printBestRouteWithBlacklist(Manager manager, string source, string target, set<string> blackListAirlines);
+void printBestRouteWithGreenlist(Manager manager, string source, string target, set<string> greenListAirlines);
 
 void numFlightMenu(Manager manager);
 void printNumFlights(Manager manager, string code, string mode);
@@ -145,7 +147,7 @@ void airlinerMenu(Manager manager) {
     }
 }
 
-void airportMenu(Manager manager) { //TODO
+void airportMenu(Manager manager) {
     while (true) {
         string input;
         do {
@@ -221,27 +223,106 @@ void airportMenu(Manager manager) { //TODO
     }
 }
 
-void flightMenu(Manager manager) { //TODO
+void flightMenu(Manager manager) {
     while (true) {
         string input;
         do {
-            cout << "____________________________________________________________________" << endl;
+            cout << "___________________________________________________________________" << endl;
             cout << "Select one of the following options: " << endl;
-            cout << " 1. Show flights between two airports with fewest connecting flights" << endl;
-            cout << " 2. Show flights between two locations" << endl;
+            cout << " 1. Show routes between two airports with fewest connecting flights" << endl;
+            cout << " 2. Show routes between multiple with fewest connecting flights" << endl;
+            cout << " 3. Same as 1 but excluding certain airlines" << endl;
+            cout << " 4. Same as 1 but only using certain airlines" << endl;
             cout << " 9. Go to previous menu" << endl;
             cout << "Type option:";
             cin >> input;
             cout << endl;
 
-            if (!(input == "1" || input == "2" || input == "9"))
+            if (!(input == "1" || input == "2" || input == "3" || input == "4" || input == "9"))
                 cout <<  "Option " << input << " doesn't exist. Try again." << endl;
-        } while(!(input == "1" || input == "2" || input == "9"));
+        } while(!(input == "1" || input == "2" || input == "3" || input == "4" || input == "9"));
 
-        if (input == "1")
-            printBestFlights(manager);
+        if (input == "1") {
+            string src, target;
+            cout << "Type airport code of source airport:";
+            cin >> src;
+            cout << "Type airport code of target airport:";
+            cin >> target;
+            cout << endl;
+            vector<string> vec1, vec2;
+            vec1.push_back(src);
+            vec2.push_back(target);
+            printBestRoute(manager, vec1, vec2);
+        }
         else if (input == "2") {
-            //TODO
+            vector<string> vec1, vec2;
+            string src;
+            while (true) {
+                cout << "Type source airport or type 9 to break loop:";
+                cin >> src;
+                cout << endl;
+                if (src == "9")
+                    break;
+                else
+                    vec1.push_back(src);
+            }
+
+            string target;
+            while (true) {
+                cout << "Type target airport or type 9 to break loop:";
+                cin >> target;
+                cout << endl;
+                if (target == "9")
+                    break;
+                else
+                    vec2.push_back(target);
+            }
+
+            printBestRoute(manager, vec1, vec2);
+        }
+        else if (input == "3") {
+            string src, target;
+            cout << "Type airport code of source airport:";
+            cin >> src;
+            cout << "Type airport code of target airport:";
+            cin >> target;
+            cout << endl;
+
+            string code;
+            set<string> blackListAirlines;
+            while (true) {
+                cout << "Type airline code or type 9 to break loop:";
+                cin >> code;
+                cout << endl;
+                if (code == "9")
+                    break;
+                else
+                    blackListAirlines.insert(code);
+            }
+
+            printBestRouteWithBlacklist(manager, src, target, blackListAirlines);
+        }
+        else if (input == "4") {
+            string src, target;
+            cout << "Type airport code of source airport:";
+            cin >> src;
+            cout << "Type airport code of target airport:";
+            cin >> target;
+            cout << endl;
+
+            string code;
+            set<string> greenListAirlines;
+            while (true) {
+                cout << "Type airline code or type 9 to break loop:";
+                cin >> code;
+                cout << endl;
+                if (code == "9")
+                    break;
+                else
+                    greenListAirlines.insert(code);
+            }
+
+            printBestRouteWithGreenlist(manager, src, target, greenListAirlines);
         }
         else if (input == "9")
             return;
@@ -410,30 +491,6 @@ void printAirport(Manager manager, string val, const string& mode) {
     cout <<"Print com sucesso 100%. Retornando ao menu principal...\n";
 }
 
-void printBestFlights(Manager manager) {
-    cout<<"Introduza o Code do Aeroporto de Ida:\n";
-    string ida;
-    string chegada;
-    cin>>ida;
-    cout<<"Introduza o Code do Aeroporto de Chegada:\n";
-    cin>>chegada;
-    vector<vector<Flight>> result = manager.FindBestRoutes1(ida,chegada);
-    int i = 1;
-    for(vector<Flight> route : result){
-        cout<< "Route "<<i<<".\n";
-        i++;
-        for(Flight flight : route) {
-            string start = manager.getAirportWithCode( flight.getSource()).getName() + "("+flight.getSource() + ")";
-            string end=">"+ manager.getAirportWithCode( flight.getTarget()).getName() + "("+flight.getTarget() + ")";
-            string airline = manager.getAirlineWithCode(flight.getAirline()).getName()+"("+flight.getAirline()+")";
-            cout<< setfill('-')<<setw(35)<<left<< start
-                << setfill('-')<<setw(40)<<airline
-                <<end<<"\n";
-        }
-        cout<<"\n";
-    }
-}
-
 void printAirportsInCity(Manager manager, string city) {
     auto airports = manager.FindAirportsFromCity(city);
     cout << "_____________________Name________________________________City__________________________Country_________________________\n";
@@ -513,5 +570,66 @@ void printAirportFromCoordinates(Manager manager, Coordinates coordinates, int m
         Airport airport = airports[code];
         cout << left << setw(7) << airport.getCode() << setw(40) << airport.getName() << setw(20) << airport.getCity() << setw(20) << airport.getCountry() << endl;
     }
+    cout << endl;
+}
+
+void printBestRoute(Manager manager, vector<string> sources, vector<string> targets) {
+    vector<vector<Flight>> routes =  manager.FindBestRoutesFromAirportsToAirports(sources, targets);
+    unordered_map<string, Airport> airports = manager.getAirports();
+
+    if (routes.empty()) {
+        cout << "___________________" << endl;
+        cout << "No available routes" << endl;
+        return;
+    }
+
+    cout << "Flight with fewest connecting flights from source airports to target airports:" << endl;
+    cout << "_______________________________________________________________________________________" << endl;
+    cout << left << setw(40) << "Source airport" << setw(40) << "Target airport" << setw(20) << "Airline" << endl;
+    cout << "_______________________________________________________________________________________" << endl;
+    for (vector<Flight> route : routes)
+        for (Flight flight : route)
+            cout << left << setw(40) << airports[flight.getSource()].getName() << setw(40) << airports[flight.getTarget()].getName() << setw(20) << flight.getAirline() << endl;
+
+    cout << endl;
+}
+
+void printBestRouteWithBlacklist(Manager manager, string source, string target, set<string> blackListAirlines) {
+    vector<Flight> route =  manager.FindBestRouteWithBlackListed(source, target, blackListAirlines);
+    unordered_map<string, Airport> airports = manager.getAirports();
+
+    if (route.empty()) {
+        cout << "_____________________________________________________" << endl;
+        cout << "No available route without using blacklisted airlines" << endl;
+        return;
+    }
+
+    cout << "Flight with fewest connecting flights from " << source << " to " << target << ":" << endl;
+    cout << "_______________________________________________________________________________________" << endl;
+    cout << left << setw(40) << "Source airport" << setw(40) << "Target airport" << setw(20) << "Airline" << endl;
+    cout << "_______________________________________________________________________________________" << endl;
+    for (Flight flight : route)
+        cout << left << setw(40) << airports[flight.getSource()].getName() << setw(40) << airports[flight.getTarget()].getName() << setw(20) << flight.getAirline() << endl;
+
+    cout << endl;
+}
+
+void printBestRouteWithGreenlist(Manager manager, string source, string target, set<string> greenListAirlines) {
+    vector<Flight> route =  manager.FindBestRouteWithGreenListed(source, target, greenListAirlines);
+    unordered_map<string, Airport> airports = manager.getAirports();
+
+    if (route.empty()) {
+        cout << "__________________________________________________" << endl;
+        cout << "No available route using only greenlisted airlines" << endl;
+        return;
+    }
+
+    cout << "Flight with fewest connecting flights from " << source << " to " << target << ":" << endl;
+    cout << "_______________________________________________________________________________________" << endl;
+    cout << left << setw(40) << "Source airport" << setw(40) << "Target airport" << setw(20) << "Airline" << endl;
+    cout << "_______________________________________________________________________________________" << endl;
+    for (Flight flight : route)
+        cout << left << setw(40) << airports[flight.getSource()].getName() << setw(40) << airports[flight.getTarget()].getName() << setw(20) << flight.getAirline() << endl;
+
     cout << endl;
 }

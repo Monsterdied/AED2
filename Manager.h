@@ -43,8 +43,8 @@ public:
      unordered_map <string,Airline> getAirlines();
      unordered_map <string,Airport> getAirports();
      vector<Flight> FindBestRoute(string source, string target);// da output de 1 caminho com a route mais pequena
-     vector<Flight> FindBestRouteWithBlackListed(string source, string target,set<string> blackListAirlines);//faz o mesmo que a anterior com black listed
-     vector<Flight> FindBestRouteWithGreenListed(string source, string target,set<string> greenListAirlines);//faz o mesmo que a anterior com white listed
+     vector<Flight> FindBestRouteWithBlackListed(string source, string target, set<string> blackListAirlines);//faz o mesmo que a anterior com black listed
+     vector<Flight> FindBestRouteWithGreenListed(string source, string target, set<string> greenListAirlines);//faz o mesmo que a anterior com white listed
      vector<vector<Flight>> FindBestRoutes1(string source, string target);//função calcula todas as routes entre os dois aeroportos
      vector<vector<Flight>> FindBestRoutes(string source, string target,vector<vector<Flight>>& result);//função auxiliar a anterior
      vector<string> FindAirportsFromCoordinates(Coordinates coordinates, int distanceSource);//Encontra todos os aeroportos a distancia de distanceSource da cordenada
@@ -53,9 +53,7 @@ public:
      vector<vector<Flight>> FindBestRoutesFromAirportsToAirports(vector<string> starts, vector<string> targets);//encontra entre os varios paises uma rota e da output as rotas com tamanho minimo
      int CountCountriesReachableInNFlights(const string& src, int n);//da output ao numero de paises que podes chegar de src em y fligths
      unordered_set<string> CountriesReachableInYFlights(const string& src, int y);//da output aos paises que podes chegar de src em y fligths
-     set<string> findArticulationPoints();//find articulation Airports sao os quais se removeres em ves de um ciclo ficas com dois 
-
-
+     set<string> findArticulationPoints();//find articulation Airports sao os quais se removeres em ves de um ciclo ficas com dois
 };
 
 
