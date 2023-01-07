@@ -31,15 +31,15 @@ public:
     void ReadFlights();
     Graph getGraph();
     list<string> getAirportsInCity(string city);
-    set<string> getCitysInContry(string country);
+    set<string> getCitiesInContry(string country);
     Airport getAirportWithCode(string airportCode);
     Airline getAirlineWithCode(string airlineCode);
-    int getNumFlightTo(string aiportCode);
-    int getNumFlightFrom(string aiportCode);
-    int getNumFlightFromDiferentAirlinesTo(string aiportCode);
-    int getNumFlightFromDiferentAirlinesFrom(string aiportCode);
-    int getNumFlightFromDiferentCountrysTo(string aiportCode);
-    int getNumFlightToDiferentCountrysFrom(string aiportCode);
+    int getNumFlightTo(string airportCode);
+    int getNumFlightFrom(string airportCode);
+    int getNumFlightFromDifferentAirlinesTo(string airportCode);
+    int getNumFlightFromDifferentAirlinesFrom(string airportCode);
+    int getNumFlightFromDifferentCountriesTo(string airportCode);
+    int getNumFlightToDifferentCountriesFrom(string airportCode);
      unordered_map <string,Airline>  getAirlines();
      unordered_map <string,Airport> getAirports();
      vector<Flight> FindBestRoute(string source, string target);// da output de 1 caminho com a route mais pequena
@@ -47,7 +47,7 @@ public:
      vector<Flight> FindBestRouteWithGreenListed(string source, string target,set<string> greenListAirlines);//faz o mesmo que a anterior com white listed
      vector<vector<Flight>> FindBestRoutes1(string source, string target);//função calcula todas as routes entre os dois aeroportos
      vector<vector<Flight>> FindBestRoutes(string source, string target,vector<vector<Flight>>& result);//função auxiliar a anterior
-     vector<string> FindAirportsFromCordenadas(Cordenadas cordenadas,int distanceSource);//Encontra todos os aeroportos a distancia de distanceSource da cordenada
+     vector<string> FindAirportsFromCoordinates(Cordenadas cordenadas, int distanceSource);//Encontra todos os aeroportos a distancia de distanceSource da cordenada
      vector<string> FindAirportsFromCountry(string country);//Encontra todos os aeroportos no pais contry
      vector<string> FindAirportsFromCity(string city);//Encontra todos os aeroportos no cidade
      vector<vector<Flight>> FindBestRoutesFromAirportsToAirports(vector<string> starts, vector<string> targets);//encontra entre os varios paises uma rota e da output as rotas com tamanho minimo

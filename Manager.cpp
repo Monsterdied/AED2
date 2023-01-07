@@ -21,7 +21,7 @@ Airport Manager::getAirportWithCode(string airportCode){
 Airline Manager::getAirlineWithCode(string airlineCode){
     return airlines[airlineCode];
 }
-set<string> Manager::getCitysInContry(string country){
+set<string> Manager::getCitiesInContry(string country){
     return countrysToCitys[country];
 }
 unordered_map <string,Airline>  Manager::getAirlines(){
@@ -30,53 +30,53 @@ unordered_map <string,Airline>  Manager::getAirlines(){
 unordered_map <string,Airport> Manager::getAirports() {
     return airports;
 }
-int Manager::getNumFlightFrom(string aiportCode){
-    return graph.getEdges(aiportCode).size();
+int Manager::getNumFlightFrom(string airportCode){
+    return graph.getEdges(airportCode).size();
 }
-int Manager::getNumFlightTo(string aiportCode) {
+int Manager::getNumFlightTo(string airportCode) {
     int result = 0;
     for(auto p : graph.getNodes()) {
         for(Flight f:p.second.adj){
-            if(f.getTarget()==aiportCode)
+            if(f.getTarget() == airportCode)
                 result++;
         }
     }
     //cout<<"O numero de que tem como destino o aeroporto com o codigo :"<<airport.getCode()<<" sao :"<<result<<'\n';
     return result;
 }
-int Manager::getNumFlightFromDiferentAirlinesFrom(string aiportCode){
+int Manager::getNumFlightFromDifferentAirlinesFrom(string airportCode){
     unordered_set<string> result;
-    auto flights = graph.getEdges(aiportCode);
+    auto flights = graph.getEdges(airportCode);
     for(auto flight : flights){
         result.insert(flight.getAirline());
     }
 
     return result.size();
 }
-int Manager::getNumFlightFromDiferentAirlinesTo(string aiportCode){
+int Manager::getNumFlightFromDifferentAirlinesTo(string airportCode){
     unordered_set<string> result;
     for(auto p : graph.getNodes()) {
         for(Flight f:p.second.adj){
-            if(f.getTarget()==aiportCode)
+            if(f.getTarget() == airportCode)
                 result.insert(f.getAirline());
         }
     }
     return result.size();
 }
-int Manager::getNumFlightFromDiferentCountrysTo(string aiportCode){
+int Manager::getNumFlightFromDifferentCountriesTo(string airportCode){
     unordered_set<string> result;
     for(auto p : graph.getNodes()) {
         for(Flight f:p.second.adj){
-            if(f.getTarget()==aiportCode)
+            if(f.getTarget() == airportCode)
                 result.insert(f.getSource());
         }
     }
 
     return result.size();
 }
-int Manager::getNumFlightToDiferentCountrysFrom(string aiportCode){
+int Manager::getNumFlightToDifferentCountriesFrom(string airportCode){
     unordered_set<string> result;
-    auto flights = graph.getEdges(aiportCode);
+    auto flights = graph.getEdges(airportCode);
     for(auto flight : flights){
         result.insert(flight.getTarget());
     }
@@ -201,6 +201,8 @@ vector<Flight> Manager::FindBestRoute(string source, string target) {
     q.push({});
     /*unordered_map<string, bool> visited;
     visited[source] = true;*/
+
+
     graph.findFlightFrom(source).visited=true;
     while (!q.empty()) {
         vector<Flight> route = q.front();
@@ -257,7 +259,7 @@ unordered_set<string> Manager::CountriesReachableInYFlights(const string& src, i
     }
     return countries;
 }
-vector<string> Manager::FindAirportsFromCordenadas(Cordenadas cordenadas,int distanceSource) {
+vector<string> Manager::FindAirportsFromCoordinates(Cordenadas cordenadas, int distanceSource) {
     vector<string> result;
     for(auto paired : airports){
         Airport airport = paired.second;
@@ -269,7 +271,7 @@ vector<string> Manager::FindAirportsFromCordenadas(Cordenadas cordenadas,int dis
 
 }
 vector<string> Manager::FindAirportsFromCountry(string country){
-    set<string> citys = getCitysInContry(country);
+    set<string> citys = getCitiesInContry(country);
     vector<string> result;
     for(string city : citys){
         vector<string> aeroports_from_citie = FindAirportsFromCity(city);
