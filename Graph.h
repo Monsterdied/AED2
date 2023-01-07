@@ -18,28 +18,112 @@ using namespace std;
 class Graph {
 private:
 public:
+    /**
+     * @brief Represents a node (airport) in the graph.
+     */
     struct Node {
-        list<Flight> adj; // The list of outgoing edges (to adjacent nodes)
-        bool visited;   // As the node been visited on a search?
+        /**
+         * @brief The airport code.
+         */
+        string code;
+        /**
+         * @brief The list of flights from this airport.
+         */
+        list<Flight> adj;
     };
-    // Graph size (vertices are numbered from 1 to n)
-    unordered_map <string,Node> nodes; // The list of nodes being represented
+    /**
+    * @brief A map of nodes (airports) in the graph, indexed by their codes.
+    */
+    unordered_map <string,Node> nodes;
 
-
-    // Constructor: nr nodes and direction (default: undirected)
+    /**
+     * @brief Constructs an empty Graph object.
+     *
+     * The complexity of this member function is O(1).
+     */
     Graph();
 
-    // Add edge from source to destination with a certain weight
-    void addEdge(string src, string dest, string airline);
-    void delFlight(Flight flight);
-    unordered_map <string,Node> getNodes();
-    list<Flight> getEdges(string code);
-    Node& findFlightFrom(string codeAirport);
-    vector<Flight> findFlights(string codeSrc , string codeDest);
+    /**
+     * @brief Adds an edge (flight) from the source airport to the destination airport with the given airline code.
+     *
+     * The complexity of this member function is O(1).
+     *
+     * @param src The source airport code.
+     * @param dest The destination airport code.
+     * @param airlineCode The airline code operating the flight.
+     */
+    void addEdge(string src, string dest, string airlineCode);
+
+    /**
+     * @brief Adds a flight to the graph.
+     *
+     * The complexity of this member function is O(n), where `n` is the number of flights from the source airport.
+     *
+     * @param flight The flight to add.
+     */
     void addFlight(Flight flight);
-    // ----- Functions to implement in this class -----
-    int distance(int a, int b);
-    int diameter();
+
+    /**
+     * @brief Deletes a flight from the graph.
+     *
+     * The complexity of this member function is O(n), where `n` is the number of flights from the source airport.
+     *
+    * @param flight The flight to delete.
+    */
+    void delFlight(Flight flight);
+
+    /**
+     * @brief Returns the nodes (airports) in the graph.
+     *
+     * The complexity of this member function is O(n), where `n` is the number of nodes in the graph.
+     *
+     * @return The nodes in the graph.
+     */
+    unordered_map <string,Node> getNodes();
+
+    /**
+     * @brief Returns the edges (flights) from the given airport code.
+     *
+     * The complexity of this member function is O(1).
+     *
+     * @param code The airport code.
+     * @return The edges from the given airport.
+     */
+    list<Flight> getEdges(string code);
+
+    /**
+     * @brief Finds the node (airport) with the given code.
+     *
+     * The complexity of this member function is O(1).
+     *
+     * @param codeAirport The airport code.
+     * @return The node with the given code.
+     */
+    Node& findFlightFrom(string codeAirport);
+
+    /**
+     * @brief Finds the flights between the source and destination airports with the given codes.
+     *
+     * The complexity of this member function is O(n), where `n` is the number of flights from the source airport.
+     *
+     * @param codeSrc The source airport code.
+     * @param codeDest The destination airport code.
+     * @return The flights between the source and destination airports.
+     */
+    vector<Flight> findFlights(string codeSrc , string codeDest);
+
+    /**
+     * @brief Performs a depth-first search (DFS) on the graph.
+     *
+     * The complexity of this member function is O(n + m), where `n` is the number of nodes in the graph and `m` is the number of edges.
+     *
+     * @param node The starting node for the DFS.
+     * @param index A reference to the current index of the DFS.
+     * @param num A map of nodes to their DFS numbers.
+     * @param low A map of nodes to their low numbers.
+     * @param S A set of nodes in the DFS stack.
+     * @param ap A set of articulation points in the graph.
+     */
     void dfs(string node, int& index, unordered_map<string, int>& num, unordered_map<string, int>& low, set<string>& S, set<string>& ap);
 
 

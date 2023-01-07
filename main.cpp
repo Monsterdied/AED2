@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
-#include "Cordenadas.h"
+#include "Coordenadas.h"
 #include "Airport.h"
 #include "Airline.h"
 #include "Manager.h"
@@ -9,7 +9,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
-#include "Cordenadas.h"
+#include "Coordenadas.h"
 #include "Airport.h"
 #include "Airline.h"
 #include "Manager.h"
@@ -500,7 +500,7 @@ int main() {
     /*
     vector<string> target;
     target.push_back("PEK");
-    routes = maneger.FindBestRoutesFromAirportsToAirports(maneger.FindAirportsFromCordenadas(Cordenadas(41.1571867,-8.6362544),300),target);
+    routes = maneger.FindBestRoutesFromAirportsToAirports(maneger.FindAirportsFromCordenadas(Coordenadas(41.1571867,-8.6362544),300),target);
 
     for (auto route1: routes) {
         cout << '\n';
@@ -511,7 +511,7 @@ int main() {
 
         }
     }*//*
-    auto routes = maneger.FindBestRoutesFromAirportsToAirports(maneger.FindAirportsFromCordenadas(Cordenadas(41.1571867,-8.6362544),150),maneger.FindAirportsFromCordenadas(Cordenadas(40.0733964,116.5827059),100));
+    auto routes = maneger.FindBestRoutesFromAirportsToAirports(maneger.FindAirportsFromCordenadas(Coordenadas(41.1571867,-8.6362544),150),maneger.FindAirportsFromCordenadas(Coordenadas(40.0733964,116.5827059),100));
 
     for (auto route1: routes) {
         cout << '\n';
@@ -526,7 +526,7 @@ int main() {
     /*
     vector<string> start;
     start.push_back("OPO");
-    auto routes = maneger.FindBestRoutesFromAirportsToAirports(start,maneger.FindAirportsFromCordenadas(Cordenadas(40.0733964,116.5827059),1000));
+    auto routes = maneger.FindBestRoutesFromAirportsToAirports(start,maneger.FindAirportsFromCordenadas(Coordenadas(40.0733964,116.5827059),1000));
 
     for (auto route1: routes) {
         cout << '\n';

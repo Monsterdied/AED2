@@ -5,7 +5,7 @@
 #include <sstream>
 #include <iomanip>
 #include "Manager.h"
-#include "Cordenadas.h"
+#include "Coordenadas.h"
 #include "Airport.h"
 #include "Flight.h"
 #include "queue"
@@ -257,7 +257,7 @@ unordered_set<string> Manager::CountriesReachableInYFlights(const string& src, i
     }
     return countries;
 }
-vector<string> Manager::FindAirportsFromCordenadas(Cordenadas cordenadas,int distanceSource) {
+vector<string> Manager::FindAirportsFromCordenadas(Coordenadas cordenadas, int distanceSource) {
     vector<string> result;
     for(auto paired : airports){
         Airport airport = paired.second;
