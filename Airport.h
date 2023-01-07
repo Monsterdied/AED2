@@ -6,12 +6,12 @@
 #define PROJ_AIRPORT_H
 
 
-#include "Cordenadas.h"
+#include "Coordinates.h"
 #include <iostream>
 using namespace std;
 class Airport {
 private:
-    Cordenadas cordenadas;
+    Coordinates coordinates;
     string name;
     string code;
     string city;
@@ -19,12 +19,12 @@ private:
 public:
     Airport(double latitude , double longitude , string name , string code , string city , string country );
     Airport();
-    Cordenadas getCordenadas();
+    Coordinates getCoordinates();
     string getName()const;
     string getCode()const;
     string getCity()const;
     string getCountry()const;
-    bool operator==(const Airport& ariport) const;
+    bool operator==(const Airport& airport) const;
 
 };
 //if you want to use ordered set

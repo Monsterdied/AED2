@@ -5,7 +5,7 @@
 #include <sstream>
 #include <iomanip>
 #include "Manager.h"
-#include "Cordenadas.h"
+#include "Coordinates.h"
 #include "Airport.h"
 #include "Flight.h"
 #include "queue"
@@ -21,7 +21,7 @@ Airport Manager::getAirportWithCode(string airportCode){
 Airline Manager::getAirlineWithCode(string airlineCode){
     return airlines[airlineCode];
 }
-set<string> Manager::getCitiesInContry(string country){
+set<string> Manager::getCitiesInCountry(string country){
     return countrysToCitys[country];
 }
 unordered_map <string,Airline>  Manager::getAirlines(){
@@ -105,7 +105,7 @@ void Manager::ReadAirLines() {
 }
 
 void Manager::ReadAirports() {
-    unordered_map <string,Airport> airports;
+    unordered_map <string, Airport> airports;
     unordered_map <string, list<string>> cities;
 
     ifstream file;
@@ -259,11 +259,11 @@ unordered_set<string> Manager::CountriesReachableInYFlights(const string& src, i
     }
     return countries;
 }
-vector<string> Manager::FindAirportsFromCoordinates(Cordenadas cordenadas, int distanceSource) {
+vector<string> Manager::FindAirportsFromCoordinates(Coordinates coordinates, int distanceSource) {
     vector<string> result;
     for(auto paired : airports){
         Airport airport = paired.second;
-        if(cordenadas.getDistance(airport.getCordenadas())<=distanceSource){
+        if(coordinates.getDistance(airport.getCoordinates()) <= distanceSource){
             result.push_back(airport.getCode());
         }
     }
@@ -271,11 +271,11 @@ vector<string> Manager::FindAirportsFromCoordinates(Cordenadas cordenadas, int d
 
 }
 vector<string> Manager::FindAirportsFromCountry(string country){
-    set<string> citys = getCitiesInContry(country);
+    set<string> cities = getCitiesInCountry(country);
     vector<string> result;
-    for(string city : citys){
+    for(string city : cities) {
         vector<string> aeroports_from_citie = FindAirportsFromCity(city);
-        for(string aeroport : aeroports_from_citie){
+        for(string aeroport : aeroports_from_citie) {
             //cout<<aeroport<<" \n";
             result.push_back(aeroport);
         }
