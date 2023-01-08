@@ -327,7 +327,7 @@ void Manager::ArticulationPoints() {
     int h = 1;
     for (const string &point : points) {
         auto airport =getAirportWithCode(point);
-        cout<<h<<". Aeroporto "<<airport.getName()<<" ("<<airport.getCode()<<") - "<<airport.getCity()<<", "<<airport.getCountry()<<" ("<<airport.getCoordinates().getLatitude()<<", "<<airport.getCoordinates().getLongitude()<<")"<<"\n";
+        cout<<h<<". Aeroporto "<<airport.getName()<<"\n";
         h++;
     }
 }
@@ -391,7 +391,7 @@ vector<Flight> Manager::FindBestRouteWithGreenListed(string source, string targe
     }
     return {};
 }
-int Manager::componentesFortementeConexos() {
+int Manager::StronglyConnectedComponents() {
     return graph.findSCC();
 }
 

@@ -236,7 +236,7 @@ public:
     @return The number of SCCs found.
     @complexity O(|V| + |E|)
     */
-    int componentesFortementeConexos();
+    int StronglyConnectedComponents();
 };
 
 

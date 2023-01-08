@@ -154,14 +154,17 @@ void airportMenu(Manager manager) {
             cout << " 5. Show airport(s) in city" << endl;
             cout << " 6. Show all airports" << endl;
             cout << " 7. Count countries reachable in n flights" << endl;
-            cout << " 9. Go to previous menu" << endl;
+            cout << " 8. The shortest path between the most distant Airports" << endl;
+            cout << " 9. Show the articulation points(Airports)" << endl;
+            cout << "10. The number of Strongly Connected Components" << endl;
+            cout << "11. Go to previous menu" << endl;
             cout << "Type option:";
             cin >> input;
             cout << endl;
 
-            if (!(input == "1" || input == "2" || input == "3" || input == "4" || input == "5" || input == "6" || input == "7" || input == "9"))
+            if (!(input == "1" || input == "2" || input == "3" || input == "4" || input == "5" || input == "6" || input == "7" || input == "9" || input == "8" || input == "10" || input == "11"))
                 cout <<  "Option " << input << " doesn't exist. Try again." << endl;
-        } while(!(input == "1" || input == "2" || input == "3" || input == "4" || input == "5" || input == "6" || input == "7" || input == "9"));
+        } while(!(input == "1" || input == "2" || input == "3" || input == "4" || input == "5" || input == "6" || input == "7" || input == "9"|| input == "8" || input == "10" || input == "11"));
 
         if (input == "1") {
             cout << "Type airport name: ";
@@ -223,7 +226,21 @@ void airportMenu(Manager manager) {
             cout << endl;
             printNumCountriesReachableInNFlights(manager, code, n);
         }
-        else if (input == "9")
+        else if (input == "8") {
+            cout << "conputing.......";
+            int diameter = manager.diameter();
+            cout <<"\n\n\n\nThe shortest path between the most distant Airports is :" <<diameter;
+            cout << endl;
+        }
+        else if (input == "9") {
+            manager.ArticulationPoints();
+            cout << endl;
+        }
+        else if (input == "10") {
+            cout<<"The number of Strongly Connected Components is :"<<manager.StronglyConnectedComponents();
+            cout << endl;
+        }
+        else if (input == "11")
             return;
     }
 }
