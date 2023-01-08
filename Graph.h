@@ -11,8 +11,10 @@
 #include <iostream>
 #include <unordered_map>
 #include <set>
+#include <stack>
 #include "Airline.h"
 #include "Flight.h"
+#include <unordered_set>
 using namespace std;
 
 class Graph {
@@ -34,6 +36,10 @@ public:
         * @brief A boolean that tells you if the Node is Visited.
         */
         bool visited;
+        /**
+        * @brief A unsigned that tells the distance from some Node.
+        */
+        unsigned  dist;
     };
     /**
     * @brief A map of nodes (airports) in the graph, indexed by their codes.
@@ -129,14 +135,21 @@ public:
      * @param ap A set of articulation points in the graph.
      */
     void dfs(string node, int& index, unordered_map<string, int>& num, unordered_map<string, int>& low, set<string>& S, set<string>& ap);
-/**
-* @brief Performs a depth-first search (DFS) on the graph.
-*
-* The complexity of this member function is O(n + m), where `n` is the number of nodes in the graph and `m` is the number of edges.
-*
-*/
-void dfs(string start);
-
+    /**
+    * @brief Finds the diameter of the graph by running BFS from each node
+    * @return The diameter of the graph
+    *
+    * The complexity of this function is O(n^2), as it runs BFS from each node in the graph
+    * and checks the distance to all other nodes.
+    */
+    unsigned diameter();
+    /**
+    * @brief Runs BFS from a given starting node and updates the distance of all visited nodes
+    * @param v The starting node
+    *
+    * The complexity of this function is O(n+m), where n is the number of nodes and m is the number of edges.
+    */
+    void bfs_distance(string v);
 };
 
 

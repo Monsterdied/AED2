@@ -383,17 +383,11 @@ vector<Flight> Manager::FindBestRouteWithGreenListed(string source, string targe
     }
     return {};
 }
-int Manager::findStronglyComponentsConnected(){
-    int result=0;
-    for (auto airport : airports)graph.findFlightFrom(airport.first).visited = false;
-    for(auto airport : airports){
-        if(!graph.findFlightFrom(airport.first).visited){
-            graph.dfs(airport.first);
-            result++;
-        }
-    }
-    return result;
+// Other class methods and members
+
+// Method for finding the strongly connected components of a graph
+
+
+int Manager::diameter(){
+    return graph.diameter();
 }
-
-
-

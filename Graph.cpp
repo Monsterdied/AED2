@@ -3,6 +3,7 @@
 //
 
 #include "Graph.h"
+
 #include<bits/stdc++.h>
 Graph::Graph(){
 }
@@ -79,16 +80,31 @@ void Graph::dfs(string node, int& index, unordered_map<string, int>& num, unorde
     // Pop node from the stack
     S.erase(node);
 }
-
-void Graph::dfs(string start) {
-    nodes[start].visited = true;
-// Go through all the neighbors of the current node
-    for (auto f : nodes[start].adj) {
-        string w = f.getTarget();
-// If the neighbor has not been visited, recursively visit it
-        if (!nodes[w].visited) {
-            dfs(w);
+unsigned Graph::diameter() {
+    unsigned diametro = 0;
+    for (auto node : nodes) {
+        bfs_distance(node.first);
+        for (auto node1 : nodes)
+            if (nodes[node1.first].visited && nodes[node1.first].dist > diametro)
+                diametro = nodes[node1.first].dist;
+    }
+    return diametro;
+}
+void Graph::bfs_distance(string v) {
+    for (auto node : nodes) nodes[node.first].visited = false;
+    queue<string> q; // queue of unvisited nodes
+    q.push(v);
+    nodes[v].visited = true;
+    nodes[v].dist = 0;
+    while (!q.empty()) { // while there are still unvisited nodes
+        string u = q.front(); q.pop();
+        for (auto e : nodes[u].adj) {
+            string w = e.getTarget();
+            if (!nodes[w].visited) {
+                q.push(w);
+                nodes[w].dist = nodes[u].dist +1;
+                nodes[w].visited = true;
+            }
         }
     }
-
 }
