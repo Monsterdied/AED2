@@ -547,6 +547,5 @@ int main() {
 
     auto tmp = maneger.FindBestRouteWithBlackListed("OPO","PEK",white);
     for(auto i : tmp)cout<<i.getSource()<<" "<<i.getAirline()<<" "<<i.getTarget() <<"\n";*/
-    auto tmp1 = maneger.diameter();
-    cout<<tmp1;
+    maneger.pontosArticulacao();
 }

@@ -25,10 +25,6 @@ public:
      */
     struct Node {
         /**
-         * @brief The airport code.
-         */
-        string code;
-        /**
          * @brief The list of flights from this airport.
          */
         list<Flight> adj;
@@ -39,7 +35,10 @@ public:
         /**
         * @brief A unsigned that tells the distance from some Node.
         */
-        unsigned  dist;
+        int  dist;
+        int num;
+        int low;
+        int inStack;
     };
     /**
     * @brief A map of nodes (airports) in the graph, indexed by their codes.
@@ -134,7 +133,7 @@ public:
      * @param S A set of nodes in the DFS stack.
      * @param ap A set of articulation points in the graph.
      */
-    void dfs(string node, int& index, unordered_map<string, int>& num, unordered_map<string, int>& low, set<string>& S, set<string>& ap);
+    void dfs_art(string v, bool isRoot, int &index, unordered_set<string> &points);
     /**
     * @brief Finds the diameter of the graph by running BFS from each node
     * @return The diameter of the graph
@@ -150,6 +149,7 @@ public:
     * The complexity of this function is O(n+m), where n is the number of nodes and m is the number of edges.
     */
     void bfs_distance(string v);
+    void resetNodes();
 };
 
 

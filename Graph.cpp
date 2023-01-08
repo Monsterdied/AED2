@@ -51,37 +51,32 @@ vector<Flight> Graph::findFlights(string codeSrc , string codeDest) {
     }
     return result;
 }
-void Graph::dfs(string node, int& index, unordered_map<string, int>& num, unordered_map<string, int>& low, set<string>& S, set<string>& ap) {
-    // Set num and low values and push node onto the stack
-    num[node] = low[node] = index++;
-    S.insert(node);
-
-    // Go through all the neighbors of node
-    for (Flight f : getEdges(node)) {
-        string w = f.getTarget();
-
-        // If w has not been visited before, it is a tree edge
-        if (num.find(w) == num.end()) {
-            dfs(w, index, num, low, S, ap);
-            low[node] = min(low[node], low[w]);
-
-            // If the subtree rooted at w has a connection to one of the ancestors of node, node is an articulation point
-            if (low[w] >= num[node]) {
-                ap.insert(node);
-            }
-        }
-
-            // If w is in the stack, it is a back edge
-        else if (S.find(w) != S.end()) {
-            low[node] = min(low[node], num[w]);
-        }
+void Graph::dfs_art(string v, bool isRoot, int &index, unordered_set<string> &points) {
+    nodes[v].num = index;
+    nodes[v].low = index;
+    index++;
+    nodes[v].inStack = true;
+    int rootChilds = 0;
+    cout<<"oia status\n";
+    cout<<nodes["OIA"].low<<" "<<nodes["OIA"].num<<" "<<nodes["OIA"].inStack<<"\n";
+    for (const Flight &edge : nodes[v].adj) {
+        string w = edge.getTarget();
+        if (nodes[w].num == 0) {
+            if (isRoot)
+                rootChilds++;
+            dfs_art(w, false, index, points);
+            nodes[v].low = min(nodes[v].low, nodes[w].low);
+            if ((!isRoot && nodes[w].low >= nodes[v].num) || (isRoot && rootChilds > 1))
+                points.insert(v);
+        } else if (nodes[w].inStack)
+            nodes[v].low = min(nodes[v].low, nodes[w].num);
     }
-
-    // Pop node from the stack
-    S.erase(node);
+    nodes[v].inStack = false;
 }
+
 unsigned Graph::diameter() {
     unsigned diametro = 0;
+    resetNodes();
     for (auto node : nodes) {
         bfs_distance(node.first);
         for (auto node1 : nodes)
@@ -90,8 +85,21 @@ unsigned Graph::diameter() {
     }
     return diametro;
 }
+void Graph::resetNodes() {
+    for (auto node : nodes) {
+        bool visited;
+        /**
+        * @brief A unsigned that tells the distance from some Node.
+        */
+        nodes[node.first].visited = false;
+        nodes[node.first].dist = INT_MAX;
+        nodes[node.first].num = 0;
+        nodes[node.first].low = 0;
+        nodes[node.first].inStack = false;
+    }
+}
 void Graph::bfs_distance(string v) {
-    for (auto node : nodes) nodes[node.first].visited = false;
+    resetNodes();
     queue<string> q; // queue of unvisited nodes
     q.push(v);
     nodes[v].visited = true;

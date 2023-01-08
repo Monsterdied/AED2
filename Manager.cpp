@@ -307,22 +307,26 @@ vector<vector<Flight>> Manager::FindBestRoutesFromAirportsToAirports(vector<stri
 }
 
 
-// Function to find the articulation points in the graph represented by the Manager object
-set<string> Manager::findArticulationPoints() {
-    unordered_map<string, int> num;
-    unordered_map<string, int> low;
-    set<string> S;
-    set<string> ap;
-    int index = 0;
-
-    // Call the helper function for each node
-    for (auto& p : airports) {
-        if (num.find(p.first) == num.end()) {
-            graph.dfs(p.first, index, num, low, S, ap);
-        }
+void Manager::pontosArticulacao() {
+    int index = 1;
+    unordered_set<string> points;
+    graph.resetNodes();
+    //int i = 0;
+    for (auto node : graph.getNodes()){
+        //i++;
+        //cout<<node.first<<i<<" \n";
+        if (node.second.num == 0)
+            graph.dfs_art(node.first, true, index, points);
     }
 
-    return ap;
+    unsigned n = points.size();
+    cout << "A rede de voos tem " << n << " pontos de articulação:" << endl;
+    int h = 1;
+    for (const string &point : points) {
+        auto airport =getAirportWithCode(point);
+        cout<<h<<". Aeroporto "<<airport.getName()<<" ("<<airport.getCode()<<") - "<<airport.getCity()<<", "<<airport.getCountry()<<" ("<<airport.getCordenadas().getlatitude()<<", "<<airport.getCordenadas().getlongitude()<<")"<<"\n";
+        h++;
+    }
 }
 //ainda não checkei
 vector<Flight> Manager::FindBestRouteWithBlackListed(string source, string target,set<string> blackListAirlines) {

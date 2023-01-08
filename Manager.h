@@ -222,7 +222,7 @@ public:
          This method returns the an set where when used with .size returns the number of the articulation points.
          \Complexity   O(n+m) \n  Where n is the number of airports, m is the number of flights.
      */
-     set<string> findArticulationPoints();//find articulation Airports sao os quais se removeres em ves de um ciclo ficas com dois
+     void pontosArticulacao();//find articulation Airports sao os quais se removeres em ves de um ciclo ficas com dois
      /**
      * @brief Finds the diameter of the graph by running BFS from each node
      * @return The diameter of the graph
@@ -231,6 +231,7 @@ public:
      * and checks the distance to all other nodes.
      */
     int diameter();
+
 
 };
 
