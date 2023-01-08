@@ -331,6 +331,7 @@ void Manager::pontosArticulacao() {
 //ainda não checkei
 vector<Flight> Manager::FindBestRouteWithBlackListed(string source, string target,set<string> blackListAirlines) {
     for (auto airport : airports)graph.findFlightFrom(airport.first).visited = false;
+    graph.resetNodes();
     queue<vector<Flight>> q;
     q.push({});
     /*unordered_map<string, bool> visited;
@@ -387,9 +388,11 @@ vector<Flight> Manager::FindBestRouteWithGreenListed(string source, string targe
     }
     return {};
 }
-// Other class methods and members
+int Manager::componentesFortementeConexos() {
+    return graph.findSCC();
+}
 
-// Method for finding the strongly connected components of a graph
+
 
 
 int Manager::diameter(){

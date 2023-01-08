@@ -150,6 +150,8 @@ public:
     */
     void bfs_distance(string v);
     void resetNodes();
+    int findSCC();
+    void dfsSCC(string v, int &index, stack<string> &S, vector<unordered_set<string>> &sccs);
 };
 
 

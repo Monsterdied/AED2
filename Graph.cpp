@@ -117,3 +117,43 @@ void Graph::bfs_distance(string v) {
         }
     }
 }
+int Graph::findSCC() {
+    // Initialize variables
+    int index = 1;
+    stack<string> S;
+    vector<unordered_set<string>> sccs;
+    // Perform DFS on each node
+    for (auto& node : nodes) {
+        if (node.second.num == 0) {
+            dfsSCC(node.first, index, S, sccs);
+        }
+    }
+
+    return sccs.size();
+}
+void Graph::dfsSCC(string v, int &index, stack<string> &S, vector<unordered_set<string>> &sccs) {
+    nodes[v].num = nodes[v].low = ++index;
+    S.push(v);
+    nodes[v].inStack = 1;
+    for (const Flight &e : nodes[v].adj) {
+        string w = e.getTarget();
+        if (nodes[w].num == 0) {
+            dfsSCC(w, index, S, sccs);
+            nodes[v].low = min(nodes[v].low, nodes[w].low);
+        }
+        else if (nodes[w].inStack) {
+            nodes[v].low = min(nodes[v].low, nodes[w].num);
+        }
+    }
+    if (nodes[v].num == nodes[v].low) {
+        unordered_set<string> scc;
+        string w;
+        do {
+            w = S.top();
+            S.pop();
+            nodes[w].inStack = 0;
+            scc.insert(w);
+        } while (v != w);
+            sccs.push_back(scc);
+    }
+}

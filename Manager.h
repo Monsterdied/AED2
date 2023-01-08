@@ -231,7 +231,7 @@ public:
      * and checks the distance to all other nodes.
      */
     int diameter();
-
+    int componentesFortementeConexos();
 
 };
 
