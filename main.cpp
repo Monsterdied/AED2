@@ -28,6 +28,7 @@ void printAllAirports(Manager manager);
 void printAirportsInCity(Manager manager, string city);
 void printAirportsInCountry(Manager manager, string country);
 void printAirportFromCoordinates(Manager manager, Coordinates coordinates, int maxDistance);
+void printNumCountriesReachableInNFlights(Manager manager, string src, int n);
 
 void flightMenu(Manager manager);
 void printBestRoute(Manager manager, vector<string> sources, vector<string> targets);
@@ -90,7 +91,7 @@ void airlinerMenu(Manager manager) {
             cout << " 1. Search airliner by name" << endl;
             cout << " 2. Search airliner by code" << endl;
             cout << " 3. Search airliner by call sign" << endl;
-            cout << " 4. Show all names in country" << endl;
+            cout << " 4. Show airliners in country" << endl;
             cout << " 5. Show all airliners" << endl;
             cout << " 9. Close program" << endl;
             cout << "Type option:";
@@ -151,7 +152,7 @@ void airportMenu(Manager manager) {
     while (true) {
         string input;
         do {
-            cout << "____________________________________" << endl;
+            cout << "__________________________________________" << endl;
             cout << "Select one of the following options: " << endl;
             cout << " 1. Search airport by name" << endl;
             cout << " 2. Search airport by code" << endl;
@@ -159,14 +160,15 @@ void airportMenu(Manager manager) {
             cout << " 4. Show airport(s) in country" << endl;
             cout << " 5. Show airport(s) in city" << endl;
             cout << " 6. Show all airports" << endl;
+            cout << " 7. Count countries reachable in n flights" << endl;
             cout << " 9. Go to previous menu" << endl;
             cout << "Type option:";
             cin >> input;
             cout << endl;
 
-            if (!(input == "1" || input == "2" || input == "3" || input == "4" || input == "5" || input == "6" || input == "9"))
+            if (!(input == "1" || input == "2" || input == "3" || input == "4" || input == "5" || input == "6" || input == "7" || input == "9"))
                 cout <<  "Option " << input << " doesn't exist. Try again." << endl;
-        } while(!(input == "1" || input == "2" || input == "3" || input == "4" || input == "5" || input == "6" || input == "9"));
+        } while(!(input == "1" || input == "2" || input == "3" || input == "4" || input == "5" || input == "6" || input == "7" || input == "9"));
 
         if (input == "1") {
             cout << "Type airport name: ";
@@ -184,7 +186,7 @@ void airportMenu(Manager manager) {
             cout << endl;
             printAirport(manager, code, "code");
         }
-        else if (input == "3"){
+        else if (input == "3") {
             double latitude, longitude;
             cout << "Type airport's coordinates:" << endl;
             cout << "Latitude:";
@@ -218,6 +220,16 @@ void airportMenu(Manager manager) {
         }
         else if (input == "6")
             printAllAirports(manager);
+        else if (input == "7") {
+            cout << "Type airport code:";
+            string code;
+            int n;
+            cin >> code;
+            cout << "How many flights:";
+            cin >> n;
+            cout << endl;
+            printNumCountriesReachableInNFlights(manager, code, n);
+        }
         else if (input == "9")
             return;
     }
@@ -374,71 +386,46 @@ void printAirline(vector<Airline> airlines, string string1, const string& mode) 
             val = it->getCallSign();
 
         if (val == string1) {
-            cout << "_____________________Name________________________________Callsign__________________________Country______________\n";
-            cout<<"|";
-            cout<<setw(41);
-            cout<<it->getName();
-            cout<<"|";
-            cout<<setw(30);
-            cout<<it->getCallSign();
-            cout<<"|";
-            cout<<setw(38);
-            cout<< it->getCountry();
-            cout <<"|";
-            cout<<"\n";
-            cout << "_________________________________________________________________________________________________________________\n";
-            cout <<"Print com sucesso 100%. Retornando ao menu principal...\n";
+            cout << "_____________________________________________________________________\n";
+            cout << left << setw(35) << "Name" << setw(30) << "Call sign" << setw(20) << "Country" << endl;
+            cout << "_____________________________________________________________________\n";
+            cout << left << setw(35) << it->getName() << setw(30) << it->getCallSign() << setw(20) << it->getCountry() << endl;
+            cout << endl;
             return;
         }
     }
-    cout<<"Airliner not found!\n ";
+    cout <<"Airliner not found!" << endl;
+    cout << endl;
 }
 
 void printAllAirlines(Manager manager) {
-    cout << "_____________________Name________________________________Callsign__________________________Country______________\n";
-    auto tmp = manager.getAirlines();
-    for(auto itr : tmp){
+    auto airlines = manager.getAirlines();
+
+    cout << "__________________________________________________________________________\n";
+    cout << left << setw(35) << "Name" << setw(30) << "Call sign" << setw(20) << "Country" << endl;
+    cout << "__________________________________________________________________________\n";
+
+    for(auto itr : airlines) {
         Airline it = itr.second;
-        cout<<"|";
-        cout<<setw(41);
-        cout<<it.getName();
-        cout<<"|";
-        cout<<setw(30);
-        cout<<it.getCallSign();
-        cout<<"|";
-        cout<<setw(38);
-        cout<< it.getCountry();
-        cout <<"|";
-        cout<<"\n";
-        //se meter o getCode aqui dá um erro de badalloc (erro type 3) por nos problemas
+        cout << left << setw(35) << it.getCountry() << setw(30) << it.getCallSign() << setw(20) << it.getCountry() << endl;
     }
-    cout << "_________________________________________________________________________________________________________________\n";
-    cout <<"Print com sucesso 100%. Retornando ao menu principal...\n";
+    cout << endl;
 }
 
 void printAirlinesInCountry(vector<Airline> airlines, string country){
-    cout << "_____________________Name________________________________Callsign__________________________Country______________\n";
-    for(auto it=airlines.begin(); it != airlines.end(); it++){
-        if(it->getCountry()==country){
-            cout<<"|";
-            cout<<setw(41);
-            cout<<it->getName();
-            cout<<"|";
-            cout<<setw(30);
-            cout<<it->getCallSign();
-            cout<<"|";
-            cout<<setw(38);
-            cout<< it->getCountry();
-            cout <<"|";
-            cout<<"\n";
+
+    cout << "__________________________________________________________________________\n";
+    cout << left << setw(35) << "Name" << setw(30) << "Call sign" << setw(20) << "Country" << endl;
+    cout << "__________________________________________________________________________\n";
+
+    for (auto it = airlines.begin(); it != airlines.end(); it++){
+        if (it->getCountry() == country){
+            cout << left << setw(35) << it->getName() << setw(30) << it->getCallSign() << setw(20) << it->getCountry() << endl;
         }
     }
-    cout << "_________________________________________________________________________________________________________________\n";
-    cout <<"Print com sucesso 100%. Retornando ao menu principal...\n";
-    return;
+
+    cout << endl;
 }
-
-
 
 void printAllAirports(Manager manager){
     auto airports = manager.getAirports();
@@ -463,7 +450,6 @@ void printAllAirports(Manager manager){
 
 void printAirport(Manager manager, string val, const string& mode) {
     auto airports = manager.getAirports();
-    cout << "_____________________Name________________________________City__________________________Country_________________________\n";
     for (auto itr : airports) {
         Airport airport = itr.second;
         bool flag = false;
@@ -473,56 +459,62 @@ void printAirport(Manager manager, string val, const string& mode) {
             flag = true;
 
         if (flag) {
-            cout<<"|";
-            cout<<setw(47);
-            cout << airport.getName();
-            cout<<"|";
-            cout<<setw(30);
-            cout << airport.getCity();
-            cout<<"|";
-            cout<<setw(38);
-            cout << airport.getCountry();
-            cout <<"|";
-            cout<<"\n";
-            break;
+            cout << "___________________________________________________________________________________" << endl;
+            cout << left << setw(8) << "Code" << setw(35) << "Name" << setw(30) << "City" << setw(30) << "Country" << endl;
+            cout << "___________________________________________________________________________________" << endl;
+            cout << left << setw(8) << airport.getCode() << setw(35) << airport.getName() << setw(30) << airport.getCity() << setw(30) << airport.getCountry() << endl;
+            cout << endl;
+            return;
         }
     }
-    cout << "______________________________________________________________________________________________________________________\n";
-    cout <<"Print com sucesso 100%. Retornando ao menu principal...\n";
+
+    cout << "No airport meeting conditions was found" << endl;
+    cout << endl;
 }
 
 void printAirportsInCity(Manager manager, string city) {
     auto airports = manager.FindAirportsFromCity(city);
-    cout << "_____________________Name________________________________City__________________________Country_________________________\n";
-    for(string airport : airports){
-        cout<<"|";
-        cout<<setw(47);
-        cout<<airport;
-        cout<<"|";
-        cout<<setw(30);
-        cout<<city;
-        cout<<"|";
-        cout<<"\n";
+    unordered_map <string,Airport> airports1 = manager.getAirports();
+
+    cout << "___________________________________________________________________________________" << endl;
+    cout << left << setw(8) << "Code" << setw(35) << "Name" << setw(30) << "City" << setw(30) << "Country" << endl;
+    cout << "___________________________________________________________________________________" << endl;
+
+    for(string code : airports){
+        Airport airport = airports1[code];
+        cout << left << setw(8) << airport.getCode() << setw(35) << airport.getName() << setw(30) << airport.getCity() << setw(30) << airport.getCountry() << endl;
     }
-    cout << "______________________________________________________________________________________________________________________\n";
-    cout <<"Print com sucesso 100%. Retornando ao menu principal...\n";
+    cout << endl;
 }
 
 void printAirportsInCountry(Manager manager, string country) {
     auto airports = manager.FindAirportsFromCountry(country);
-    cout << "_____________________Name________________________________City__________________________Country_________________________\n";
-    for(string airport : airports){
-        cout<<"|";
-        cout<<setw(47);
-        cout<<airport;
-        cout<<"|";
-        cout<<setw(38);
-        cout<< country;
-        cout <<"|";
-        cout<<"\n";
+    unordered_map <string,Airport> airports1 = manager.getAirports();
+
+    cout << "___________________________________________________________________________________" << endl;
+    cout << left << setw(8) << "Code" << setw(35) << "Name" << setw(30) << "City" << setw(30) << "Country" << endl;
+    cout << "___________________________________________________________________________________" << endl;
+
+    for(string code : airports){
+        Airport airport = airports1[code];
+        cout << left << setw(8) << airport.getCode() << setw(35) << airport.getName() << setw(30) << airport.getCity() << setw(30) << airport.getCountry() << endl;
     }
-    cout << "______________________________________________________________________________________________________________________\n";
-    cout <<"Print com sucesso 100%. Retornando ao menu principal...\n";
+    cout << endl;
+}
+
+void printAirportFromCoordinates(Manager manager, Coordinates coordinates, int maxDistance) {
+    vector<string> airportCodes = manager.FindAirportsFromCoordinates(coordinates, maxDistance);
+    unordered_map <string, Airport> airports = manager.getAirports();
+
+    cout << "Airports within " << maxDistance << "km of (" << coordinates.getLatitude() << ", " << coordinates.getLongitude() << "):" << endl;
+    cout << "___________________________________________________________________________________" << endl;
+    cout << left << setw(8) << "Code" << setw(35) << "Name" << setw(30) << "City" << setw(30) << "Country" << endl;
+    cout << "___________________________________________________________________________________" << endl;
+    for (string code : airportCodes) {
+        Airport airport = airports[code];
+        cout << left << setw(8) << airport.getCode() << setw(35) << airport.getName() << setw(30) << airport.getCity() << setw(30) << airport.getCountry() << endl;
+    }
+    cout << endl;
 }
 
 void printNumFlights(Manager manager, string code, string mode) {
@@ -556,21 +548,6 @@ void printNumFlights(Manager manager, string code, string mode) {
         cout << "_____________________________________________________" << endl;
         cout << "There are " << res << " flights to different countries from " << code << "." << endl << endl;
     }
-}
-
-void printAirportFromCoordinates(Manager manager, Coordinates coordinates, int maxDistance) {
-    vector<string> airportCodes = manager.FindAirportsFromCoordinates(coordinates, maxDistance);
-    unordered_map <string, Airport> airports = manager.getAirports();
-
-    cout << "Airports within " << maxDistance << "km of (" << coordinates.getLatitude() << ", " << coordinates.getLongitude() << "):" << endl;
-    cout << "__________________________________________________________________________" << endl;
-    cout << left << setw(7) << "Code" << setw(40) << "Name" << setw(20) << "City" << setw(20) << "Country" << endl;
-    cout << "__________________________________________________________________________" << endl;
-    for (string code : airportCodes) {
-        Airport airport = airports[code];
-        cout << left << setw(7) << airport.getCode() << setw(40) << airport.getName() << setw(20) << airport.getCity() << setw(20) << airport.getCountry() << endl;
-    }
-    cout << endl;
 }
 
 void printBestRoute(Manager manager, vector<string> sources, vector<string> targets) {
@@ -632,4 +609,12 @@ void printBestRouteWithGreenlist(Manager manager, string source, string target, 
         cout << left << setw(40) << airports[flight.getSource()].getName() << setw(40) << airports[flight.getTarget()].getName() << setw(20) << flight.getAirline() << endl;
 
     cout << endl;
+}
+
+void printNumCountriesReachableInNFlights(Manager manager, string src, int n) {
+    unordered_map<string, Airport> airports = manager.getAirports();
+
+    int num = manager.CountCountriesReachableInNFlights(src, n);
+    cout << "____________________________________________________________________" << endl;
+    cout << num << " countries are reachable from " << airports[src].getName() << " in " << n << " flights." << endl;
 }
