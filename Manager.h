@@ -62,7 +62,7 @@ public:
          \Complexity  0(1)
          \Arguments @b String Country
      */
-    set<string> getCitysInContry(string country);
+    set<string> getCitiesInCountry(string country);
      //! An Airport method taking The airportCode and then returns the airport with that code.
      /*!
          This method utilizes unordered_map so it's very efficient.
@@ -98,26 +98,26 @@ public:
          \Arguments @b String airportCode
 
      */
-    int getNumFlightFromDiferentAirlinesTo(string aiportCode);
+    int getNumFlightFromDifferentAirlinesTo(string aiportCode);
      //! An integer method taking The AirportCode that returns the flights that begin in the Airport that the airportCode is referring to
      /*!
          This method utilizes the unordered_map so it's very efficient.
          \Complexity  0(1)
          \Arguments @b String airportCode
      */
-    int getNumFlightFromDiferentAirlinesFrom(string aiportCode);
+    int getNumFlightFromDifferentAirlinesFrom(string aiportCode);
      //! An integer method taking The AirportCode that returns the number of flights to a certain airport that the airportCode is referring to from different Countries.
      /*!
          \Complexity  0(nlog(n)) \n Where n is the number of flights
          \Arguments @b String airportCode
 
      */
-    int getNumFlightFromDiferentCountrysTo(string aiportCode);
+    int getNumFlightFromDifferentCountriesTo(string aiportCode);
      //! An integer method taking The AirportCode that returns the number of flights from a certain airport that the airportCode is referring to from different Countries
      /*!
          \Complexity  0(log(n)) \n Where the n is the number of flights
      */
-    int getNumFlightToDiferentCountrysFrom(string aiportCode);
+    int getNumFlightToDifferentCountriesFrom(string aiportCode);
      //! An unordered_map-string,Airline- method taking no arguments and returns an unordered_map, where the key is the AirlineCode.
      /*!
          \Complexity 0(1)
@@ -178,7 +178,7 @@ public:
          \Arguments @b Coordinates cordenadas
          \n @b int distanceSource
      */
-     vector<string> FindAirportsFromCordenadas(Coordinates cordenadas, int distanceSource);
+     vector<string> FindAirportsFromCoordinates(Coordinates coordinates, int distanceSource);
      //! A normal method taking a Country Name.
      /*!
          This method taking Country returns a vector with all AirportCodes in the Country
@@ -222,7 +222,7 @@ public:
         *
         \Complexity O(V+E)
         */
-     void pontosArticulacao();
+     void ArticulationPoints();
     /**
 
     @brief Returns the diameter of the graph, which is defined as the maximum distance between any pair of vertices in the graph.
@@ -237,7 +237,6 @@ public:
     @complexity O(|V| + |E|)
     */
     int componentesFortementeConexos();
-
 };
 
 

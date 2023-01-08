@@ -20,7 +20,7 @@ private:
     /**
      * @brief The airport coordinates.
      */
-    Coordinates cordenadas;
+    Coordinates coordinates;
 
     /**
      * @brief The airport name.
@@ -65,7 +65,7 @@ public:
      \Complexity  0(1)
      * @return The airport coordinates.
      */
-    Coordinates getCordenadas();
+    Coordinates getCoordinates();
 
     /**
      * @brief Returns the airport name.

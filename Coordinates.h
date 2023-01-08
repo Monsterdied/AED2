@@ -52,14 +52,14 @@ public:
      \Complexity  0(1)
      * @return The latitude.
      */
-    double getlatitude();
+    double getLatitude();
 
     /**
      * @brief Returns the longitude.
      \Complexity  0(1)
      * @return The longitude.
      */
-    double getlongitude();
+    double getLongitude();
 
     /**
      * @brief Compares this Coordinates object with another for equality.

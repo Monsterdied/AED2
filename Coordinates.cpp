@@ -8,10 +8,10 @@ Coordinates::Coordinates(double latitude , double longitude){
     this->latitude = latitude;
     this->longitude = longitude;
 }
-double Coordinates::getlatitude(){
+double Coordinates::getLatitude(){
     return latitude;
 }
-double Coordinates::getlongitude(){
+double Coordinates::getLongitude(){
     return longitude;
 }
 
@@ -19,11 +19,12 @@ Coordinates::Coordinates() {
     latitude = 0;
     longitude=0;
 }
-double Coordinates::getDistance(Coordinates coordenadas ){
+
+double Coordinates::getDistance(Coordinates coordinates ){
     double lat1 = this->latitude;
-    double lat2 = coordenadas.latitude;
+    double lat2 = coordinates.latitude;
     double lon1 = this->longitude;
-    double lon2 = coordenadas.longitude;
+    double lon2 = coordinates.longitude;
 
     double dLat = (lat2 - lat1) *
                   M_PI / 180.0;
@@ -44,8 +45,9 @@ double Coordinates::getDistance(Coordinates coordenadas ){
 
 
 }
-bool Coordinates::operator==(const Coordinates& cordenada) const
+
+bool Coordinates::operator==(const Coordinates& coordinates) const
 {
-    if (this->latitude == cordenada.latitude && this->longitude == cordenada.longitude) return true;
+    if (this->latitude == coordinates.latitude && this->longitude == coordinates.longitude) return true;
     else return false;
 }
