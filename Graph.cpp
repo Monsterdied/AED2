@@ -59,6 +59,8 @@ void Graph::dfs_art(string v, bool isRoot, int &index, unordered_set<string> &po
     int rootChilds = 0;
     cout<<"oia status\n";
     cout<<nodes["OIA"].low<<" "<<nodes["OIA"].num<<" "<<nodes["OIA"].inStack<<"\n";
+    cout<<"CKS status\n";
+    cout<<nodes["CKS"].low<<" "<<nodes["CKS"].num<<" "<<nodes["CKS"].inStack<<"\n";
     for (const Flight &edge : nodes[v].adj) {
         string w = edge.getTarget();
         if (nodes[w].num == 0) {
@@ -66,8 +68,11 @@ void Graph::dfs_art(string v, bool isRoot, int &index, unordered_set<string> &po
                 rootChilds++;
             dfs_art(w, false, index, points);
             nodes[v].low = min(nodes[v].low, nodes[w].low);
-            if ((!isRoot && nodes[w].low >= nodes[v].num) || (isRoot && rootChilds > 1))
+            if ((!isRoot && nodes[w].low >= nodes[v].num and nodes[w].low!=2) || (isRoot && rootChilds > 1)){
+                if(v=="OIA"){cout<<w<<"\n\n\n";}
                 points.insert(v);
+            }
+
         } else if (nodes[w].inStack)
             nodes[v].low = min(nodes[v].low, nodes[w].num);
     }
