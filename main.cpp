@@ -1,19 +1,10 @@
 #include <iostream>
 #include <vector>
-#include <fstream>
 #include "Coordinates.h"
 #include "Airport.h"
 #include "Airline.h"
 #include "Manager.h"
-#include<bits/stdc++.h>
-#include <iostream>
-#include <vector>
-#include <fstream>
-#include "Coordinates.h"
-#include "Airport.h"
-#include "Airline.h"
-#include "Manager.h"
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 
 void mainMenu(Manager &manager);
 
@@ -93,7 +84,7 @@ void airlinerMenu(Manager manager) {
             cout << " 3. Search airliner by call sign" << endl;
             cout << " 4. Show airliners in country" << endl;
             cout << " 5. Show all airliners" << endl;
-            cout << " 9. Close program" << endl;
+            cout << " 9. Go to previous menu" << endl;
             cout << "Type option:";
             cin >> input;
             cout << endl;
