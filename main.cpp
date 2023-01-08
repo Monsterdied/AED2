@@ -14,7 +14,7 @@ void airlinerMenu(Manager manager);
 void printAirlinesInCountry(vector<Airline> airlines, string country);
 void printAllAirlines(Manager manager);
 void printAirline(vector<Airline> airlines, string string1, const string& mode);
-
+string menuInputAeroports();
 void airportMenu(Manager manager);
 void printAirport(Manager manager, string val, const string& mode);
 void printAllAirports(Manager manager);
@@ -22,7 +22,7 @@ void printAirportsInCity(Manager manager, string city);
 void printAirportsInCountry(Manager manager, string country);
 void printAirportFromCoordinates(Manager manager, Coordinates coordinates, int maxDistance);
 void printNumCountriesReachableInNFlights(Manager manager, string src, int n);
-
+void printBestRoute1(Manager manager, string sources, string targets);
 void flightMenu(Manager manager);
 void printBestRoute(Manager manager, vector<string> sources, vector<string> targets);
 void printBestRouteWithBlacklist(Manager manager, string source, string target, set<string> blackListAirlines);
@@ -251,7 +251,7 @@ void flightMenu(Manager manager) {
         do {
             cout << "___________________________________________________________________" << endl;
             cout << "Select one of the following options: " << endl;
-            cout << " 1. Show routes between two airports with fewest connecting flights" << endl;
+            cout << " 1. Show all routes between two airports with fewest connecting flights" << endl;
             cout << " 2. Show routes between multiple with fewest connecting flights" << endl;
             cout << " 3. Same as 1 but excluding certain airlines" << endl;
             cout << " 4. Same as 1 but only using certain airlines" << endl;
@@ -265,41 +265,242 @@ void flightMenu(Manager manager) {
         } while(!(input == "1" || input == "2" || input == "3" || input == "4" || input == "9"));
 
         if (input == "1") {
-            string src, target;
-            cout << "Type airport code of source airport:";
-            cin >> src;
-            cout << "Type airport code of target airport:";
-            cin >> target;
-            cout << endl;
-            vector<string> vec1, vec2;
-            vec1.push_back(src);
-            vec2.push_back(target);
-            printBestRoute(manager, vec1, vec2);
+            string src, target , type;
+            do{
+                cout << "Select one of the following options: " << endl;
+                cout << " 1. AirportCode" << endl;
+                cout << " 2. Airport Name"<<endl;
+                cout<<"Type option:";
+                cin>>type;
+                if(type == "1"){
+                    cout << "Type airport code of source airport:";
+                    cin >> src;
+                    cout << "Type airport code of target airport:";
+                    cin >> target;
+                    cout << endl;}
+                if (type == "2"){
+                    cout << "Type airport name of source airport:";
+                    string name1, name2;
+                    cin >> name1;
+                    getline(cin, name2);
+                    cout << endl;
+                    string srcName = name1 + name2;
+                    cout << "Type airport name of target airport:";
+                    cin >> name1;
+                    getline(cin, name2);
+                    cout << endl;
+                    string targetName = name1 + name2;
+                    auto airports = manager.getAirports();
+                    for (auto itr : airports){
+                        if(itr.second.getName()==srcName){
+                            src = itr.second.getCode();
+                        }
+                        if(itr.second.getName()==targetName){
+                            target = itr.second.getCode();
+                        }
+                    }
+                }
+                if(type != "1" && type != "2"){
+                    cout<<"wrong input :"<<type<<"\ntry Again\n\n"<<endl;
+                }
+            }while(type != "1" && type != "2");
+
+            printBestRoute1(manager, src, target);
         }
         else if (input == "2") {
             vector<string> vec1, vec2;
-            string src;
-            while (true) {
-                cout << "Type source airport or type 9 to break loop:";
-                cin >> src;
-                cout << endl;
-                if (src == "9")
-                    break;
-                else
-                    vec1.push_back(src);
-            }
+            string src, target , type;
+            do{
+                cout << "Select one of the following options: " << endl;
+                cout << " 1. AirportCode" << endl;
+                cout << " 2. Airport Name"<<endl;
+                cout << " 3. City"<<endl;
+                cout << " 4. Country"<<endl;
+                cout << " 5. Coordinates"<<endl;
+                cout << " 6. Abort"<<endl;
+                cout<<"Type option:";
+                cin>>type;
+                if(type == "1"){
+                    while (true) {
+                        cout << "Type source airport or type 9 to break loop:";
+                        cin >> src;
+                        cout << endl;
+                        if (src == "9")
+                            break;
+                        else
+                            vec1.push_back(src);
+                    }
+                }
+                if (type == "2"){
+                    while (true) {
+                        cout << "Type airport name of source airport or type 9 to break loop:";
+                        string name1, name2;
+                        cin >> name1;
+                        cout << endl;
+                        if (name1 == "9")
+                            break;
+                        else{
+                            getline(cin, name2);
+                            cout << endl;
+                            string srcName = name1 + name2;
+                            cout << endl;
+                            auto airports = manager.getAirports();
+                            for (auto itr : airports){
+                                if(itr.second.getName()==srcName){
+                                    src = itr.second.getCode();
+                                }
+                            }
+                            vec1.push_back(src);
+                        }
 
-            string target;
-            while (true) {
-                cout << "Type target airport or type 9 to break loop:";
-                cin >> target;
-                cout << endl;
-                if (target == "9")
-                    break;
-                else
-                    vec2.push_back(target);
-            }
+                    }
 
+                }
+                if (type == "3"){
+                    string city1,city2,city;
+                    do{
+                        cout<<"Insert City Name source :";
+                        cin>>city1;
+                        getline(cin, city2);
+                        cout << endl;
+                        city = city1 + city2;
+                        if(manager.FindAirportsFromCity(city).empty()){
+                            cout<<"City Name incorrect \n";
+                        }
+                    }while(manager.FindAirportsFromCity(city).empty());
+                    vec1=manager.FindAirportsFromCity(city);
+                }
+                if (type == "4"){
+                    string country1,country2,country;
+                    do{
+                        cout<<"Insert Country Name source :";
+                        cin>>country1;
+                        getline(cin, country2);
+                        cout << endl;
+                        country = country1 + country2;
+                        if(manager.FindAirportsFromCountry(country).empty()){
+                            cout<<"Country Name incorrect \n";
+                        }
+                    }while(manager.FindAirportsFromCountry(country).empty());
+                    vec1=manager.FindAirportsFromCountry(country);
+                }
+                if (type == "5"){
+                    double latitude,longitude;
+                    int dis;
+                    cout<<"Insert Latitude source:";
+                    cin>>latitude;
+                    cout<<"\n";
+                    cout<<"Insert Longitude source:";
+                    cin>>longitude;
+                    cout<<"\n";
+                    cout<<"Insert Distance from Coordinates source:";
+                    cin>>dis;
+                    cout<<"\n";
+                    vec1=manager.FindAirportsFromCoordinates(Coordinates(latitude,longitude),dis);
+                }
+                if(type == "6"){
+                    return;
+                }
+                if(type != "1" && type != "2" && type != "3" && type != "4" && type != "5"){
+                    cout<<"wrong input :"<<type<<"\ntry Again\n\n"<<endl;
+                }
+            }while(type != "1" && type != "2" && type != "3" && type != "4" && type != "5");
+                //parte 2
+            do{
+                cout << "Select one of the following options: " << endl;
+                cout << " 1. AirportCode" << endl;
+                cout << " 2. Airport Name"<<endl;
+                cout << " 3. City"<<endl;
+                cout << " 4. Country"<<endl;
+                cout << " 5. Coordinates"<<endl;
+                cout << " 6. Abort"<<endl;
+                cout<<"Type option:";
+                cin>>type;
+                if(type == "1"){
+                    while (true) {
+                        cout << "Type Target airport or type 9 to break loop:";
+                        cin >> src;
+                        cout << endl;
+                        if (src == "9")
+                            break;
+                        else
+                            vec2.push_back(src);
+                    }
+                }
+                if (type == "2"){
+                    while (true) {
+                        cout << "Type airport name of Target airport or type 9 to break loop:";
+                        string name1, name2;
+                        cin >> name1;
+                        cout << endl;
+                        if (name1 == "9")
+                            break;
+                        else{
+                            getline(cin, name2);
+                            cout << endl;
+                            string srcName = name1 + name2;
+                            cout << endl;
+                            auto airports = manager.getAirports();
+                            for (auto itr : airports){
+                                if(itr.second.getName()==srcName){
+                                    src = itr.second.getCode();
+                                }
+                            }
+                            vec2.push_back(src);
+                        }
+
+                    }
+
+                }
+                if (type == "3"){
+                    string city1,city2,city;
+                    do{
+                        cout<<"Insert City Name Target :";
+                        cin>>city1;
+                        getline(cin, city2);
+                        cout << endl;
+                        city = city1 + city2;
+                        if(manager.FindAirportsFromCity(city).empty()){
+                            cout<<"City Name incorrect \n";
+                        }
+                    }while(manager.FindAirportsFromCity(city).empty());
+                    vec2=manager.FindAirportsFromCity(city);
+                }
+                if (type == "4"){
+                    string country1,country2,country;
+                    do{
+                        cout<<"Insert Country Name Target :";
+                        cin>>country1;
+                        getline(cin, country2);
+                        cout << endl;
+                        country = country1 + country2;
+                        if(manager.FindAirportsFromCountry(country).empty()){
+                            cout<<"Country Name incorrect \n";
+                        }
+                    }while(manager.FindAirportsFromCountry(country).empty());
+                    vec2=manager.FindAirportsFromCountry(country);
+                }
+                if (type == "5"){
+                    double latitude,longitude;
+                    int dis;
+                    cout<<"Insert Latitude Target:";
+                    cin>>latitude;
+                    cout<<"\n";
+                    cout<<"Insert Longitude Target:";
+                    cin>>longitude;
+                    cout<<"\n";
+                    cout<<"Insert Distance from Coordinates Target:";
+                    cin>>dis;
+                    cout<<"\n";
+                    vec2=manager.FindAirportsFromCoordinates(Coordinates(latitude,longitude),dis);
+                }
+                if(type == "6"){
+                    return;
+                }
+                if(type != "1" && type != "2" && type != "3" && type != "4" && type != "5"){
+                    cout<<"wrong input :"<<type<<"\ntry Again\n\n"<<endl;
+                }
+            }while(type != "1" && type != "2" && type != "3" && type != "4" && type != "5");
             printBestRoute(manager, vec1, vec2);
         }
         else if (input == "3") {
@@ -574,10 +775,39 @@ void printBestRoute(Manager manager, vector<string> sources, vector<string> targ
     cout << "_______________________________________________________________________________________" << endl;
     cout << left << setw(40) << "Source airport" << setw(40) << "Target airport" << setw(20) << "Airline" << endl;
     cout << "_______________________________________________________________________________________" << endl;
+    int i = 0;
     for (vector<Flight> route : routes)
+        for (Flight flight : route) {
+            i++;
+            string result = "Route :" + to_string(i) + ".";
+            cout << left << setfill('-') << setw(90) << result << "\n" << setfill(' ');
+            cout << left << setw(40) << airports[flight.getSource()].getName() << setw(40)
+                 << airports[flight.getTarget()].getName() << setw(20) << flight.getAirline() << endl;
+        }
+    cout << endl;
+}
+void printBestRoute1(Manager manager, string source, string target) {
+    vector<vector<Flight>> routes =  manager.FindBestRoutes1(source, target);
+    unordered_map<string, Airport> airports = manager.getAirports();
+
+    if (routes.empty() ) {
+        cout << "___________________" << endl;
+        cout << "No available routes" << endl;
+        return;
+    }
+
+    cout << "Flight with fewest connecting flights from source airports to target airports:" << endl;
+    cout << "_______________________________________________________________________________________" << endl;
+    cout << left << setw(40) << "Source airport" << setw(40) << "Target airport" << setw(20) << "Airline" << endl;
+    cout << "_______________________________________________________________________________________" << endl;
+    int i = 0;
+    for (vector<Flight> route : routes){
+        i++;
+        string result = "Route :" + to_string(i) + ".";
+        cout<< left << setfill ('-')<<setw(90)<<result<< "\n"<<setfill (' ');
         for (Flight flight : route)
             cout << left << setw(40) << airports[flight.getSource()].getName() << setw(40) << airports[flight.getTarget()].getName() << setw(20) << flight.getAirline() << endl;
-
+    }
     cout << endl;
 }
 
