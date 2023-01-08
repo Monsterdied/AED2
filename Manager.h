@@ -135,7 +135,7 @@ public:
          \Arguments @b String source
          \n @b String target
      */
-     vector<Flight> FindBestRoute(string source, string target);// da output de 1 caminho com a route mais pequena
+     vector<Flight> FindBestRoute(string source, string target);
      //! A vector-Flight- method taking a set and string source (AirportCode) and string Target (AirportCode).
      /*!
          \n Returns a path with the shortest length possible that goes from the airportCode source and airportCode target with blacklisted Airlines.
@@ -145,7 +145,7 @@ public:
          \n @b String target
          \n @b Set-string- blackListAirlines
      */
-     vector<Flight> FindBestRouteWithBlackListed(string source, string target,set<string> blackListAirlines);//faz o mesmo que a anterior com black listed
+     vector<Flight> FindBestRouteWithBlackListed(string source, string target,set<string> blackListAirlines);
      //! A vector-Flight- method taking a set and string source (AirportCode) and string Target (AirportCode).
      /*!
          Returns a path with the shortest length possible that goes from the airportCode source and airportCode target
@@ -155,7 +155,7 @@ public:
          \n @b String target
          \n @b Set-string- greenListAirlines
      */
-     vector<Flight> FindBestRouteWithGreenListed(string source, string target,set<string> greenListAirlines);//faz o mesmo que a anterior com white listed
+     vector<Flight> FindBestRouteWithGreenListed(string source, string target,set<string> greenListAirlines);
      //! A vector-Flight- method taking a string source (AirportCode) and string Target (AirportCode).
      /*!
          Returns all possible paths with the shortest length possible that goes from the airportCode source and airportCode target
@@ -163,14 +163,14 @@ public:
          \Arguments @b String source
          \n @b String target
      */
-     vector<vector<Flight>> FindBestRoutes1(string source, string target);//função calcula todas as routes entre os dois aeroportos
+     vector<vector<Flight>> FindBestRoutes1(string source, string target);
      //! This function is auxiliary to FindBestRoutes1.
      /*!
          Returns all possible paths with the shortest length possible that goes from the airportCode source and airportCode target
          \Complexity  O(R * (V+E)) , where R is the number of routes found and V is the number of vertices (airports) in the graph and E is the number of edges (flights) in the graph
 
      */
-     vector<vector<Flight>> FindBestRoutes(string source, string target,vector<vector<Flight>>& result);//função auxiliar a anterior
+     vector<vector<Flight>> FindBestRoutes(string source, string target,vector<vector<Flight>>& result);
      //! A vector-string- method taking Coordinates and a int distance that returns an vector.
      /*!
          This method taking Coordinates and a int distance that returns a vector with the AirportCodes with the distance of distanteSource from the coordinates.
@@ -178,20 +178,20 @@ public:
          \Arguments @b Coordenadas cordenadas
          \n @b int distanceSource
      */
-     vector<string> FindAirportsFromCordenadas(Coordenadas cordenadas, int distanceSource);//Encontra todos os aeroportos a distancia de distanceSource da cordenada
+     vector<string> FindAirportsFromCordenadas(Coordenadas cordenadas, int distanceSource);
      //! A normal method taking a Country Name.
      /*!
          This method taking Country returns a vector with all AirportCodes in the Country
          \Complexity  0(n) \n Where n is the number of airports in the country
      */
-     vector<string> FindAirportsFromCountry(string country);//Encontra todos os aeroportos no pais contry
+     vector<string> FindAirportsFromCountry(string country);
      //! A vector-string- method taking a City Name.
      /*!
          This method taking City Name that returns a vector with all AirportCodes in the city
          \Complexity  0(n) Where n is the number of airports in the city.
          \Arguments @b string city
      */
-     vector<string> FindAirportsFromCity(string city);//Encontra todos os aeroportos no cidade
+     vector<string> FindAirportsFromCity(string city);
      //! A vector-flight- method taking a vector of strings starts and a vector with targets and returns a vector of vectors with strings.
      /*!
          This method returns a route per combination of airports if they have the minimum length.
@@ -200,7 +200,7 @@ public:
          \Arguments @b vector-string- starts
          \n @b vector-string- targets
      */
-     vector<vector<Flight>> FindBestRoutesFromAirportsToAirports(vector<string> starts, vector<string> targets);//encontra entre os varios paises uma rota e da output as rotas com tamanho minimo
+     vector<vector<Flight>> FindBestRoutesFromAirportsToAirports(vector<string> starts, vector<string> targets);
      //! A integer method taking a  strings source and an integer n, where n is the number of flights and the source is the airportcode.
      /*!
          This method returns the number of countries that are reachable within n flights
@@ -208,7 +208,7 @@ public:
          \Arguments @b string src
          \n @b int n
      */
-     int CountCountriesReachableInNFlights(const string& src, int n);//da output ao numero de paises que podes chegar de src em y fligths
+     int CountCountriesReachableInNFlights(const string& src, int n);
      //! A unordered_set-string- method taking a  strings source and an integer n, where y is the number of flights and the source is the airportcode.
      /*!
          This method returns the an set of countries that are reachable within y flights
@@ -216,21 +216,26 @@ public:
          \Arguments @b string src
          \n @b int y
      */
-     unordered_set<string> CountriesReachableInYFlights(const string& src, int y);//da output aos paises que podes chegar de src em y fligths
-     //! A set-string- method taking no arguments.
-     /*!
-         This method returns the an set where when used with .size returns the number of the articulation points.
-         \Complexity   O(n+m) \n  Where n is the number of airports, m is the number of flights.
-     */
-     void pontosArticulacao();//find articulation Airports sao os quais se removeres em ves de um ciclo ficas com dois
-     /**
-     * @brief Finds the diameter of the graph by running BFS from each node
-     * @return The diameter of the graph
-     *
-     * The complexity of this function is O(n^2), as it runs BFS from each node in the graph
-     * and checks the distance to all other nodes.
-     */
+     unordered_set<string> CountriesReachableInYFlights(const string& src, int y);
+        /**
+        * @brief Identifies the articulation points in the graph and prints them to the console.
+        *
+        \Complexity O(V+E)
+        */
+     void pontosArticulacao();
+    /**
+
+    @brief Returns the diameter of the graph, which is defined as the maximum distance between any pair of vertices in the graph.
+    @return The diameter of the graph.
+    @complexity O(|V| * (|V| + |E|))
+    */
     int diameter();
+     /**
+ 
+    @brief Finds the strongly connected components (SCCs) in the graph.
+    @return The number of SCCs found.
+    @complexity O(|V| + |E|)
+    */
     int componentesFortementeConexos();
 
 };

@@ -134,24 +134,43 @@ public:
      * @param ap A set of articulation points in the graph.
      */
     void dfs_art(string v, bool isRoot, int &index, unordered_set<string> &points);
-    /**
-    * @brief Finds the diameter of the graph by running BFS from each node
-    * @return The diameter of the graph
-    *
-    * The complexity of this function is O(n^2), as it runs BFS from each node in the graph
-    * and checks the distance to all other nodes.
-    */
+/**
+
+@brief Returns the diameter of the graph, which is defined as the maximum distance between any pair of vertices in the graph.
+@return The diameter of the graph.
+@complexity O(|V| * (|V| + |E|))
+*/
     unsigned diameter();
-    /**
-    * @brief Runs BFS from a given starting node and updates the distance of all visited nodes
-    * @param v The starting node
-    *
-    * The complexity of this function is O(n+m), where n is the number of nodes and m is the number of edges.
-    */
-    void bfs_distance(string v);
+/**
+
+@brief Resets the state of all nodes in the graph.
+@complexity O(|V|)
+*/
     void resetNodes();
+/**
+
+@brief Performs a breadth-first search (BFS) from the given starting vertex and sets the dist property of each visited node to its distance from the starting vertex.
+@param[in] v The starting vertex.
+@complexity O(|V| + |E|)
+*/
+    void bfs_distance(std::string v);
+/**
+
+@brief Finds the strongly connected components (SCCs) in the graph.
+@return The number of SCCs found.
+@complexity O(|V| + |E|)
+*/
     int findSCC();
-    void dfsSCC(string v, int &index, stack<string> &S, vector<unordered_set<string>> &sccs);
+    /**
+     * @brief Finds the SCCs in the graph using a depth-first search (DFS).
+     * @param v The starting vertex for the DFS.
+     * @param index The index of v in the DFS tree.
+     * @param S The stack used in the DFS.
+     * @param sccs A vector to store the identified SCCs.
+     *
+     * Time complexity: O(V+E)
+     */
+    void dfsSCC(std::string v, int& index, std::stack<std::string>& S, std::vector<std::unordered_set<std::string>>& sccs);
 };
 
 
