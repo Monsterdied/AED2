@@ -1,0 +1,164 @@
+\hypertarget{class_flight}{}\doxysection{Flight Class Reference}
+\label{class_flight}\index{Flight@{Flight}}
+
+
+Represents a flight.  
+
+
+
+
+{\ttfamily \#include $<$Flight.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_flight_a4f84b84cedcb2aaab98b7326a41cca94}{Flight}} (string \mbox{\hyperlink{class_flight_a0b5ab5d488ad8351ecde4d55fa5e63a6}{source}}, string \mbox{\hyperlink{class_flight_a6a694d9d73c52bbb05e3185075a5fd01}{target}}, string \mbox{\hyperlink{class_flight_a3a6fa8a4d15051ad2fde4fd7f57e7563}{airline}})
+\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{class_flight}{Flight}} object with the given source, target, and airline codes. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_flight_a4817a864d4a80d89b51f4ff8f4414bb0}{get\+Source}} () const
+\begin{DoxyCompactList}\small\item\em Returns the source airport code. \textbackslash{}\+Complexity 0(1) \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_flight_a30d888419e2d0b3cb4d9e0730b4a4182}{get\+Target}} () const
+\begin{DoxyCompactList}\small\item\em Returns the target airport code. \textbackslash{}\+Complexity 0(1) \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_flight_adcc829ffb939411bcdf440c3882d3f44}{get\+Airline}} () const
+\begin{DoxyCompactList}\small\item\em Returns the airline code operating the flight. \textbackslash{}\+Complexity 0(1) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_flight_a71539207a506d38808edd7ff7a7e906e}{get\+Used}} () const
+\begin{DoxyCompactList}\small\item\em Returns whether the flight has been used or not. \textbackslash{}\+Complexity 0(1) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flight_a30eb8c1ac9980996e26a0445d72c35eb}{set\+Used}} (bool use)
+\begin{DoxyCompactList}\small\item\em Sets the used status of the flight. \textbackslash{}\+Complexity 0(1) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_flight_a34688d1042ec24e775666629802d7e74}{operator==}} (const \mbox{\hyperlink{class_flight}{Flight}} \&flight1) const
+\begin{DoxyCompactList}\small\item\em Compares this \mbox{\hyperlink{class_flight}{Flight}} object with another for equality. \textbackslash{}\+Complexity 0(1) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_flight_a0b5ab5d488ad8351ecde4d55fa5e63a6}\label{class_flight_a0b5ab5d488ad8351ecde4d55fa5e63a6}} 
+string {\bfseries source}
+\begin{DoxyCompactList}\small\item\em The source airport code. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_flight_a6a694d9d73c52bbb05e3185075a5fd01}\label{class_flight_a6a694d9d73c52bbb05e3185075a5fd01}} 
+string {\bfseries target}
+\begin{DoxyCompactList}\small\item\em The target airport code. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_flight_a3a6fa8a4d15051ad2fde4fd7f57e7563}\label{class_flight_a3a6fa8a4d15051ad2fde4fd7f57e7563}} 
+string {\bfseries airline}
+\begin{DoxyCompactList}\small\item\em The airline code operating the flight. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_flight_a59fb9b5bd2d6b76aff587f73a236ad29}\label{class_flight_a59fb9b5bd2d6b76aff587f73a236ad29}} 
+bool {\bfseries used}
+\begin{DoxyCompactList}\small\item\em Indicates whether the flight has been used or not. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a flight. 
+
+The \mbox{\hyperlink{class_flight}{Flight}} class represents a flight, with its source and target airports, and the airline operating the flight. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_flight_a4f84b84cedcb2aaab98b7326a41cca94}\label{class_flight_a4f84b84cedcb2aaab98b7326a41cca94}} 
+\index{Flight@{Flight}!Flight@{Flight}}
+\index{Flight@{Flight}!Flight@{Flight}}
+\doxysubsubsection{\texorpdfstring{Flight()}{Flight()}}
+{\footnotesize\ttfamily Flight\+::\+Flight (\begin{DoxyParamCaption}\item[{string}]{source,  }\item[{string}]{target,  }\item[{string}]{airline }\end{DoxyParamCaption})}
+
+
+
+Constructs a \mbox{\hyperlink{class_flight}{Flight}} object with the given source, target, and airline codes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & The source airport code. \\
+\hline
+{\em target} & The target airport code. \\
+\hline
+{\em airline} & The airline code operating the flight. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_flight_adcc829ffb939411bcdf440c3882d3f44}\label{class_flight_adcc829ffb939411bcdf440c3882d3f44}} 
+\index{Flight@{Flight}!getAirline@{getAirline}}
+\index{getAirline@{getAirline}!Flight@{Flight}}
+\doxysubsubsection{\texorpdfstring{getAirline()}{getAirline()}}
+{\footnotesize\ttfamily string Flight\+::get\+Airline (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the airline code operating the flight. \textbackslash{}\+Complexity 0(1) 
+
+\begin{DoxyReturn}{Returns}
+The airline code operating the flight. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_flight_a4817a864d4a80d89b51f4ff8f4414bb0}\label{class_flight_a4817a864d4a80d89b51f4ff8f4414bb0}} 
+\index{Flight@{Flight}!getSource@{getSource}}
+\index{getSource@{getSource}!Flight@{Flight}}
+\doxysubsubsection{\texorpdfstring{getSource()}{getSource()}}
+{\footnotesize\ttfamily string Flight\+::get\+Source (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the source airport code. \textbackslash{}\+Complexity 0(1) 
+
+\begin{DoxyReturn}{Returns}
+The source airport code. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_flight_a30d888419e2d0b3cb4d9e0730b4a4182}\label{class_flight_a30d888419e2d0b3cb4d9e0730b4a4182}} 
+\index{Flight@{Flight}!getTarget@{getTarget}}
+\index{getTarget@{getTarget}!Flight@{Flight}}
+\doxysubsubsection{\texorpdfstring{getTarget()}{getTarget()}}
+{\footnotesize\ttfamily string Flight\+::get\+Target (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the target airport code. \textbackslash{}\+Complexity 0(1) 
+
+\begin{DoxyReturn}{Returns}
+The target airport code. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_flight_a71539207a506d38808edd7ff7a7e906e}\label{class_flight_a71539207a506d38808edd7ff7a7e906e}} 
+\index{Flight@{Flight}!getUsed@{getUsed}}
+\index{getUsed@{getUsed}!Flight@{Flight}}
+\doxysubsubsection{\texorpdfstring{getUsed()}{getUsed()}}
+{\footnotesize\ttfamily bool Flight\+::get\+Used (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns whether the flight has been used or not. \textbackslash{}\+Complexity 0(1) 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if the flight has been used, {\ttfamily false} otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_flight_a34688d1042ec24e775666629802d7e74}\label{class_flight_a34688d1042ec24e775666629802d7e74}} 
+\index{Flight@{Flight}!operator==@{operator==}}
+\index{operator==@{operator==}!Flight@{Flight}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Flight\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_flight}{Flight}} \&}]{flight1 }\end{DoxyParamCaption}) const}
+
+
+
+Compares this \mbox{\hyperlink{class_flight}{Flight}} object with another for equality. \textbackslash{}\+Complexity 0(1) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em flight1} & The \mbox{\hyperlink{class_flight}{Flight}} object to compare with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if the \mbox{\hyperlink{class_flight}{Flight}} objects are equal, {\ttfamily false} otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_flight_a30eb8c1ac9980996e26a0445d72c35eb}\label{class_flight_a30eb8c1ac9980996e26a0445d72c35eb}} 
+\index{Flight@{Flight}!setUsed@{setUsed}}
+\index{setUsed@{setUsed}!Flight@{Flight}}
+\doxysubsubsection{\texorpdfstring{setUsed()}{setUsed()}}
+{\footnotesize\ttfamily void Flight\+::set\+Used (\begin{DoxyParamCaption}\item[{bool}]{use }\end{DoxyParamCaption})}
+
+
+
+Sets the used status of the flight. \textbackslash{}\+Complexity 0(1) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em use} & The used status of the flight. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Flight.\+h\item 
+Flight.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,418 @@
+\hypertarget{class_manager}{}\doxysection{Manager Class Reference}
+\label{class_manager}\index{Manager@{Manager}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_manager_a1658ff9f18e38ccd9cb8b0b371b9c20b}\label{class_manager_a1658ff9f18e38ccd9cb8b0b371b9c20b}} 
+{\bfseries Manager} ()
+\begin{DoxyCompactList}\small\item\em An class constructor taking no arguments and doesn\textquotesingle{}t return anything. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_manager_a65a8901392a0e3da2024988bcedd8899}{Read\+Air\+Lines}} ()
+\begin{DoxyCompactList}\small\item\em An normal method taking no arguments and doesn\textquotesingle{}t return anything. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_manager_aaa6c0164ea786396d14a92a79a764ea4}{Read\+Airports}} ()
+\begin{DoxyCompactList}\small\item\em An void method taking no arguments and doesn\textquotesingle{}t return anything. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_manager_a039fd08ed25d845325d1a685d3a07c15}{Read\+Flights}} ()
+\begin{DoxyCompactList}\small\item\em An void method taking no arguments and doesn\textquotesingle{}t return anything. \end{DoxyCompactList}\item 
+list$<$ string $>$ \mbox{\hyperlink{class_manager_a162f18425b7fee335d9845242a97298c}{get\+Airports\+In\+City}} (string city)
+\begin{DoxyCompactList}\small\item\em An List$<$\+String$>$ method taking the name of the city and returns the airports in that city. \end{DoxyCompactList}\item 
+set$<$ string $>$ \mbox{\hyperlink{class_manager_a1f0dea4b2bb400b370daebd17808c0e4}{get\+Cities\+In\+Country}} (string country)
+\begin{DoxyCompactList}\small\item\em An set$<$string$>$ method taking the name of the country and returns the cities in that country. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_airport}{Airport}} \mbox{\hyperlink{class_manager_abb08d808934e22574363ed60c41643fa}{get\+Airport\+With\+Code}} (string airport\+Code)
+\begin{DoxyCompactList}\small\item\em An \mbox{\hyperlink{class_airport}{Airport}} method taking The airport\+Code and then returns the airport with that code. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_airline}{Airline}} \mbox{\hyperlink{class_manager_ad2c398f799ac50c5fb7414bf34f2b683}{get\+Airline\+With\+Code}} (string airline\+Code)
+\begin{DoxyCompactList}\small\item\em An \mbox{\hyperlink{class_airline}{Airline}} method taking The airline\+Code that returns the airline with that code. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_manager_ab7be9d31f7e630999d18f12a244bc45e}{get\+Num\+Flight\+To}} (string aiport\+Code)
+\begin{DoxyCompactList}\small\item\em An integer method that takes the airport\+Code and returns the number of flights to that airport. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_manager_a3268bf239d5d531b839c33064bcc35f2}{get\+Num\+Flight\+From}} (string aiport\+Code)
+\begin{DoxyCompactList}\small\item\em An integer method taking The airport\+Code and that returns the number of flights from that airport. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_manager_a4ab77172ecca457ffd1177783ef468e3}{get\+Num\+Flight\+From\+Different\+Airlines\+To}} (string aiport\+Code)
+\begin{DoxyCompactList}\small\item\em An integer method taking the airport\+Code and returns the number of flights to a certain airport that has the airport\+Code and is referring to from different airlines. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_manager_a16df932e0210ff15fdc5590f3e4ba3fa}{get\+Num\+Flight\+From\+Different\+Airlines\+From}} (string aiport\+Code)
+\begin{DoxyCompactList}\small\item\em An integer method taking The Airport\+Code that returns the flights that begin in the \mbox{\hyperlink{class_airport}{Airport}} that the airport\+Code is referring to. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_manager_a491d884f9b60aed3b9b176bddcb7f624}{get\+Num\+Flight\+From\+Different\+Countries\+To}} (string aiport\+Code)
+\begin{DoxyCompactList}\small\item\em An integer method taking The Airport\+Code that returns the number of flights to a certain airport that the airport\+Code is referring to from different Countries. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_manager_a28df2423d0b24246573a9acee7aa2a88}{get\+Num\+Flight\+To\+Different\+Countries\+From}} (string aiport\+Code)
+\begin{DoxyCompactList}\small\item\em An integer method taking The Airport\+Code that returns the number of flights from a certain airport that the airport\+Code is referring to from different Countries. \end{DoxyCompactList}\item 
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_airline}{Airline}} $>$ \mbox{\hyperlink{class_manager_a724f4a673650caa425a3459bcce34341}{get\+Airlines}} ()
+\begin{DoxyCompactList}\small\item\em An unordered\+\_\+map-\/string,Airline-\/ method taking no arguments and returns an unordered\+\_\+map, where the key is the Airline\+Code. \end{DoxyCompactList}\item 
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_airport}{Airport}} $>$ \mbox{\hyperlink{class_manager_a4d9e4282bd964b2f539ebbd5742c7ec8}{get\+Airports}} ()
+\begin{DoxyCompactList}\small\item\em A unordered\+\_\+map-\/string,Airline-\/ method taking no arguments and returns an unordered\+\_\+map where the key is the Airport\+Code. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_flight}{Flight}} $>$ \mbox{\hyperlink{class_manager_a0856413a58b4de1fc05663cb4deb31f9}{Find\+Best\+Route}} (string source, string target)
+\begin{DoxyCompactList}\small\item\em A vector-\/\+Flight-\/ method taking a string source (Airport\+Code) and string Target (Airport\+Code). \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_flight}{Flight}} $>$ \mbox{\hyperlink{class_manager_ab423d45570f93136effa42f825962ce7}{Find\+Best\+Route\+With\+Black\+Listed}} (string source, string target, set$<$ string $>$ black\+List\+Airlines)
+\begin{DoxyCompactList}\small\item\em A vector-\/\+Flight-\/ method taking a set and string source (Airport\+Code) and string Target (Airport\+Code). \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_flight}{Flight}} $>$ \mbox{\hyperlink{class_manager_a0554fa622507300f7254ac186c1d7788}{Find\+Best\+Route\+With\+Green\+Listed}} (string source, string target, set$<$ string $>$ green\+List\+Airlines)
+\begin{DoxyCompactList}\small\item\em A vector-\/\+Flight-\/ method taking a set and string source (Airport\+Code) and string Target (Airport\+Code). \end{DoxyCompactList}\item 
+vector$<$ vector$<$ \mbox{\hyperlink{class_flight}{Flight}} $>$ $>$ \mbox{\hyperlink{class_manager_a4b650d82ed4034c7a10c8e136f3b72e7}{Find\+Best\+Routes1}} (string source, string target)
+\begin{DoxyCompactList}\small\item\em A vector-\/\+Flight-\/ method taking a string source (Airport\+Code) and string Target (Airport\+Code). \end{DoxyCompactList}\item 
+vector$<$ vector$<$ \mbox{\hyperlink{class_flight}{Flight}} $>$ $>$ \mbox{\hyperlink{class_manager_ac11d28278b40cc84eb861f3afdb046d8}{Find\+Best\+Routes}} (string source, string target, vector$<$ vector$<$ \mbox{\hyperlink{class_flight}{Flight}} $>$ $>$ \&result)
+\begin{DoxyCompactList}\small\item\em This function is auxiliary to Find\+Best\+Routes1. \end{DoxyCompactList}\item 
+vector$<$ string $>$ \mbox{\hyperlink{class_manager_a4d57c731189f037922497ee1c3c75b5c}{Find\+Airports\+From\+Coordinates}} (\mbox{\hyperlink{class_coordinates}{Coordinates}} coordinates, int distance\+Source)
+\begin{DoxyCompactList}\small\item\em A vector-\/string-\/ method taking \mbox{\hyperlink{class_coordinates}{Coordinates}} and a int distance that returns an vector. \end{DoxyCompactList}\item 
+vector$<$ string $>$ \mbox{\hyperlink{class_manager_a119ca8b97475893de4b44095308ca423}{Find\+Airports\+From\+Country}} (string country)
+\begin{DoxyCompactList}\small\item\em A normal method taking a Country Name. \end{DoxyCompactList}\item 
+vector$<$ string $>$ \mbox{\hyperlink{class_manager_a871cfbf1c6128d663dedd6a39206ac6d}{Find\+Airports\+From\+City}} (string city)
+\begin{DoxyCompactList}\small\item\em A vector-\/string-\/ method taking a City Name. \end{DoxyCompactList}\item 
+vector$<$ vector$<$ \mbox{\hyperlink{class_flight}{Flight}} $>$ $>$ \mbox{\hyperlink{class_manager_a586a0c34e806210956bffd0ca6e367f1}{Find\+Best\+Routes\+From\+Airports\+To\+Airports}} (vector$<$ string $>$ starts, vector$<$ string $>$ targets)
+\begin{DoxyCompactList}\small\item\em A vector-\/flight-\/ method taking a vector of strings starts and a vector with targets and returns a vector of vectors with strings. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_manager_aeebfb12313739e1fa6ddddcb6cfd2914}{Count\+Countries\+Reachable\+In\+NFlights}} (const string \&src, int n)
+\begin{DoxyCompactList}\small\item\em A integer method taking a strings source and an integer n, where n is the number of flights and the source is the airportcode. \end{DoxyCompactList}\item 
+unordered\+\_\+set$<$ string $>$ \mbox{\hyperlink{class_manager_a012f7db6411b6320a420552e63cb3f46}{Countries\+Reachable\+In\+YFlights}} (const string \&src, int y)
+\begin{DoxyCompactList}\small\item\em A unordered\+\_\+set-\/string-\/ method taking a strings source and an integer n, where y is the number of flights and the source is the airportcode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_manager_aba637876b44e2f811ef83d2eb05cf144}{Articulation\+Points}} ()
+\begin{DoxyCompactList}\small\item\em Identifies the articulation points in the graph and prints them to the console. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_manager_a2ad291086f39f31c5450a191f448a40c}{diameter}} ()
+\begin{DoxyCompactList}\small\item\em Returns the diameter of the graph, which is defined as the maximum distance between any pair of vertices in the graph. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_manager_ada13c09ae71df51306d9aa8c66c82b83}{Strongly\+Connected\+Components}} ()
+\begin{DoxyCompactList}\small\item\em Finds the strongly connected components (SCCs) in the graph. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_manager_ad188b24dc891d3f8ad2aa1bfaebb825d}\label{class_manager_ad188b24dc891d3f8ad2aa1bfaebb825d}} 
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_airport}{Airport}} $>$ {\bfseries airports}
+\item 
+\mbox{\Hypertarget{class_manager_a6863ca70f75dc5df35ae7accd5cff85a}\label{class_manager_a6863ca70f75dc5df35ae7accd5cff85a}} 
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_airline}{Airline}} $>$ {\bfseries airlines}
+\item 
+\mbox{\Hypertarget{class_manager_ab8f025f618b8c9aae78f580dabb6187c}\label{class_manager_ab8f025f618b8c9aae78f580dabb6187c}} 
+unordered\+\_\+map$<$ string, list$<$ string $>$ $>$ {\bfseries cities}
+\item 
+\mbox{\Hypertarget{class_manager_a2f609788c233bb02ccd05427d0d119c1}\label{class_manager_a2f609788c233bb02ccd05427d0d119c1}} 
+unordered\+\_\+map$<$ string, set$<$ string $>$ $>$ {\bfseries countrys\+To\+Citys}
+\item 
+\mbox{\Hypertarget{class_manager_aad898193493121aca744e7208a1dea65}\label{class_manager_aad898193493121aca744e7208a1dea65}} 
+\mbox{\hyperlink{class_graph}{Graph}} {\bfseries graph}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_manager_aba637876b44e2f811ef83d2eb05cf144}\label{class_manager_aba637876b44e2f811ef83d2eb05cf144}} 
+\index{Manager@{Manager}!ArticulationPoints@{ArticulationPoints}}
+\index{ArticulationPoints@{ArticulationPoints}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{ArticulationPoints()}{ArticulationPoints()}}
+{\footnotesize\ttfamily void Manager\+::\+Articulation\+Points (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Identifies the articulation points in the graph and prints them to the console. 
+
+\textbackslash{}\+Complexity O(V+E) \mbox{\Hypertarget{class_manager_aeebfb12313739e1fa6ddddcb6cfd2914}\label{class_manager_aeebfb12313739e1fa6ddddcb6cfd2914}} 
+\index{Manager@{Manager}!CountCountriesReachableInNFlights@{CountCountriesReachableInNFlights}}
+\index{CountCountriesReachableInNFlights@{CountCountriesReachableInNFlights}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{CountCountriesReachableInNFlights()}{CountCountriesReachableInNFlights()}}
+{\footnotesize\ttfamily int Manager\+::\+Count\+Countries\+Reachable\+In\+NFlights (\begin{DoxyParamCaption}\item[{const string \&}]{src,  }\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+A integer method taking a strings source and an integer n, where n is the number of flights and the source is the airportcode. 
+
+This method returns the number of countries that are reachable within n flights \textbackslash{}\+Complexity O(n$\ast$m) ~\newline
+ Where n is the number of flights allowed, m is the average number of countries reachable in y flights \textbackslash{}\+Arguments {\bfseries{string}} src ~\newline
+ {\bfseries{int}} n \mbox{\Hypertarget{class_manager_a012f7db6411b6320a420552e63cb3f46}\label{class_manager_a012f7db6411b6320a420552e63cb3f46}} 
+\index{Manager@{Manager}!CountriesReachableInYFlights@{CountriesReachableInYFlights}}
+\index{CountriesReachableInYFlights@{CountriesReachableInYFlights}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{CountriesReachableInYFlights()}{CountriesReachableInYFlights()}}
+{\footnotesize\ttfamily unordered\+\_\+set$<$ string $>$ Manager\+::\+Countries\+Reachable\+In\+YFlights (\begin{DoxyParamCaption}\item[{const string \&}]{src,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+A unordered\+\_\+set-\/string-\/ method taking a strings source and an integer n, where y is the number of flights and the source is the airportcode. 
+
+This method returns the an set of countries that are reachable within y flights \textbackslash{}\+Complexity O(n+m) ~\newline
+ Where n is the number of airports, m is the number of flights. \textbackslash{}\+Arguments {\bfseries{string}} src ~\newline
+ {\bfseries{int}} y \mbox{\Hypertarget{class_manager_a2ad291086f39f31c5450a191f448a40c}\label{class_manager_a2ad291086f39f31c5450a191f448a40c}} 
+\index{Manager@{Manager}!diameter@{diameter}}
+\index{diameter@{diameter}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{diameter()}{diameter()}}
+{\footnotesize\ttfamily int Manager\+::diameter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the diameter of the graph, which is defined as the maximum distance between any pair of vertices in the graph. 
+
+\begin{DoxyReturn}{Returns}
+The diameter of the graph. @complexity O($\vert$\+V$\vert$ $\ast$ ($\vert$\+V$\vert$ + $\vert$\+E$\vert$)) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_manager_a871cfbf1c6128d663dedd6a39206ac6d}\label{class_manager_a871cfbf1c6128d663dedd6a39206ac6d}} 
+\index{Manager@{Manager}!FindAirportsFromCity@{FindAirportsFromCity}}
+\index{FindAirportsFromCity@{FindAirportsFromCity}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{FindAirportsFromCity()}{FindAirportsFromCity()}}
+{\footnotesize\ttfamily vector$<$ string $>$ Manager\+::\+Find\+Airports\+From\+City (\begin{DoxyParamCaption}\item[{string}]{city }\end{DoxyParamCaption})}
+
+
+
+A vector-\/string-\/ method taking a City Name. 
+
+This method taking City Name that returns a vector with all Airport\+Codes in the city \textbackslash{}\+Complexity 0(n) Where n is the number of airports in the city. \textbackslash{}\+Arguments {\bfseries{string}} city \mbox{\Hypertarget{class_manager_a4d57c731189f037922497ee1c3c75b5c}\label{class_manager_a4d57c731189f037922497ee1c3c75b5c}} 
+\index{Manager@{Manager}!FindAirportsFromCoordinates@{FindAirportsFromCoordinates}}
+\index{FindAirportsFromCoordinates@{FindAirportsFromCoordinates}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{FindAirportsFromCoordinates()}{FindAirportsFromCoordinates()}}
+{\footnotesize\ttfamily vector$<$ string $>$ Manager\+::\+Find\+Airports\+From\+Coordinates (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_coordinates}{Coordinates}}}]{coordinates,  }\item[{int}]{distance\+Source }\end{DoxyParamCaption})}
+
+
+
+A vector-\/string-\/ method taking \mbox{\hyperlink{class_coordinates}{Coordinates}} and a int distance that returns an vector. 
+
+This method taking \mbox{\hyperlink{class_coordinates}{Coordinates}} and a int distance that returns a vector with the Airport\+Codes with the distance of distante\+Source from the coordinates. \textbackslash{}\+Complexity 0(n) \textbackslash{}\+Arguments {\bfseries{\mbox{\hyperlink{class_coordinates}{Coordinates}}}} cordenadas ~\newline
+ {\bfseries{int}} distance\+Source \mbox{\Hypertarget{class_manager_a119ca8b97475893de4b44095308ca423}\label{class_manager_a119ca8b97475893de4b44095308ca423}} 
+\index{Manager@{Manager}!FindAirportsFromCountry@{FindAirportsFromCountry}}
+\index{FindAirportsFromCountry@{FindAirportsFromCountry}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{FindAirportsFromCountry()}{FindAirportsFromCountry()}}
+{\footnotesize\ttfamily vector$<$ string $>$ Manager\+::\+Find\+Airports\+From\+Country (\begin{DoxyParamCaption}\item[{string}]{country }\end{DoxyParamCaption})}
+
+
+
+A normal method taking a Country Name. 
+
+This method taking Country returns a vector with all Airport\+Codes in the Country \textbackslash{}\+Complexity 0(n) ~\newline
+ Where n is the number of airports in the country \mbox{\Hypertarget{class_manager_a0856413a58b4de1fc05663cb4deb31f9}\label{class_manager_a0856413a58b4de1fc05663cb4deb31f9}} 
+\index{Manager@{Manager}!FindBestRoute@{FindBestRoute}}
+\index{FindBestRoute@{FindBestRoute}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{FindBestRoute()}{FindBestRoute()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_flight}{Flight}} $>$ Manager\+::\+Find\+Best\+Route (\begin{DoxyParamCaption}\item[{string}]{source,  }\item[{string}]{target }\end{DoxyParamCaption})}
+
+
+
+A vector-\/\+Flight-\/ method taking a string source (Airport\+Code) and string Target (Airport\+Code). 
+
+~\newline
+ Returns a path with the shortest length possible that goes from the airport\+Code source and airport\+Code target \textbackslash{}\+Complexity O(V+E) ~\newline
+ Where V is the number of vertices (airports) in the graph and E is the number of edges (flights) in the graph \textbackslash{}\+Arguments {\bfseries{String}} source ~\newline
+ {\bfseries{String}} target \mbox{\Hypertarget{class_manager_ac11d28278b40cc84eb861f3afdb046d8}\label{class_manager_ac11d28278b40cc84eb861f3afdb046d8}} 
+\index{Manager@{Manager}!FindBestRoutes@{FindBestRoutes}}
+\index{FindBestRoutes@{FindBestRoutes}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{FindBestRoutes()}{FindBestRoutes()}}
+{\footnotesize\ttfamily vector$<$ vector$<$ \mbox{\hyperlink{class_flight}{Flight}} $>$ $>$ Manager\+::\+Find\+Best\+Routes (\begin{DoxyParamCaption}\item[{string}]{source,  }\item[{string}]{target,  }\item[{vector$<$ vector$<$ \mbox{\hyperlink{class_flight}{Flight}} $>$ $>$ \&}]{result }\end{DoxyParamCaption})}
+
+
+
+This function is auxiliary to Find\+Best\+Routes1. 
+
+Returns all possible paths with the shortest length possible that goes from the airport\+Code source and airport\+Code target \textbackslash{}\+Complexity O(R $\ast$ (V+E)) , where R is the number of routes found and V is the number of vertices (airports) in the graph and E is the number of edges (flights) in the graph \mbox{\Hypertarget{class_manager_a4b650d82ed4034c7a10c8e136f3b72e7}\label{class_manager_a4b650d82ed4034c7a10c8e136f3b72e7}} 
+\index{Manager@{Manager}!FindBestRoutes1@{FindBestRoutes1}}
+\index{FindBestRoutes1@{FindBestRoutes1}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{FindBestRoutes1()}{FindBestRoutes1()}}
+{\footnotesize\ttfamily vector$<$ vector$<$ \mbox{\hyperlink{class_flight}{Flight}} $>$ $>$ Manager\+::\+Find\+Best\+Routes1 (\begin{DoxyParamCaption}\item[{string}]{source,  }\item[{string}]{target }\end{DoxyParamCaption})}
+
+
+
+A vector-\/\+Flight-\/ method taking a string source (Airport\+Code) and string Target (Airport\+Code). 
+
+Returns all possible paths with the shortest length possible that goes from the airport\+Code source and airport\+Code target \textbackslash{}\+Complexity O(R $\ast$ (V+E)) ~\newline
+ where R is the number of routes found and V is the number of vertices (airports) in the graph and E is the number of edges (flights) in the graph \textbackslash{}\+Arguments {\bfseries{String}} source ~\newline
+ {\bfseries{String}} target \mbox{\Hypertarget{class_manager_a586a0c34e806210956bffd0ca6e367f1}\label{class_manager_a586a0c34e806210956bffd0ca6e367f1}} 
+\index{Manager@{Manager}!FindBestRoutesFromAirportsToAirports@{FindBestRoutesFromAirportsToAirports}}
+\index{FindBestRoutesFromAirportsToAirports@{FindBestRoutesFromAirportsToAirports}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{FindBestRoutesFromAirportsToAirports()}{FindBestRoutesFromAirportsToAirports()}}
+{\footnotesize\ttfamily vector$<$ vector$<$ \mbox{\hyperlink{class_flight}{Flight}} $>$ $>$ Manager\+::\+Find\+Best\+Routes\+From\+Airports\+To\+Airports (\begin{DoxyParamCaption}\item[{vector$<$ string $>$}]{starts,  }\item[{vector$<$ string $>$}]{targets }\end{DoxyParamCaption})}
+
+
+
+A vector-\/flight-\/ method taking a vector of strings starts and a vector with targets and returns a vector of vectors with strings. 
+
+This method returns a route per combination of airports if they have the minimum length. \textbackslash{}\+Complexity O(S $\ast$ T $\ast$ (V+E)) ~\newline
+ Where S is the number of starting airports, T is the number of target airports, V is the number of vertices (airports) in the graph, and E is the number of edges (flights) in the graph. \textbackslash{}\+Arguments {\bfseries{vector-\/string-\/}} starts ~\newline
+ {\bfseries{vector-\/string-\/}} targets \mbox{\Hypertarget{class_manager_ab423d45570f93136effa42f825962ce7}\label{class_manager_ab423d45570f93136effa42f825962ce7}} 
+\index{Manager@{Manager}!FindBestRouteWithBlackListed@{FindBestRouteWithBlackListed}}
+\index{FindBestRouteWithBlackListed@{FindBestRouteWithBlackListed}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{FindBestRouteWithBlackListed()}{FindBestRouteWithBlackListed()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_flight}{Flight}} $>$ Manager\+::\+Find\+Best\+Route\+With\+Black\+Listed (\begin{DoxyParamCaption}\item[{string}]{source,  }\item[{string}]{target,  }\item[{set$<$ string $>$}]{black\+List\+Airlines }\end{DoxyParamCaption})}
+
+
+
+A vector-\/\+Flight-\/ method taking a set and string source (Airport\+Code) and string Target (Airport\+Code). 
+
+~\newline
+ Returns a path with the shortest length possible that goes from the airport\+Code source and airport\+Code target with blacklisted Airlines.
+
+\textbackslash{}\+Complexity O(V+E) ~\newline
+ Where V is the number of vertices (airports) in the graph and E is the number of edges (flights) in the graph \textbackslash{}\+Arguments {\bfseries{String}} source ~\newline
+ {\bfseries{String}} target ~\newline
+ {\bfseries{Set-\/string-\/}} black\+List\+Airlines \mbox{\Hypertarget{class_manager_a0554fa622507300f7254ac186c1d7788}\label{class_manager_a0554fa622507300f7254ac186c1d7788}} 
+\index{Manager@{Manager}!FindBestRouteWithGreenListed@{FindBestRouteWithGreenListed}}
+\index{FindBestRouteWithGreenListed@{FindBestRouteWithGreenListed}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{FindBestRouteWithGreenListed()}{FindBestRouteWithGreenListed()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_flight}{Flight}} $>$ Manager\+::\+Find\+Best\+Route\+With\+Green\+Listed (\begin{DoxyParamCaption}\item[{string}]{source,  }\item[{string}]{target,  }\item[{set$<$ string $>$}]{green\+List\+Airlines }\end{DoxyParamCaption})}
+
+
+
+A vector-\/\+Flight-\/ method taking a set and string source (Airport\+Code) and string Target (Airport\+Code). 
+
+Returns a path with the shortest length possible that goes from the airport\+Code source and airport\+Code target With airlines Green\+Listed(only uses the airlines in the set green list) \textbackslash{}\+Complexity O(V+E) ~\newline
+ Where V is the number of vertices (airports) in the graph and E is the number of edges (flights) in the graph \textbackslash{}\+Arguments {\bfseries{String}} source ~\newline
+ {\bfseries{String}} target ~\newline
+ {\bfseries{Set-\/string-\/}} green\+List\+Airlines \mbox{\Hypertarget{class_manager_a724f4a673650caa425a3459bcce34341}\label{class_manager_a724f4a673650caa425a3459bcce34341}} 
+\index{Manager@{Manager}!getAirlines@{getAirlines}}
+\index{getAirlines@{getAirlines}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{getAirlines()}{getAirlines()}}
+{\footnotesize\ttfamily unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_airline}{Airline}} $>$ Manager\+::get\+Airlines (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+An unordered\+\_\+map-\/string,Airline-\/ method taking no arguments and returns an unordered\+\_\+map, where the key is the Airline\+Code. 
+
+\textbackslash{}\+Complexity 0(1) \mbox{\Hypertarget{class_manager_ad2c398f799ac50c5fb7414bf34f2b683}\label{class_manager_ad2c398f799ac50c5fb7414bf34f2b683}} 
+\index{Manager@{Manager}!getAirlineWithCode@{getAirlineWithCode}}
+\index{getAirlineWithCode@{getAirlineWithCode}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{getAirlineWithCode()}{getAirlineWithCode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_airline}{Airline}} Manager\+::get\+Airline\+With\+Code (\begin{DoxyParamCaption}\item[{string}]{airline\+Code }\end{DoxyParamCaption})}
+
+
+
+An \mbox{\hyperlink{class_airline}{Airline}} method taking The airline\+Code that returns the airline with that code. 
+
+This method utilizes unordered\+\_\+map so is very efficient. \textbackslash{}\+Complexity 0(1) \textbackslash{}\+Arguments {\bfseries{String}} airline\+Code \mbox{\Hypertarget{class_manager_a4d9e4282bd964b2f539ebbd5742c7ec8}\label{class_manager_a4d9e4282bd964b2f539ebbd5742c7ec8}} 
+\index{Manager@{Manager}!getAirports@{getAirports}}
+\index{getAirports@{getAirports}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{getAirports()}{getAirports()}}
+{\footnotesize\ttfamily unordered\+\_\+map$<$ string, \mbox{\hyperlink{class_airport}{Airport}} $>$ Manager\+::get\+Airports (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A unordered\+\_\+map-\/string,Airline-\/ method taking no arguments and returns an unordered\+\_\+map where the key is the Airport\+Code. 
+
+\textbackslash{}\+Complexity 0(1) \mbox{\Hypertarget{class_manager_a162f18425b7fee335d9845242a97298c}\label{class_manager_a162f18425b7fee335d9845242a97298c}} 
+\index{Manager@{Manager}!getAirportsInCity@{getAirportsInCity}}
+\index{getAirportsInCity@{getAirportsInCity}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{getAirportsInCity()}{getAirportsInCity()}}
+{\footnotesize\ttfamily list$<$ string $>$ Manager\+::get\+Airports\+In\+City (\begin{DoxyParamCaption}\item[{string}]{city }\end{DoxyParamCaption})}
+
+
+
+An List$<$\+String$>$ method taking the name of the city and returns the airports in that city. 
+
+This method utilizes unordered\+\_\+map so it\textquotesingle{}s very efficient . \textbackslash{}\+Complexity 0(1) \textbackslash{}\+Arguments {\bfseries{String}} city \mbox{\Hypertarget{class_manager_abb08d808934e22574363ed60c41643fa}\label{class_manager_abb08d808934e22574363ed60c41643fa}} 
+\index{Manager@{Manager}!getAirportWithCode@{getAirportWithCode}}
+\index{getAirportWithCode@{getAirportWithCode}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{getAirportWithCode()}{getAirportWithCode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_airport}{Airport}} Manager\+::get\+Airport\+With\+Code (\begin{DoxyParamCaption}\item[{string}]{airport\+Code }\end{DoxyParamCaption})}
+
+
+
+An \mbox{\hyperlink{class_airport}{Airport}} method taking The airport\+Code and then returns the airport with that code. 
+
+This method utilizes unordered\+\_\+map so it\textquotesingle{}s very efficient. \textbackslash{}\+Complexity 0(1) \textbackslash{}\+Arguments {\bfseries{String}} airport\+Code \mbox{\Hypertarget{class_manager_a1f0dea4b2bb400b370daebd17808c0e4}\label{class_manager_a1f0dea4b2bb400b370daebd17808c0e4}} 
+\index{Manager@{Manager}!getCitiesInCountry@{getCitiesInCountry}}
+\index{getCitiesInCountry@{getCitiesInCountry}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{getCitiesInCountry()}{getCitiesInCountry()}}
+{\footnotesize\ttfamily set$<$ string $>$ Manager\+::get\+Cities\+In\+Country (\begin{DoxyParamCaption}\item[{string}]{country }\end{DoxyParamCaption})}
+
+
+
+An set$<$string$>$ method taking the name of the country and returns the cities in that country. 
+
+This method utilizes unordered\+\_\+map so it\textquotesingle{}s very efficient. \textbackslash{}\+Complexity 0(1) \textbackslash{}\+Arguments {\bfseries{String}} Country \mbox{\Hypertarget{class_manager_a3268bf239d5d531b839c33064bcc35f2}\label{class_manager_a3268bf239d5d531b839c33064bcc35f2}} 
+\index{Manager@{Manager}!getNumFlightFrom@{getNumFlightFrom}}
+\index{getNumFlightFrom@{getNumFlightFrom}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{getNumFlightFrom()}{getNumFlightFrom()}}
+{\footnotesize\ttfamily int Manager\+::get\+Num\+Flight\+From (\begin{DoxyParamCaption}\item[{string}]{aiport\+Code }\end{DoxyParamCaption})}
+
+
+
+An integer method taking The airport\+Code and that returns the number of flights from that airport. 
+
+This method utilizes unordered\+\_\+map so it\textquotesingle{}s very efficient. \textbackslash{}\+Complexity 0(1) \textbackslash{}\+Arguments {\bfseries{string}} airport\+Code \mbox{\Hypertarget{class_manager_a16df932e0210ff15fdc5590f3e4ba3fa}\label{class_manager_a16df932e0210ff15fdc5590f3e4ba3fa}} 
+\index{Manager@{Manager}!getNumFlightFromDifferentAirlinesFrom@{getNumFlightFromDifferentAirlinesFrom}}
+\index{getNumFlightFromDifferentAirlinesFrom@{getNumFlightFromDifferentAirlinesFrom}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{getNumFlightFromDifferentAirlinesFrom()}{getNumFlightFromDifferentAirlinesFrom()}}
+{\footnotesize\ttfamily int Manager\+::get\+Num\+Flight\+From\+Different\+Airlines\+From (\begin{DoxyParamCaption}\item[{string}]{aiport\+Code }\end{DoxyParamCaption})}
+
+
+
+An integer method taking The Airport\+Code that returns the flights that begin in the \mbox{\hyperlink{class_airport}{Airport}} that the airport\+Code is referring to. 
+
+This method utilizes the unordered\+\_\+map so it\textquotesingle{}s very efficient. \textbackslash{}\+Complexity 0(1) \textbackslash{}\+Arguments {\bfseries{String}} airport\+Code \mbox{\Hypertarget{class_manager_a4ab77172ecca457ffd1177783ef468e3}\label{class_manager_a4ab77172ecca457ffd1177783ef468e3}} 
+\index{Manager@{Manager}!getNumFlightFromDifferentAirlinesTo@{getNumFlightFromDifferentAirlinesTo}}
+\index{getNumFlightFromDifferentAirlinesTo@{getNumFlightFromDifferentAirlinesTo}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{getNumFlightFromDifferentAirlinesTo()}{getNumFlightFromDifferentAirlinesTo()}}
+{\footnotesize\ttfamily int Manager\+::get\+Num\+Flight\+From\+Different\+Airlines\+To (\begin{DoxyParamCaption}\item[{string}]{aiport\+Code }\end{DoxyParamCaption})}
+
+
+
+An integer method taking the airport\+Code and returns the number of flights to a certain airport that has the airport\+Code and is referring to from different airlines. 
+
+\textbackslash{}\+Complexity 0(n) ~\newline
+ Where the n is the number of flights \textbackslash{}\+Arguments {\bfseries{String}} airport\+Code \mbox{\Hypertarget{class_manager_a491d884f9b60aed3b9b176bddcb7f624}\label{class_manager_a491d884f9b60aed3b9b176bddcb7f624}} 
+\index{Manager@{Manager}!getNumFlightFromDifferentCountriesTo@{getNumFlightFromDifferentCountriesTo}}
+\index{getNumFlightFromDifferentCountriesTo@{getNumFlightFromDifferentCountriesTo}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{getNumFlightFromDifferentCountriesTo()}{getNumFlightFromDifferentCountriesTo()}}
+{\footnotesize\ttfamily int Manager\+::get\+Num\+Flight\+From\+Different\+Countries\+To (\begin{DoxyParamCaption}\item[{string}]{aiport\+Code }\end{DoxyParamCaption})}
+
+
+
+An integer method taking The Airport\+Code that returns the number of flights to a certain airport that the airport\+Code is referring to from different Countries. 
+
+\textbackslash{}\+Complexity 0(nlog(n)) ~\newline
+ Where n is the number of flights \textbackslash{}\+Arguments {\bfseries{String}} airport\+Code \mbox{\Hypertarget{class_manager_ab7be9d31f7e630999d18f12a244bc45e}\label{class_manager_ab7be9d31f7e630999d18f12a244bc45e}} 
+\index{Manager@{Manager}!getNumFlightTo@{getNumFlightTo}}
+\index{getNumFlightTo@{getNumFlightTo}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{getNumFlightTo()}{getNumFlightTo()}}
+{\footnotesize\ttfamily int Manager\+::get\+Num\+Flight\+To (\begin{DoxyParamCaption}\item[{string}]{aiport\+Code }\end{DoxyParamCaption})}
+
+
+
+An integer method that takes the airport\+Code and returns the number of flights to that airport. 
+
+This method uses a iterator. \textbackslash{}\+Complexity 0(n) ~\newline
+ Where n is the number of flights. \textbackslash{}\+Arguments {\bfseries{String}} airport\+Code \mbox{\Hypertarget{class_manager_a28df2423d0b24246573a9acee7aa2a88}\label{class_manager_a28df2423d0b24246573a9acee7aa2a88}} 
+\index{Manager@{Manager}!getNumFlightToDifferentCountriesFrom@{getNumFlightToDifferentCountriesFrom}}
+\index{getNumFlightToDifferentCountriesFrom@{getNumFlightToDifferentCountriesFrom}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{getNumFlightToDifferentCountriesFrom()}{getNumFlightToDifferentCountriesFrom()}}
+{\footnotesize\ttfamily int Manager\+::get\+Num\+Flight\+To\+Different\+Countries\+From (\begin{DoxyParamCaption}\item[{string}]{aiport\+Code }\end{DoxyParamCaption})}
+
+
+
+An integer method taking The Airport\+Code that returns the number of flights from a certain airport that the airport\+Code is referring to from different Countries. 
+
+\textbackslash{}\+Complexity 0(log(n)) ~\newline
+ Where the n is the number of flights \mbox{\Hypertarget{class_manager_a65a8901392a0e3da2024988bcedd8899}\label{class_manager_a65a8901392a0e3da2024988bcedd8899}} 
+\index{Manager@{Manager}!ReadAirLines@{ReadAirLines}}
+\index{ReadAirLines@{ReadAirLines}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{ReadAirLines()}{ReadAirLines()}}
+{\footnotesize\ttfamily void Manager\+::\+Read\+Air\+Lines (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+An normal method taking no arguments and doesn\textquotesingle{}t return anything. 
+
+Reads the files then put the data in their respective data structures. \textbackslash{}\+Complexity 0(n) ~\newline
+ Where the n is the number on lines (in this case the airlines) in the file. \mbox{\Hypertarget{class_manager_aaa6c0164ea786396d14a92a79a764ea4}\label{class_manager_aaa6c0164ea786396d14a92a79a764ea4}} 
+\index{Manager@{Manager}!ReadAirports@{ReadAirports}}
+\index{ReadAirports@{ReadAirports}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{ReadAirports()}{ReadAirports()}}
+{\footnotesize\ttfamily void Manager\+::\+Read\+Airports (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+An void method taking no arguments and doesn\textquotesingle{}t return anything. 
+
+Reads the files them in their respective data structures. \textbackslash{}\+Complexity 0(N log(\+E) + N log(\+S)) ~\newline
+ Where N is the number of airports, E the number of airports int the city and S the number of cities in a Country \mbox{\Hypertarget{class_manager_a039fd08ed25d845325d1a685d3a07c15}\label{class_manager_a039fd08ed25d845325d1a685d3a07c15}} 
+\index{Manager@{Manager}!ReadFlights@{ReadFlights}}
+\index{ReadFlights@{ReadFlights}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{ReadFlights()}{ReadFlights()}}
+{\footnotesize\ttfamily void Manager\+::\+Read\+Flights (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+An void method taking no arguments and doesn\textquotesingle{}t return anything. 
+
+Reads the files them in their respective data structures. \textbackslash{}\+Complexity 0(n) ~\newline
+ Where the n is the number on lines (in this case the flights) in the file. \mbox{\Hypertarget{class_manager_ada13c09ae71df51306d9aa8c66c82b83}\label{class_manager_ada13c09ae71df51306d9aa8c66c82b83}} 
+\index{Manager@{Manager}!StronglyConnectedComponents@{StronglyConnectedComponents}}
+\index{StronglyConnectedComponents@{StronglyConnectedComponents}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{StronglyConnectedComponents()}{StronglyConnectedComponents()}}
+{\footnotesize\ttfamily int Manager\+::\+Strongly\+Connected\+Components (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Finds the strongly connected components (SCCs) in the graph. 
+
+\begin{DoxyReturn}{Returns}
+The number of SCCs found. @complexity O($\vert$\+V$\vert$ + $\vert$\+E$\vert$) 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Manager.\+h\item 
+Manager.\+cpp\end{DoxyCompactItemize}

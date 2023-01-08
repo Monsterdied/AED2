@@ -1,0 +1,174 @@
+\hypertarget{class_airport}{}\doxysection{Airport Class Reference}
+\label{class_airport}\index{Airport@{Airport}}
+
+
+Represents an airport.  
+
+
+
+
+{\ttfamily \#include $<$Airport.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_airport_a812311ff61f33b9d1e4175d527090c42}{Airport}} (double latitude, double longitude, string \mbox{\hyperlink{class_airport_a07dd02d08890fae5fef97f3ec69b155d}{name}}, string \mbox{\hyperlink{class_airport_a91fb01fe9815c99f63502396da5dcdc5}{code}}, string \mbox{\hyperlink{class_airport_a50b34e9d1e565f06637bd0aea6b8ce35}{city}}, string \mbox{\hyperlink{class_airport_ae85bb114b254c09e7d2f2e06bd97cbe2}{country}})
+\begin{DoxyCompactList}\small\item\em Constructs an \mbox{\hyperlink{class_airport}{Airport}} object with the given coordinates, name, code, city, and country. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_airport_a2fc0f2402c94225b9deaf76176bb887f}\label{class_airport_a2fc0f2402c94225b9deaf76176bb887f}} 
+{\bfseries Airport} ()
+\begin{DoxyCompactList}\small\item\em Constructs a default \mbox{\hyperlink{class_airport}{Airport}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_coordinates}{Coordinates}} \mbox{\hyperlink{class_airport_a90ae62e2b42cd33efb95aad58a9c5c29}{get\+Coordinates}} ()
+\begin{DoxyCompactList}\small\item\em Returns the airport coordinates. \textbackslash{}\+Complexity 0(1) \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_airport_a93efcd09328d24469d97a81e8048b776}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Returns the airport name. \textbackslash{}\+Complexity 0(1) \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_airport_ad1369e1d47c87e205f1718b853a66d54}{get\+Code}} () const
+\begin{DoxyCompactList}\small\item\em Returns the airport code. \textbackslash{}\+Complexity 0(1) \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_airport_adff088d0536ead7d1c060c385da03f32}{get\+City}} () const
+\begin{DoxyCompactList}\small\item\em Returns the city where the airport is located. \textbackslash{}\+Complexity 0(1) \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_airport_ac0ce4ad3ce71653f13b96e5d40648588}{get\+Country}} () const
+\begin{DoxyCompactList}\small\item\em Returns the country where the airport is located. \textbackslash{}\+Complexity 0(1) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_airport_a64ee9554106c8ac0fa9560b398dff999}{operator==}} (const \mbox{\hyperlink{class_airport}{Airport}} \&airport) const
+\begin{DoxyCompactList}\small\item\em Compares this \mbox{\hyperlink{class_airport}{Airport}} object with another for equality. \textbackslash{}\+Complexity 0(1) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_airport_a4a8fe1d55c5ce4e8ea2ad369a6b1e591}\label{class_airport_a4a8fe1d55c5ce4e8ea2ad369a6b1e591}} 
+\mbox{\hyperlink{class_coordinates}{Coordinates}} {\bfseries coordinates}
+\begin{DoxyCompactList}\small\item\em The airport coordinates. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_airport_a07dd02d08890fae5fef97f3ec69b155d}\label{class_airport_a07dd02d08890fae5fef97f3ec69b155d}} 
+string {\bfseries name}
+\begin{DoxyCompactList}\small\item\em The airport name. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_airport_a91fb01fe9815c99f63502396da5dcdc5}\label{class_airport_a91fb01fe9815c99f63502396da5dcdc5}} 
+string {\bfseries code}
+\begin{DoxyCompactList}\small\item\em The airport code. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_airport_a50b34e9d1e565f06637bd0aea6b8ce35}\label{class_airport_a50b34e9d1e565f06637bd0aea6b8ce35}} 
+string {\bfseries city}
+\begin{DoxyCompactList}\small\item\em The city where the airport is located. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_airport_ae85bb114b254c09e7d2f2e06bd97cbe2}\label{class_airport_ae85bb114b254c09e7d2f2e06bd97cbe2}} 
+string {\bfseries country}
+\begin{DoxyCompactList}\small\item\em The country where the airport is located. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents an airport. 
+
+The \mbox{\hyperlink{class_airport}{Airport}} class represents an airport, with its coordinates, name, code, city, and country. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_airport_a812311ff61f33b9d1e4175d527090c42}\label{class_airport_a812311ff61f33b9d1e4175d527090c42}} 
+\index{Airport@{Airport}!Airport@{Airport}}
+\index{Airport@{Airport}!Airport@{Airport}}
+\doxysubsubsection{\texorpdfstring{Airport()}{Airport()}}
+{\footnotesize\ttfamily Airport\+::\+Airport (\begin{DoxyParamCaption}\item[{double}]{latitude,  }\item[{double}]{longitude,  }\item[{string}]{name,  }\item[{string}]{code,  }\item[{string}]{city,  }\item[{string}]{country }\end{DoxyParamCaption})}
+
+
+
+Constructs an \mbox{\hyperlink{class_airport}{Airport}} object with the given coordinates, name, code, city, and country. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em latitude} & The airport latitude. \\
+\hline
+{\em longitude} & The airport longitude. \\
+\hline
+{\em name} & The airport name. \\
+\hline
+{\em code} & The airport code. \\
+\hline
+{\em city} & The city where the airport is located. \\
+\hline
+{\em country} & The country where the airport is located. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_airport_adff088d0536ead7d1c060c385da03f32}\label{class_airport_adff088d0536ead7d1c060c385da03f32}} 
+\index{Airport@{Airport}!getCity@{getCity}}
+\index{getCity@{getCity}!Airport@{Airport}}
+\doxysubsubsection{\texorpdfstring{getCity()}{getCity()}}
+{\footnotesize\ttfamily string Airport\+::get\+City (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the city where the airport is located. \textbackslash{}\+Complexity 0(1) 
+
+\begin{DoxyReturn}{Returns}
+The city where the airport is located. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_airport_ad1369e1d47c87e205f1718b853a66d54}\label{class_airport_ad1369e1d47c87e205f1718b853a66d54}} 
+\index{Airport@{Airport}!getCode@{getCode}}
+\index{getCode@{getCode}!Airport@{Airport}}
+\doxysubsubsection{\texorpdfstring{getCode()}{getCode()}}
+{\footnotesize\ttfamily string Airport\+::get\+Code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the airport code. \textbackslash{}\+Complexity 0(1) 
+
+\begin{DoxyReturn}{Returns}
+The airport code. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_airport_a90ae62e2b42cd33efb95aad58a9c5c29}\label{class_airport_a90ae62e2b42cd33efb95aad58a9c5c29}} 
+\index{Airport@{Airport}!getCoordinates@{getCoordinates}}
+\index{getCoordinates@{getCoordinates}!Airport@{Airport}}
+\doxysubsubsection{\texorpdfstring{getCoordinates()}{getCoordinates()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_coordinates}{Coordinates}} Airport\+::get\+Coordinates (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the airport coordinates. \textbackslash{}\+Complexity 0(1) 
+
+\begin{DoxyReturn}{Returns}
+The airport coordinates. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_airport_ac0ce4ad3ce71653f13b96e5d40648588}\label{class_airport_ac0ce4ad3ce71653f13b96e5d40648588}} 
+\index{Airport@{Airport}!getCountry@{getCountry}}
+\index{getCountry@{getCountry}!Airport@{Airport}}
+\doxysubsubsection{\texorpdfstring{getCountry()}{getCountry()}}
+{\footnotesize\ttfamily string Airport\+::get\+Country (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the country where the airport is located. \textbackslash{}\+Complexity 0(1) 
+
+\begin{DoxyReturn}{Returns}
+The country where the airport is located. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_airport_a93efcd09328d24469d97a81e8048b776}\label{class_airport_a93efcd09328d24469d97a81e8048b776}} 
+\index{Airport@{Airport}!getName@{getName}}
+\index{getName@{getName}!Airport@{Airport}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily string Airport\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the airport name. \textbackslash{}\+Complexity 0(1) 
+
+\begin{DoxyReturn}{Returns}
+The airport name. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_airport_a64ee9554106c8ac0fa9560b398dff999}\label{class_airport_a64ee9554106c8ac0fa9560b398dff999}} 
+\index{Airport@{Airport}!operator==@{operator==}}
+\index{operator==@{operator==}!Airport@{Airport}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Airport\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_airport}{Airport}} \&}]{airport }\end{DoxyParamCaption}) const}
+
+
+
+Compares this \mbox{\hyperlink{class_airport}{Airport}} object with another for equality. \textbackslash{}\+Complexity 0(1) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em airport} & The \mbox{\hyperlink{class_airport}{Airport}} object to compare with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if the \mbox{\hyperlink{class_airport}{Airport}} objects are equal, {\ttfamily false} otherwise. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Airport.\+h\item 
+Airport.\+cpp\end{DoxyCompactItemize}

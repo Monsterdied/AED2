@@ -1,0 +1,63 @@
+\hypertarget{_graph_8h_source}{}\doxysection{Graph.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ tomas\ on\ 12/28/2022.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ PROJ\_GRAPH\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ PROJ\_GRAPH\_H}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <list>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <queue>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <stack>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}Airline.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}Flight.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <unordered\_set>}}
+\DoxyCodeLine{00018\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_graph}{Graph}}\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_graph_1_1_node}{Node}}\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ list<Flight>\ \mbox{\hyperlink{struct_graph_1_1_node_ab494bad6365b4d59079264d9c8783252}{adj}};}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_graph_1_1_node_a2360e752c746736f533bc4e673c1f80d}{visited}};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \mbox{\hyperlink{struct_graph_1_1_node_aaa7cc99f209076f200ddc0af96217bf9}{dist}};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ low;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ inStack;}
+\DoxyCodeLine{00042\ \ \ \ \ \};}
+\DoxyCodeLine{00046\ \ \ \ \ unordered\_map\ <string,Node>\ \mbox{\hyperlink{class_graph_a860f663392ca5bb1d55985527e7367d7}{nodes}};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{class_graph_ae4c72b8ac4d693c49800a4c7e273654f}{Graph}}();}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_graph_a2739cfe0adcb4d6cc52b538295b12617}{addEdge}}(\textcolor{keywordtype}{string}\ src,\ \textcolor{keywordtype}{string}\ dest,\ \textcolor{keywordtype}{string}\ airlineCode);}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_graph_a0b7402c5339a8f6e6ba066d1a2e6b72c}{addFlight}}(\mbox{\hyperlink{class_flight}{Flight}}\ flight);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_graph_a23f80bc90d397029499b05292e36142d}{delFlight}}(\mbox{\hyperlink{class_flight}{Flight}}\ flight);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00091\ \ \ \ \ unordered\_map\ <string,Node>\ \mbox{\hyperlink{class_graph_ab98e4bed52517584087a68feb099e4ee}{getNodes}}();}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00101\ \ \ \ \ list<Flight>\ \mbox{\hyperlink{class_graph_ac4d80f568d2ddc33121ce06653d75ad1}{getEdges}}(\textcolor{keywordtype}{string}\ code);}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00111\ \ \ \ \ \mbox{\hyperlink{struct_graph_1_1_node}{Node}}\&\ \mbox{\hyperlink{class_graph_adf167397267817d962c4bea3c91913c2}{findFlightFrom}}(\textcolor{keywordtype}{string}\ codeAirport);}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00122\ \ \ \ \ vector<Flight>\ \mbox{\hyperlink{class_graph_addec7a171c9acf569d45af657afd7bbe}{findFlights}}(\textcolor{keywordtype}{string}\ codeSrc\ ,\ \textcolor{keywordtype}{string}\ codeDest);}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_graph_a73e024ac9240aef68804bcc6c9e07638}{dfs\_art}}(\textcolor{keywordtype}{string}\ v,\ \textcolor{keywordtype}{bool}\ isRoot,\ \textcolor{keywordtype}{int}\ \&index,\ unordered\_set<string>\ \&points);}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{class_graph_a9dc20c898262dea494c7b49f7c51ebf1}{diameter}}();}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_graph_a332c8ffff73104bfeaf02966c006acf2}{resetNodes}}();}
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_graph_aafefe54af59867401bbd32ab41afcea4}{bfs\_distance}}(std::string\ v);}
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_graph_ad280efefe7ed62f71c3b887d72f8681d}{findSCC}}();}
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_graph_ab1759627153eba0b76f65da55c440230}{dfsSCC}}(std::string\ v,\ \textcolor{keywordtype}{int}\&\ index,\ std::stack<std::string>\&\ S,\ std::vector<std::unordered\_set<std::string>>\&\ sccs);}
+\DoxyCodeLine{00174\ \};}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//PROJ\_GRAPH\_H}}
+
+\end{DoxyCode}

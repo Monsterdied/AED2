@@ -1,0 +1,132 @@
+\hypertarget{class_coordinates}{}\doxysection{Coordinates Class Reference}
+\label{class_coordinates}\index{Coordinates@{Coordinates}}
+
+
+Represents a set of coordinates.  
+
+
+
+
+{\ttfamily \#include $<$Coordinates.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_coordinates_a008a2acb31c4606eac1969bc5f1892f0}{Coordinates}} (double \mbox{\hyperlink{class_coordinates_a20ea6542be083155699517939b03f259}{latitude}}, double \mbox{\hyperlink{class_coordinates_a474951b7ec4e5f12e788abbf852cd88b}{longitude}})
+\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{class_coordinates}{Coordinates}} object with the given latitude and longitude. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_coordinates_a89dd10af87d803fd51dfd9987f32e8cd}\label{class_coordinates_a89dd10af87d803fd51dfd9987f32e8cd}} 
+{\bfseries Coordinates} ()
+\begin{DoxyCompactList}\small\item\em Constructs a default \mbox{\hyperlink{class_coordinates}{Coordinates}} object. \textbackslash{}\+Complexity 0(1) \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_coordinates_a1b837196c03ed0828fe8a8a820259168}{get\+Distance}} (\mbox{\hyperlink{class_coordinates}{Coordinates}} coordenadas)
+\begin{DoxyCompactList}\small\item\em Calculates the distance between this \mbox{\hyperlink{class_coordinates}{Coordinates}} object and another. \textbackslash{}\+Complexity 0(1) \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_coordinates_a073f8da90d6b31bcd7f8951f3da53414}{get\+Latitude}} ()
+\begin{DoxyCompactList}\small\item\em Returns the latitude. \textbackslash{}\+Complexity 0(1) \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_coordinates_ac2ccb832dc1ef9bb5560e37a8009ac17}{get\+Longitude}} ()
+\begin{DoxyCompactList}\small\item\em Returns the longitude. \textbackslash{}\+Complexity 0(1) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_coordinates_a50bb707e4b52f76853ac054f448509a2}{operator==}} (const \mbox{\hyperlink{class_coordinates}{Coordinates}} \&cordenada) const
+\begin{DoxyCompactList}\small\item\em Compares this \mbox{\hyperlink{class_coordinates}{Coordinates}} object with another for equality. \textbackslash{}\+Complexity 0(1) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_coordinates_a20ea6542be083155699517939b03f259}\label{class_coordinates_a20ea6542be083155699517939b03f259}} 
+double {\bfseries latitude}
+\begin{DoxyCompactList}\small\item\em The latitude. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_coordinates_a474951b7ec4e5f12e788abbf852cd88b}\label{class_coordinates_a474951b7ec4e5f12e788abbf852cd88b}} 
+double {\bfseries longitude}
+\begin{DoxyCompactList}\small\item\em The longitude. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a set of coordinates. 
+
+The \mbox{\hyperlink{class_coordinates}{Coordinates}} class represents a set of coordinates, with a latitude and longitude. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_coordinates_a008a2acb31c4606eac1969bc5f1892f0}\label{class_coordinates_a008a2acb31c4606eac1969bc5f1892f0}} 
+\index{Coordinates@{Coordinates}!Coordinates@{Coordinates}}
+\index{Coordinates@{Coordinates}!Coordinates@{Coordinates}}
+\doxysubsubsection{\texorpdfstring{Coordinates()}{Coordinates()}}
+{\footnotesize\ttfamily Coordinates\+::\+Coordinates (\begin{DoxyParamCaption}\item[{double}]{latitude,  }\item[{double}]{longitude }\end{DoxyParamCaption})}
+
+
+
+Constructs a \mbox{\hyperlink{class_coordinates}{Coordinates}} object with the given latitude and longitude. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em latitude} & The latitude. \\
+\hline
+{\em longitude} & The longitude. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_coordinates_a1b837196c03ed0828fe8a8a820259168}\label{class_coordinates_a1b837196c03ed0828fe8a8a820259168}} 
+\index{Coordinates@{Coordinates}!getDistance@{getDistance}}
+\index{getDistance@{getDistance}!Coordinates@{Coordinates}}
+\doxysubsubsection{\texorpdfstring{getDistance()}{getDistance()}}
+{\footnotesize\ttfamily double Coordinates\+::get\+Distance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_coordinates}{Coordinates}}}]{coordenadas }\end{DoxyParamCaption})}
+
+
+
+Calculates the distance between this \mbox{\hyperlink{class_coordinates}{Coordinates}} object and another. \textbackslash{}\+Complexity 0(1) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coordenadas} & The \mbox{\hyperlink{class_coordinates}{Coordinates}} object to calculate the distance to. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The distance between the \mbox{\hyperlink{class_coordinates}{Coordinates}} objects. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_coordinates_a073f8da90d6b31bcd7f8951f3da53414}\label{class_coordinates_a073f8da90d6b31bcd7f8951f3da53414}} 
+\index{Coordinates@{Coordinates}!getLatitude@{getLatitude}}
+\index{getLatitude@{getLatitude}!Coordinates@{Coordinates}}
+\doxysubsubsection{\texorpdfstring{getLatitude()}{getLatitude()}}
+{\footnotesize\ttfamily double Coordinates\+::get\+Latitude (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the latitude. \textbackslash{}\+Complexity 0(1) 
+
+\begin{DoxyReturn}{Returns}
+The latitude. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_coordinates_ac2ccb832dc1ef9bb5560e37a8009ac17}\label{class_coordinates_ac2ccb832dc1ef9bb5560e37a8009ac17}} 
+\index{Coordinates@{Coordinates}!getLongitude@{getLongitude}}
+\index{getLongitude@{getLongitude}!Coordinates@{Coordinates}}
+\doxysubsubsection{\texorpdfstring{getLongitude()}{getLongitude()}}
+{\footnotesize\ttfamily double Coordinates\+::get\+Longitude (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the longitude. \textbackslash{}\+Complexity 0(1) 
+
+\begin{DoxyReturn}{Returns}
+The longitude. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_coordinates_a50bb707e4b52f76853ac054f448509a2}\label{class_coordinates_a50bb707e4b52f76853ac054f448509a2}} 
+\index{Coordinates@{Coordinates}!operator==@{operator==}}
+\index{operator==@{operator==}!Coordinates@{Coordinates}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Coordinates\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_coordinates}{Coordinates}} \&}]{cordenada }\end{DoxyParamCaption}) const}
+
+
+
+Compares this \mbox{\hyperlink{class_coordinates}{Coordinates}} object with another for equality. \textbackslash{}\+Complexity 0(1) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cordenada} & The \mbox{\hyperlink{class_coordinates}{Coordinates}} object to compare with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if the \mbox{\hyperlink{class_coordinates}{Coordinates}} objects are equal, {\ttfamily false} otherwise. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Coordinates.\+h\item 
+Coordinates.\+cpp\end{DoxyCompactItemize}

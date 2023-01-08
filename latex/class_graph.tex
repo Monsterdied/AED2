@@ -1,0 +1,297 @@
+\hypertarget{class_graph}{}\doxysection{Graph Class Reference}
+\label{class_graph}\index{Graph@{Graph}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_graph_1_1_node}{Node}}
+\begin{DoxyCompactList}\small\item\em Represents a node (airport) in the graph. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_graph_ae4c72b8ac4d693c49800a4c7e273654f}{Graph}} ()
+\begin{DoxyCompactList}\small\item\em Constructs an empty \mbox{\hyperlink{class_graph}{Graph}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_a2739cfe0adcb4d6cc52b538295b12617}{add\+Edge}} (string src, string dest, string airline\+Code)
+\begin{DoxyCompactList}\small\item\em Adds an edge (flight) from the source airport to the destination airport with the given airline code. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_a0b7402c5339a8f6e6ba066d1a2e6b72c}{add\+Flight}} (\mbox{\hyperlink{class_flight}{Flight}} flight)
+\begin{DoxyCompactList}\small\item\em Adds a flight to the graph. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_a23f80bc90d397029499b05292e36142d}{del\+Flight}} (\mbox{\hyperlink{class_flight}{Flight}} flight)
+\begin{DoxyCompactList}\small\item\em Deletes a flight from the graph. \end{DoxyCompactList}\item 
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{struct_graph_1_1_node}{Node}} $>$ \mbox{\hyperlink{class_graph_ab98e4bed52517584087a68feb099e4ee}{get\+Nodes}} ()
+\begin{DoxyCompactList}\small\item\em Returns the nodes (airports) in the graph. \end{DoxyCompactList}\item 
+list$<$ \mbox{\hyperlink{class_flight}{Flight}} $>$ \mbox{\hyperlink{class_graph_ac4d80f568d2ddc33121ce06653d75ad1}{get\+Edges}} (string code)
+\begin{DoxyCompactList}\small\item\em Returns the edges (flights) from the given airport code. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_graph_1_1_node}{Node}} \& \mbox{\hyperlink{class_graph_adf167397267817d962c4bea3c91913c2}{find\+Flight\+From}} (string code\+Airport)
+\begin{DoxyCompactList}\small\item\em Finds the node (airport) with the given code. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_flight}{Flight}} $>$ \mbox{\hyperlink{class_graph_addec7a171c9acf569d45af657afd7bbe}{find\+Flights}} (string code\+Src, string code\+Dest)
+\begin{DoxyCompactList}\small\item\em Finds the flights between the source and destination airports with the given codes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_a73e024ac9240aef68804bcc6c9e07638}{dfs\+\_\+art}} (string v, bool is\+Root, int \&index, unordered\+\_\+set$<$ string $>$ \&points)
+\begin{DoxyCompactList}\small\item\em Performs a depth-\/first search (DFS) on the graph. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{class_graph_a9dc20c898262dea494c7b49f7c51ebf1}{diameter}} ()
+\begin{DoxyCompactList}\small\item\em Returns the diameter of the graph, which is defined as the maximum distance between any pair of vertices in the graph. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_a332c8ffff73104bfeaf02966c006acf2}{reset\+Nodes}} ()
+\begin{DoxyCompactList}\small\item\em Resets the state of all nodes in the graph. @complexity O($\vert$\+V$\vert$) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_aafefe54af59867401bbd32ab41afcea4}{bfs\+\_\+distance}} (std\+::string v)
+\begin{DoxyCompactList}\small\item\em Performs a breadth-\/first search (BFS) from the given starting vertex and sets the dist property of each visited node to its distance from the starting vertex. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_graph_ad280efefe7ed62f71c3b887d72f8681d}{find\+SCC}} ()
+\begin{DoxyCompactList}\small\item\em Finds the strongly connected components (SCCs) in the graph. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_ab1759627153eba0b76f65da55c440230}{dfs\+SCC}} (std\+::string v, int \&index, std\+::stack$<$ std\+::string $>$ \&S, std\+::vector$<$ std\+::unordered\+\_\+set$<$ std\+::string $>$ $>$ \&sccs)
+\begin{DoxyCompactList}\small\item\em Finds the SCCs in the graph using a depth-\/first search (DFS). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph_a860f663392ca5bb1d55985527e7367d7}\label{class_graph_a860f663392ca5bb1d55985527e7367d7}} 
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{struct_graph_1_1_node}{Node}} $>$ {\bfseries nodes}
+\begin{DoxyCompactList}\small\item\em A map of nodes (airports) in the graph, indexed by their codes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_graph_ae4c72b8ac4d693c49800a4c7e273654f}\label{class_graph_ae4c72b8ac4d693c49800a4c7e273654f}} 
+\index{Graph@{Graph}!Graph@{Graph}}
+\index{Graph@{Graph}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{Graph()}{Graph()}}
+{\footnotesize\ttfamily Graph\+::\+Graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructs an empty \mbox{\hyperlink{class_graph}{Graph}} object. 
+
+The complexity of this member function is O(1). 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_graph_a2739cfe0adcb4d6cc52b538295b12617}\label{class_graph_a2739cfe0adcb4d6cc52b538295b12617}} 
+\index{Graph@{Graph}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}}
+{\footnotesize\ttfamily void Graph\+::add\+Edge (\begin{DoxyParamCaption}\item[{string}]{src,  }\item[{string}]{dest,  }\item[{string}]{airline\+Code }\end{DoxyParamCaption})}
+
+
+
+Adds an edge (flight) from the source airport to the destination airport with the given airline code. 
+
+The complexity of this member function is O(1).
+
+
+\begin{DoxyParams}{Parameters}
+{\em src} & The source airport code. \\
+\hline
+{\em dest} & The destination airport code. \\
+\hline
+{\em airline\+Code} & The airline code operating the flight. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_a0b7402c5339a8f6e6ba066d1a2e6b72c}\label{class_graph_a0b7402c5339a8f6e6ba066d1a2e6b72c}} 
+\index{Graph@{Graph}!addFlight@{addFlight}}
+\index{addFlight@{addFlight}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{addFlight()}{addFlight()}}
+{\footnotesize\ttfamily void Graph\+::add\+Flight (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flight}{Flight}}}]{flight }\end{DoxyParamCaption})}
+
+
+
+Adds a flight to the graph. 
+
+The complexity of this member function is O(n), where {\ttfamily n} is the number of flights from the source airport.
+
+
+\begin{DoxyParams}{Parameters}
+{\em flight} & The flight to add. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_aafefe54af59867401bbd32ab41afcea4}\label{class_graph_aafefe54af59867401bbd32ab41afcea4}} 
+\index{Graph@{Graph}!bfs\_distance@{bfs\_distance}}
+\index{bfs\_distance@{bfs\_distance}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{bfs\_distance()}{bfs\_distance()}}
+{\footnotesize\ttfamily void Graph\+::bfs\+\_\+distance (\begin{DoxyParamCaption}\item[{std\+::string}]{v }\end{DoxyParamCaption})}
+
+
+
+Performs a breadth-\/first search (BFS) from the given starting vertex and sets the dist property of each visited node to its distance from the starting vertex. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em v} & The starting vertex. @complexity O($\vert$\+V$\vert$ + $\vert$\+E$\vert$) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_a23f80bc90d397029499b05292e36142d}\label{class_graph_a23f80bc90d397029499b05292e36142d}} 
+\index{Graph@{Graph}!delFlight@{delFlight}}
+\index{delFlight@{delFlight}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{delFlight()}{delFlight()}}
+{\footnotesize\ttfamily void Graph\+::del\+Flight (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_flight}{Flight}}}]{flight }\end{DoxyParamCaption})}
+
+
+
+Deletes a flight from the graph. 
+
+The complexity of this member function is O(n), where {\ttfamily n} is the number of flights from the source airport.
+
+
+\begin{DoxyParams}{Parameters}
+{\em flight} & The flight to delete. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_a73e024ac9240aef68804bcc6c9e07638}\label{class_graph_a73e024ac9240aef68804bcc6c9e07638}} 
+\index{Graph@{Graph}!dfs\_art@{dfs\_art}}
+\index{dfs\_art@{dfs\_art}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{dfs\_art()}{dfs\_art()}}
+{\footnotesize\ttfamily void Graph\+::dfs\+\_\+art (\begin{DoxyParamCaption}\item[{string}]{v,  }\item[{bool}]{is\+Root,  }\item[{int \&}]{index,  }\item[{unordered\+\_\+set$<$ string $>$ \&}]{points }\end{DoxyParamCaption})}
+
+
+
+Performs a depth-\/first search (DFS) on the graph. 
+
+The complexity of this member function is O(n + m), where {\ttfamily n} is the number of nodes in the graph and {\ttfamily m} is the number of edges.
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & The starting node for the DFS. \\
+\hline
+{\em index} & A reference to the current index of the DFS. \\
+\hline
+{\em num} & A map of nodes to their DFS numbers. \\
+\hline
+{\em low} & A map of nodes to their low numbers. \\
+\hline
+{\em S} & A set of nodes in the DFS stack. \\
+\hline
+{\em ap} & A set of articulation points in the graph. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graph_ab1759627153eba0b76f65da55c440230}\label{class_graph_ab1759627153eba0b76f65da55c440230}} 
+\index{Graph@{Graph}!dfsSCC@{dfsSCC}}
+\index{dfsSCC@{dfsSCC}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{dfsSCC()}{dfsSCC()}}
+{\footnotesize\ttfamily void Graph\+::dfs\+SCC (\begin{DoxyParamCaption}\item[{std\+::string}]{v,  }\item[{int \&}]{index,  }\item[{std\+::stack$<$ std\+::string $>$ \&}]{S,  }\item[{std\+::vector$<$ std\+::unordered\+\_\+set$<$ std\+::string $>$ $>$ \&}]{sccs }\end{DoxyParamCaption})}
+
+
+
+Finds the SCCs in the graph using a depth-\/first search (DFS). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & The starting vertex for the DFS. \\
+\hline
+{\em index} & The index of v in the DFS tree. \\
+\hline
+{\em S} & The stack used in the DFS. \\
+\hline
+{\em sccs} & A vector to store the identified SCCs.\\
+\hline
+\end{DoxyParams}
+Time complexity\+: O(V+E) \mbox{\Hypertarget{class_graph_a9dc20c898262dea494c7b49f7c51ebf1}\label{class_graph_a9dc20c898262dea494c7b49f7c51ebf1}} 
+\index{Graph@{Graph}!diameter@{diameter}}
+\index{diameter@{diameter}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{diameter()}{diameter()}}
+{\footnotesize\ttfamily unsigned Graph\+::diameter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the diameter of the graph, which is defined as the maximum distance between any pair of vertices in the graph. 
+
+\begin{DoxyReturn}{Returns}
+The diameter of the graph. @complexity O($\vert$\+V$\vert$ $\ast$ ($\vert$\+V$\vert$ + $\vert$\+E$\vert$)) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_adf167397267817d962c4bea3c91913c2}\label{class_graph_adf167397267817d962c4bea3c91913c2}} 
+\index{Graph@{Graph}!findFlightFrom@{findFlightFrom}}
+\index{findFlightFrom@{findFlightFrom}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{findFlightFrom()}{findFlightFrom()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_graph_1_1_node}{Graph\+::\+Node}} \& Graph\+::find\+Flight\+From (\begin{DoxyParamCaption}\item[{string}]{code\+Airport }\end{DoxyParamCaption})}
+
+
+
+Finds the node (airport) with the given code. 
+
+The complexity of this member function is O(1).
+
+
+\begin{DoxyParams}{Parameters}
+{\em code\+Airport} & The airport code. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The node with the given code. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_addec7a171c9acf569d45af657afd7bbe}\label{class_graph_addec7a171c9acf569d45af657afd7bbe}} 
+\index{Graph@{Graph}!findFlights@{findFlights}}
+\index{findFlights@{findFlights}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{findFlights()}{findFlights()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_flight}{Flight}} $>$ Graph\+::find\+Flights (\begin{DoxyParamCaption}\item[{string}]{code\+Src,  }\item[{string}]{code\+Dest }\end{DoxyParamCaption})}
+
+
+
+Finds the flights between the source and destination airports with the given codes. 
+
+The complexity of this member function is O(n), where {\ttfamily n} is the number of flights from the source airport.
+
+
+\begin{DoxyParams}{Parameters}
+{\em code\+Src} & The source airport code. \\
+\hline
+{\em code\+Dest} & The destination airport code. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The flights between the source and destination airports. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_ad280efefe7ed62f71c3b887d72f8681d}\label{class_graph_ad280efefe7ed62f71c3b887d72f8681d}} 
+\index{Graph@{Graph}!findSCC@{findSCC}}
+\index{findSCC@{findSCC}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{findSCC()}{findSCC()}}
+{\footnotesize\ttfamily int Graph\+::find\+SCC (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Finds the strongly connected components (SCCs) in the graph. 
+
+\begin{DoxyReturn}{Returns}
+The number of SCCs found. @complexity O($\vert$\+V$\vert$ + $\vert$\+E$\vert$) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_ac4d80f568d2ddc33121ce06653d75ad1}\label{class_graph_ac4d80f568d2ddc33121ce06653d75ad1}} 
+\index{Graph@{Graph}!getEdges@{getEdges}}
+\index{getEdges@{getEdges}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getEdges()}{getEdges()}}
+{\footnotesize\ttfamily list$<$ \mbox{\hyperlink{class_flight}{Flight}} $>$ Graph\+::get\+Edges (\begin{DoxyParamCaption}\item[{string}]{code }\end{DoxyParamCaption})}
+
+
+
+Returns the edges (flights) from the given airport code. 
+
+The complexity of this member function is O(1).
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & The airport code. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The edges from the given airport. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_ab98e4bed52517584087a68feb099e4ee}\label{class_graph_ab98e4bed52517584087a68feb099e4ee}} 
+\index{Graph@{Graph}!getNodes@{getNodes}}
+\index{getNodes@{getNodes}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getNodes()}{getNodes()}}
+{\footnotesize\ttfamily unordered\+\_\+map$<$ string, \mbox{\hyperlink{struct_graph_1_1_node}{Graph\+::\+Node}} $>$ Graph\+::get\+Nodes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the nodes (airports) in the graph. 
+
+The complexity of this member function is O(n), where {\ttfamily n} is the number of nodes in the graph.
+
+\begin{DoxyReturn}{Returns}
+The nodes in the graph. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a332c8ffff73104bfeaf02966c006acf2}\label{class_graph_a332c8ffff73104bfeaf02966c006acf2}} 
+\index{Graph@{Graph}!resetNodes@{resetNodes}}
+\index{resetNodes@{resetNodes}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{resetNodes()}{resetNodes()}}
+{\footnotesize\ttfamily void Graph\+::reset\+Nodes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets the state of all nodes in the graph. @complexity O($\vert$\+V$\vert$) 
+
+A unsigned that tells the distance from some \mbox{\hyperlink{struct_graph_1_1_node}{Node}}.
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Graph.\+h\item 
+Graph.\+cpp\end{DoxyCompactItemize}

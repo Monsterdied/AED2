@@ -47,7 +47,7 @@ void mainMenu(Manager &manager) {
             cout << "__________________________________________" << endl;
             cout << "Welcome to Flight Network System L.EIC GUI" << endl;
             cout << "Select one of the following options: " << endl;
-            cout << " 1. Info about airliners" << endl;
+            cout << " 1. Info about airlines" << endl;
             cout << " 2. Info about airports" << endl;
             cout << " 3. Flight menu" << endl;
             cout << " 4. Get number of flights to/from locations" << endl;
@@ -81,11 +81,11 @@ void airlinerMenu(Manager manager) {
         do {
             cout << "____________________________________" << endl;
             cout << "Select one of the following options: " << endl;
-            cout << " 1. Search airliner by name" << endl;
-            cout << " 2. Search airliner by code" << endl;
-            cout << " 3. Search airliner by call sign" << endl;
-            cout << " 4. Show airliners in country" << endl;
-            cout << " 5. Show all airliners" << endl;
+            cout << " 1. Search airlines by name" << endl;
+            cout << " 2. Search airlines by code" << endl;
+            cout << " 3. Search airlines by call sign" << endl;
+            cout << " 4. Show airlines in country" << endl;
+            cout << " 5. Show all airlines" << endl;
             cout << " 9. Go to previous menu" << endl;
             cout << "Type option:";
             cin >> input;
@@ -404,7 +404,7 @@ void printAirline(vector<Airline> airlines, string string1, const string& mode) 
             return;
         }
     }
-    cout <<"Airliner not found!" << endl;
+    cout <<"Airline not found!" << endl;
     cout << endl;
 }
 

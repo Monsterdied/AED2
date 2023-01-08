@@ -1,0 +1,92 @@
+\hypertarget{_manager_8h_source}{}\doxysection{Manager.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ tomas\ on\ 12/27/2022.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ PROJ\_MANAGER\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ PROJ\_MANAGER\_H}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <unordered\_set>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}Airline.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}Airport.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}Graph.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_manager}{Manager}}\ \{}
+\DoxyCodeLine{00019\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{/*unordered\_set\ <Airport,HashFunction>\ airports\ ;*/}}
+\DoxyCodeLine{00021\ \ \ \ \ unordered\_map\ <string,Airport>\ airports;}
+\DoxyCodeLine{00022\ \ \ \ \ unordered\_map\ <string,Airline>\ airlines;}
+\DoxyCodeLine{00023\ \ \ \ \ unordered\_map\ <string,\ list<string>>\ cities;\textcolor{comment}{//key\ =cityCode\ list<string>\ aeroportCodes}}
+\DoxyCodeLine{00024\ \ \ \ \ \ unordered\_map\ <string,\ set<string>>\ countrysToCitys;\textcolor{comment}{//key\ =ContryCode\ set<string>\ citys}}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{class_graph}{Graph}}\ graph;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_manager_a1658ff9f18e38ccd9cb8b0b371b9c20b}{Manager}}();}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_manager_a65a8901392a0e3da2024988bcedd8899}{ReadAirLines}}();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_manager_aaa6c0164ea786396d14a92a79a764ea4}{ReadAirports}}();}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_manager_a039fd08ed25d845325d1a685d3a07c15}{ReadFlights}}();}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00058\ \ \ \ \ list<string>\ \mbox{\hyperlink{class_manager_a162f18425b7fee335d9845242a97298c}{getAirportsInCity}}(\textcolor{keywordtype}{string}\ city);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00065\ \ \ \ \ set<string>\ \mbox{\hyperlink{class_manager_a1f0dea4b2bb400b370daebd17808c0e4}{getCitiesInCountry}}(\textcolor{keywordtype}{string}\ country);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{class_airport}{Airport}}\ \mbox{\hyperlink{class_manager_abb08d808934e22574363ed60c41643fa}{getAirportWithCode}}(\textcolor{keywordtype}{string}\ airportCode);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \mbox{\hyperlink{class_airline}{Airline}}\ \mbox{\hyperlink{class_manager_ad2c398f799ac50c5fb7414bf34f2b683}{getAirlineWithCode}}(\textcolor{keywordtype}{string}\ airlineCode);}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_manager_ab7be9d31f7e630999d18f12a244bc45e}{getNumFlightTo}}(\textcolor{keywordtype}{string}\ aiportCode);}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_manager_a3268bf239d5d531b839c33064bcc35f2}{getNumFlightFrom}}(\textcolor{keywordtype}{string}\ aiportCode);}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_manager_a4ab77172ecca457ffd1177783ef468e3}{getNumFlightFromDifferentAirlinesTo}}(\textcolor{keywordtype}{string}\ aiportCode);}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_manager_a16df932e0210ff15fdc5590f3e4ba3fa}{getNumFlightFromDifferentAirlinesFrom}}(\textcolor{keywordtype}{string}\ aiportCode);}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_manager_a491d884f9b60aed3b9b176bddcb7f624}{getNumFlightFromDifferentCountriesTo}}(\textcolor{keywordtype}{string}\ aiportCode);}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_manager_a28df2423d0b24246573a9acee7aa2a88}{getNumFlightToDifferentCountriesFrom}}(\textcolor{keywordtype}{string}\ aiportCode);}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00125\ \ \ \ \ \ unordered\_map\ <string,Airline>\ \ \mbox{\hyperlink{class_manager_a724f4a673650caa425a3459bcce34341}{getAirlines}}();}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00130\ \ \ \ \ \ unordered\_map\ <string,Airport>\ \mbox{\hyperlink{class_manager_a4d9e4282bd964b2f539ebbd5742c7ec8}{getAirports}}();}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00138\ \ \ \ \ \ vector<Flight>\ \mbox{\hyperlink{class_manager_a0856413a58b4de1fc05663cb4deb31f9}{FindBestRoute}}(\textcolor{keywordtype}{string}\ source,\ \textcolor{keywordtype}{string}\ target);}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00148\ \ \ \ \ \ vector<Flight>\ \mbox{\hyperlink{class_manager_ab423d45570f93136effa42f825962ce7}{FindBestRouteWithBlackListed}}(\textcolor{keywordtype}{string}\ source,\ \textcolor{keywordtype}{string}\ target,set<string>\ blackListAirlines);}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00158\ \ \ \ \ \ vector<Flight>\ \mbox{\hyperlink{class_manager_a0554fa622507300f7254ac186c1d7788}{FindBestRouteWithGreenListed}}(\textcolor{keywordtype}{string}\ source,\ \textcolor{keywordtype}{string}\ target,set<string>\ greenListAirlines);}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00166\ \ \ \ \ \ vector<vector<Flight>>\ \mbox{\hyperlink{class_manager_a4b650d82ed4034c7a10c8e136f3b72e7}{FindBestRoutes1}}(\textcolor{keywordtype}{string}\ source,\ \textcolor{keywordtype}{string}\ target);}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00173\ \ \ \ \ \ vector<vector<Flight>>\ \mbox{\hyperlink{class_manager_ac11d28278b40cc84eb861f3afdb046d8}{FindBestRoutes}}(\textcolor{keywordtype}{string}\ source,\ \textcolor{keywordtype}{string}\ target,vector<vector<Flight>>\&\ result);}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00181\ \ \ \ \ \ vector<string>\ \mbox{\hyperlink{class_manager_a4d57c731189f037922497ee1c3c75b5c}{FindAirportsFromCoordinates}}(\mbox{\hyperlink{class_coordinates}{Coordinates}}\ coordinates,\ \textcolor{keywordtype}{int}\ distanceSource);}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00187\ \ \ \ \ \ vector<string>\ \mbox{\hyperlink{class_manager_a119ca8b97475893de4b44095308ca423}{FindAirportsFromCountry}}(\textcolor{keywordtype}{string}\ country);}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00194\ \ \ \ \ \ vector<string>\ \mbox{\hyperlink{class_manager_a871cfbf1c6128d663dedd6a39206ac6d}{FindAirportsFromCity}}(\textcolor{keywordtype}{string}\ city);}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00203\ \ \ \ \ \ vector<vector<Flight>>\ \mbox{\hyperlink{class_manager_a586a0c34e806210956bffd0ca6e367f1}{FindBestRoutesFromAirportsToAirports}}(vector<string>\ starts,\ vector<string>\ targets);}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00211\ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_manager_aeebfb12313739e1fa6ddddcb6cfd2914}{CountCountriesReachableInNFlights}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ src,\ \textcolor{keywordtype}{int}\ n);}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00219\ \ \ \ \ \ unordered\_set<string>\ \mbox{\hyperlink{class_manager_a012f7db6411b6320a420552e63cb3f46}{CountriesReachableInYFlights}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ src,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00225\ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_manager_aba637876b44e2f811ef83d2eb05cf144}{ArticulationPoints}}();}
+\DoxyCodeLine{00232\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_manager_a2ad291086f39f31c5450a191f448a40c}{diameter}}();}
+\DoxyCodeLine{00239\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_manager_ada13c09ae71df51306d9aa8c66c82b83}{StronglyConnectedComponents}}();}
+\DoxyCodeLine{00240\ \};}
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00243\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//PROJ\_MANAGER\_H}}
+
+\end{DoxyCode}
