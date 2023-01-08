@@ -222,7 +222,13 @@ public:
          This method returns the an set where when used with .size returns the number of the articulation points.
          \Complexity   O(n+m) \n  Where n is the number of airports, m is the number of flights.
      */
-     set<string> findArticulationPoints();//find articulation Airports sao os quais se removeres em ves de um ciclo ficas com dois 
+     set<string> findArticulationPoints();//find articulation Airports sao os quais se removeres em ves de um ciclo ficas com dois
+     //! A int method taking no arguments.
+     /*!
+         This method returns the number of Strongly Components Connected.
+         \Complexity   O(n+m) \n  Where n is the number of airports, m is the number of flights.
+     */
+     int findStronglyComponentsConnected();//find articulation Airports sao os quais se removeres em ves de um ciclo ficas com dois
 
 
 };

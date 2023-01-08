@@ -129,7 +129,13 @@ public:
      * @param ap A set of articulation points in the graph.
      */
     void dfs(string node, int& index, unordered_map<string, int>& num, unordered_map<string, int>& low, set<string>& S, set<string>& ap);
-
+/**
+* @brief Performs a depth-first search (DFS) on the graph.
+*
+* The complexity of this member function is O(n + m), where `n` is the number of nodes in the graph and `m` is the number of edges.
+*
+*/
+void dfs(string start);
 
 };
 

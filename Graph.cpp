@@ -79,3 +79,16 @@ void Graph::dfs(string node, int& index, unordered_map<string, int>& num, unorde
     // Pop node from the stack
     S.erase(node);
 }
+
+void Graph::dfs(string start) {
+    nodes[start].visited = true;
+// Go through all the neighbors of the current node
+    for (auto f : nodes[start].adj) {
+        string w = f.getTarget();
+// If the neighbor has not been visited, recursively visit it
+        if (!nodes[w].visited) {
+            dfs(w);
+        }
+    }
+
+}
