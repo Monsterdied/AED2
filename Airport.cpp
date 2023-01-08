@@ -4,14 +4,14 @@
 
 #include "Airport.h"
 Airport::Airport(double latitude , double longitude , string name , string code , string city , string country ){
-    this->cordenadas=Coordenadas(latitude, longitude);
+    this->cordenadas=Coordinates(latitude, longitude);
     this->city = city;
     this->code= code ;
     this->country=country;
     this->name = name;
 }
 Airport::Airport() {
-    this->cordenadas=Coordenadas(0, 0);
+    this->cordenadas=Coordinates(0, 0);
     this->city = "";
     this->code= "" ;
     this->country="";
@@ -22,7 +22,7 @@ bool Airport::operator==(const Airport& airport) const
     if (this->cordenadas == airport.cordenadas && this->name == airport.name && this->country == airport.country && this->code==airport.code && this->city == airport.city) return true;
     else return false;
 }
-Coordenadas Airport::getCordenadas(){
+Coordinates Airport::getCordenadas(){
     return cordenadas;
 }
 string Airport::getName() const{

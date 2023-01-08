@@ -175,10 +175,10 @@ public:
      /*!
          This method taking Coordinates and a int distance that returns a vector with the AirportCodes with the distance of distanteSource from the coordinates.
          \Complexity  0(n)
-         \Arguments @b Coordenadas cordenadas
+         \Arguments @b Coordinates cordenadas
          \n @b int distanceSource
      */
-     vector<string> FindAirportsFromCordenadas(Coordenadas cordenadas, int distanceSource);
+     vector<string> FindAirportsFromCordenadas(Coordinates cordenadas, int distanceSource);
      //! A normal method taking a Country Name.
      /*!
          This method taking Country returns a vector with all AirportCodes in the Country

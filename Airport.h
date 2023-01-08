@@ -6,7 +6,7 @@
 #define PROJ_AIRPORT_H
 
 
-#include "Coordenadas.h"
+#include "Coordinates.h"
 #include <iostream>
 using namespace std;
 /**
@@ -20,7 +20,7 @@ private:
     /**
      * @brief The airport coordinates.
      */
-    Coordenadas cordenadas;
+    Coordinates cordenadas;
 
     /**
      * @brief The airport name.
@@ -65,7 +65,7 @@ public:
      \Complexity  0(1)
      * @return The airport coordinates.
      */
-    Coordenadas getCordenadas();
+    Coordinates getCordenadas();
 
     /**
      * @brief Returns the airport name.

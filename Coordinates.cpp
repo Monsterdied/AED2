@@ -3,23 +3,23 @@
 //
 
 #include <cmath>
-#include "Coordenadas.h"
-Coordenadas::Coordenadas(double latitude , double longitude){
+#include "Coordinates.h"
+Coordinates::Coordinates(double latitude , double longitude){
     this->latitude = latitude;
     this->longitude = longitude;
 }
-double Coordenadas::getlatitude(){
+double Coordinates::getlatitude(){
     return latitude;
 }
-double Coordenadas::getlongitude(){
+double Coordinates::getlongitude(){
     return longitude;
 }
 
-Coordenadas::Coordenadas() {
+Coordinates::Coordinates() {
     latitude = 0;
     longitude=0;
 }
-double Coordenadas::getDistance(Coordenadas coordenadas ){
+double Coordinates::getDistance(Coordinates coordenadas ){
     double lat1 = this->latitude;
     double lat2 = coordenadas.latitude;
     double lon1 = this->longitude;
@@ -44,7 +44,7 @@ double Coordenadas::getDistance(Coordenadas coordenadas ){
 
 
 }
-bool Coordenadas::operator==(const Coordenadas& cordenada) const
+bool Coordinates::operator==(const Coordinates& cordenada) const
 {
     if (this->latitude == cordenada.latitude && this->longitude == cordenada.longitude) return true;
     else return false;
